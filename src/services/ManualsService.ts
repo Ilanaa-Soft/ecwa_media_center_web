@@ -1,0 +1,18 @@
+import http from "./httpService";
+import { getHeaders } from "./authService";
+
+const apiEndpoint = "/sunday-school";
+
+const headers = getHeaders();
+
+export function getAllManuals() {
+  return http.get<Manual[]>(`${apiEndpoint}/all`, headers);
+}
+
+export function getUnPaidManuals() {
+  return http.get<Manual[]>(`${apiEndpoint}/unpaid`, headers);
+}
+
+export function getManualsCategories() {
+  return http.get(`${apiEndpoint}/categories`, headers);
+}

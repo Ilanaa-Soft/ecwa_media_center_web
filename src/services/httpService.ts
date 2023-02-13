@@ -1,0 +1,28 @@
+import axios from "axios";
+import { toast } from "react-toastify";
+
+axios.defaults.baseURL = import.meta.env.VITE_APP_API_URL;
+
+axios.interceptors.response.use(undefined, (ex) => {
+  const expectedError =
+    ex.response && ex.response.status >= 400 && ex.response.status < 500;
+
+  if (!expectedError) {
+    // Call a log service to log unexpected errors
+
+    // Notify the user
+    toast.error("An unexpected error occurred.");
+  }
+
+  return Promise.reject(ex);
+});
+
+const http = {
+  get: axios.get,
+  post: axios.post,
+  put: axios.put,
+  patch: axios.patch,
+  delete: axios.delete,
+};
+
+export default http;

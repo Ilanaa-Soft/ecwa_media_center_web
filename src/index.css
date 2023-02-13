@@ -1,0 +1,19 @@
+/* @syncfusion/ej2-react-calendars style */
+.e-calendar {
+  min-width: 100%;
+  border: none;
+}
+
+.e-calendar .e-footer-container {
+  display: none;
+}
+
+/* Set the containing div  */
+body > div:last-of-type {
+  display: none;
+}
+
+/* Override the display none when it applies to the root div */
+#root {
+  display: block;
+}
