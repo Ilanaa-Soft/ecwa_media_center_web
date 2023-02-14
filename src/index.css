@@ -1,4 +1,6 @@
-/* @syncfusion/ej2-react-calendars style */
+/* @syncfusion/ej2-react-calendars style
+ ------------------------------------------ */
+
 .e-calendar {
   min-width: 100%;
   border: none;
@@ -16,4 +18,11 @@ body > div:last-of-type {
 /* Override the display none when it applies to the root div */
 #root {
   display: block;
+}
+
+/* React Alert
+-------------------------------- */
+
+.MuiTypography-colorTextSecondary {
+  color: rgba(0, 0, 0, 0.87) !important;
 }

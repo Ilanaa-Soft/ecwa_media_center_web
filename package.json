@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev-host": "vite --host 192.168.0.101",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "start": "npx http-server ./dist"
@@ -21,6 +22,9 @@
     "formik": "^2.2.9",
     "lottie-react": "^2.3.1",
     "react": "^18.2.0",
+    "react-alert": "^7.0.3",
+    "react-alert-template-basic": "^1.0.2",
+    "react-alert-template-mui": "^1.0.7",
     "react-calendar": "^4.0.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.7.0",
