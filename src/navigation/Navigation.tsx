@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 import { Home } from "../pages/home";
 import { SignUp } from "../pages/signUp";
-import { RequestLogin } from "../pages/requestLogin";
+import { RequestLogin } from "../pages/requestLogIn";
 import { Login } from "../pages/login";
 import { Manuals } from "../pages/manuals";
 import { Manual } from "../pages/manual";
