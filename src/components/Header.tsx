@@ -75,7 +75,7 @@ const Header = () => {
           }}
           color="inherit"
           component={RouterLink}
-          to="/"
+          to=""
         >
           Flow
         </Link>
