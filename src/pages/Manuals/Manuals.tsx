@@ -2,7 +2,7 @@ import * as React from "react";
 import { Box } from "@mui/material";
 
 import Layout from "../../components/Layout";
-import AppContext from "../../auth/context";
+import AppContext from "../../state/context";
 import ManualsCard from "./ManualsCard";
 
 const Manuals = () => {

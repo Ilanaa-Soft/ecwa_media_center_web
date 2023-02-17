@@ -5,7 +5,7 @@ import { ThemeProvider, CssBaseline } from "@mui/material";
 import { positions, Provider as AlertProvider } from "react-alert";
 import AlertTemplateMui from "react-alert-template-mui";
 
-import AppProvider from "./auth/AppProvider";
+import AppProvider from "./state/AppProvider";
 import RouteScrollToTop from "./components/RouteScrollToTop";
 import theme from "./theme/theme";
 import App from "./App";

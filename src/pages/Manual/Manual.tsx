@@ -3,7 +3,7 @@ import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 
 import Layout from "../../components/Layout";
-import AppContext from "../../auth/context";
+import AppContext from "../../state/context";
 import ManualDetails from "./ManualDetails";
 import ManualCard from "./ManualCard";
 

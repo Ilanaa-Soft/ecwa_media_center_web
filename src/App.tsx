@@ -2,7 +2,7 @@ import * as React from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import AppContext from "./auth/context";
+import AppContext from "./state/context";
 import { Navigation } from "./navigation";
 import Loading from "./components/Loading";
 import Error from "./components/Error";

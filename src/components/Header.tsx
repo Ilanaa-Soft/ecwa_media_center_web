@@ -3,7 +3,7 @@ import { Box, Typography, Link, IconButton } from "@mui/material";
 import { SettingsOutlined, ArrowBackRounded } from "@mui/icons-material";
 import { Link as RouterLink, useNavigate, useLocation } from "react-router-dom";
 
-import AppContext from "../auth/context";
+import AppContext from "../state/context";
 
 const Header = () => {
   const {
