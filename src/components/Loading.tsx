@@ -3,7 +3,10 @@ import Lottie from "lottie-react";
 
 import setting from "../assets/loading.json";
 
-const Loading = () => {
+type LoadingProps = {
+  text: string;
+};
+const Loading = ({ text }: LoadingProps) => {
   return (
     <Box
       px="16px"
@@ -18,9 +21,7 @@ const Loading = () => {
       <Typography component="h1" fontSize="26px" fontWeight="500">
         Loading...
       </Typography>
-      <Typography fontSize="18px">
-        Please wait while we download your materials
-      </Typography>
+      <Typography fontSize="18px">{text}</Typography>
     </Box>
   );
 };

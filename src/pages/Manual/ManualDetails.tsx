@@ -1,12 +1,20 @@
 import { Box, Typography, Button } from "@mui/material";
+
 import currencyFormtter from "../../utils/currencyFormatter";
 
 type ManualDetailsProps = {
   manual: Manual;
-  onOpen: (id: number) => void;
+  price: number;
+  onOpenPayDialog: () => void;
+  onOpenManual: (id: number) => void;
 };
 
-const ManualDetails = ({ manual, onOpen }: ManualDetailsProps) => {
+const ManualDetails = ({
+  manual,
+  price,
+  onOpenManual,
+  onOpenPayDialog,
+}: ManualDetailsProps) => {
   return (
     <Box
       gap={4}
@@ -39,15 +47,15 @@ const ManualDetails = ({ manual, onOpen }: ManualDetailsProps) => {
         </Typography>
 
         {manual?.paid || manual?.is_free ? (
-          <Button onClick={() => onOpen(manual.id)}>Open Manual</Button>
+          <Button onClick={() => onOpenManual(manual.id)}>Open Manual</Button>
         ) : (
           <>
             {!manual?.paid && !manual?.is_free && !manual?.sponsored ? (
               <>
                 <Typography mb={2} fontWeight="500">
-                  {currencyFormtter(400)}
+                  {currencyFormtter(price)}
                 </Typography>
-                <Button>Buy Manual</Button>
+                <Button onClick={onOpenPayDialog}>Buy Manual</Button>
               </>
             ) : (
               <>

@@ -27,7 +27,7 @@ const Error = ({ onTryAgain }: ErrorProps) => {
         fontSize="18px"
         sx={{ maxWidth: { xs: "315px", sm: "445px" } }}
       >
-        An error occurred! This might be due to failing network. Check your
+        An error occurred! This might be due to a failing network. Check your
         internet connection and try again.
       </Typography>
 

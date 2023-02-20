@@ -1,22 +1,55 @@
 import * as React from "react";
 import { useParams, useNavigate, Navigate } from "react-router-dom";
-import { Box, Typography } from "@mui/material";
 
 import Layout from "../../components/Layout";
 import AppContext from "../../state/context";
-import ManualDetails from "./ManualDetails";
-import ManualCard from "./ManualCard";
+import PaySuccess from "./PaySuccess";
+import ManualContent from "./ManualContent";
 
 const Manual = () => {
   const {
-    state: { manuals },
+    dispatch,
+    state: { manuals, user, manualPayInfo },
   } = React.useContext(AppContext);
+  const [price] = React.useState(400);
+  const [numberOfCopies, setCopies] = React.useState("");
+  const [payMethod, setMethod] = React.useState("");
+  const [isPayDialogOpen, setIsPayDialogOpen] = React.useState(false);
 
   const { id } = useParams();
   const navigate = useNavigate();
 
   const handleOpenManual = (id: number) => {
     navigate(`/manual-topics/${id}`);
+  };
+
+  const handleOpenPayDialog = () => {
+    setIsPayDialogOpen(true);
+  };
+
+  const handleClosePayDialog = () => {
+    setCopies("");
+    setMethod("");
+    setIsPayDialogOpen(false);
+  };
+
+  const handleCopiesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCopies(event.target.value);
+  };
+
+  const handlePayMethodChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setMethod(event.target.value);
+  };
+
+  const handleUpdatePayInfo = (payInfo: ManualPayInfo) => {
+    dispatch({ type: "SET_MANUAL_PAYMENT", payload: payInfo });
+    handleClosePayDialog();
+  };
+
+  const handleUpdateManuals = (manuals: Manual[]) => {
+    dispatch({ type: "SET_MANUALS", payload: manuals });
   };
 
   const manual = manuals?.find((manual) => manual.id === Number(id));
@@ -26,30 +59,28 @@ const Manual = () => {
 
   return (
     <Layout>
-      <ManualDetails manual={manual} onOpen={handleOpenManual} />
-
-      <Typography component="h2" fontWeight="600" my={2} fontSize="20px">
-        Related Manuals
-      </Typography>
-      
-      <Box
-        gap={4}
-        display="grid"
-        sx={{
-          gridTemplateColumns: {
-            sm: "repeat(2, 1fr)",
-            md: "repeat(3, 1fr)",
-          },
-        }}
-      >
-        {relatedManuals.map((manual, i) => (
-          <ManualCard
-            manual={manual}
-            key={manual.id}
-            imgName={`banner${i + 1}`}
-          />
-        ))}
-      </Box>
+      {!manualPayInfo ? (
+        <ManualContent
+          user={user}
+          price={price}
+          manual={manual}
+          payMethod={payMethod}
+          numberOfCopies={numberOfCopies}
+          relatedManuals={relatedManuals}
+          isPayDialogOpen={isPayDialogOpen}
+          handleOpenManual={handleOpenManual}
+          handleOpenPayDialog={handleOpenPayDialog}
+          handleClosePayDialog={handleClosePayDialog}
+          handleUpdatePayInfo={handleUpdatePayInfo}
+          handleCopiesChange={handleCopiesChange}
+          handlePayMethodChange={handlePayMethodChange}
+        />
+      ) : (
+        <PaySuccess
+          payInfo={manualPayInfo}
+          onUpdateManuals={handleUpdateManuals}
+        />
+      )}
     </Layout>
   );
 };

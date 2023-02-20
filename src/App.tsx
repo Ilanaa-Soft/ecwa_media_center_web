@@ -44,7 +44,7 @@ function App() {
   return (
     <>
       {loading ? (
-        <Loading />
+        <Loading text="Please wait while we download your materials" />
       ) : (
         <>{hasError ? <Error onTryAgain={handleTryAgain} /> : <Navigation />}</>
       )}
