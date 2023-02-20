@@ -42,7 +42,7 @@ const PayDialog = ({
   amount,
   numberOfCopies,
 }: PayDialogProps) => {
-  const [hasMethod, setMethod] = React.useState(false);
+  const [hasMethod, setHasMethod] = React.useState(false);
 
   const config = {
     email: user?.email || "",
@@ -61,12 +61,13 @@ const PayDialog = ({
       reference: reference.reference,
     };
 
+    onClose();
     onUpdatePayInfo(payInfo);
   };
 
   const handleProceedToMethod = () => {
     if (!numberOfCopies) return;
-    setMethod(true);
+    setHasMethod(true);
   };
 
   const handleProceedToPayment = () => {
