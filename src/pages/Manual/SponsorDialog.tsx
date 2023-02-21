@@ -12,7 +12,7 @@ import { LoadingButton } from "@mui/lab";
 
 import DialogTransition from "../../components/DialogTransition";
 
-type SponsorAndClaimDialogProps = {
+type SponsorDialogProps = {
   manual: Manual;
   open: boolean;
   email: string;
@@ -24,7 +24,7 @@ type SponsorAndClaimDialogProps = {
   onEmailChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const SponsorAndClaimDialog = ({
+const SponsorDialog = ({
   email,
   manual,
   open,
@@ -33,7 +33,7 @@ const SponsorAndClaimDialog = ({
   onClose,
   onEmailChange,
   onSponsor,
-}: SponsorAndClaimDialogProps) => {
+}: SponsorDialogProps) => {
   return (
     <Dialog
       open={open}
@@ -84,4 +84,4 @@ const SponsorAndClaimDialog = ({
   );
 };
 
-export default SponsorAndClaimDialog;
+export default SponsorDialog;
