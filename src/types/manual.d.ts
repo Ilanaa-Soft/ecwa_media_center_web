@@ -29,3 +29,7 @@ type ManualPayInfo = {
   copy: number;
   manual_id: number;
 } | null;
+
+type SponsorManual = {
+  emails: string[];
+}

@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
+import SponsorAndClaim from "./SponsorAndClaimManual";
 import OpenAndBuyManual from "./OpenAndBuyManual";
 
 type ManualDetailsProps = {
@@ -50,6 +51,8 @@ const ManualDetails = ({
             manual={manual}
             onUpdatePayInfo={onUpdatePayInfo}
           />
+
+          <SponsorAndClaim manual={manual} />
         </Box>
       </Box>
     </>

@@ -20,3 +20,7 @@ export function getManualsCategories() {
 export function savePayment(request: ManualPayInfo) {
   return http.post(`${apiEndpoint}/pay`, request, headers);
 }
+
+export function sponsorManual(request: SponsorManual, id: number) {
+  return http.post(`${apiEndpoint}/assign/${id}`, request, headers);
+}
