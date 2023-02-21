@@ -13,7 +13,7 @@ type OpenAndBuyManualProps = {
 
 const OpenAndBuyManual = (props: OpenAndBuyManualProps) => {
   const { user, manual, onUpdatePayInfo } = props;
-  
+
   const [numberOfCopies, setCopies] = React.useState("");
   const [payMethod, setpayMethod] = React.useState("");
   const [isPayDialogOpen, setIsPayDialogOpen] = React.useState(false);
@@ -47,24 +47,24 @@ const OpenAndBuyManual = (props: OpenAndBuyManualProps) => {
 
   return (
     <>
-      <Box mr={2} display="inline-block">
-        {manual?.paid || manual?.is_free ? (
+      {manual?.paid || manual?.is_free ? (
+        <Box mr={2} display="inline-block">
           <Button onClick={() => handleOpenManual(manual.id)}>
             Open Manual
           </Button>
-        ) : (
-          <>
-            {!manual?.paid && !manual?.is_free && !manual?.sponsored && (
-              <>
-                <Typography mb={2} fontWeight="500">
-                  {currencyFormtter(price)}
-                </Typography>
-                <Button onClick={handleOpenPayDialog}>Buy Manual</Button>
-              </>
-            )}
-          </>
-        )}
-      </Box>
+        </Box>
+      ) : (
+        <>
+          {!manual?.paid && !manual?.is_free && !manual?.sponsored && (
+            <Box mr={2} display="inline-block">
+              <Typography mb={2} fontWeight="500">
+                {currencyFormtter(price)}
+              </Typography>
+              <Button onClick={handleOpenPayDialog}>Buy Manual</Button>
+            </Box>
+          )}
+        </>
+      )}
 
       <PayDialog
         user={user}

@@ -1,9 +1,11 @@
 import * as React from "react";
 import { Button } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 
 import SponsorDialog from "./SponsorDialog";
+import ClaimDialog from "./ClaimDialog";
 import toastExpectedError from "../../utils/toastExpectedError";
-import { sponsorManual } from "../../services/ManualsService";
+import { sponsorManual, claimManual } from "../../services/ManualsService";
 
 type SponsorAndClaimManualProps = {
   manual: Manual;
@@ -14,6 +16,8 @@ const SponsorAndClaimManual = ({ manual }: SponsorAndClaimManualProps) => {
   const [sponsorSuccess, setSponsorSuccess] = React.useState(false);
   const [sponsorIsSubmitting, setSponsorIsSubmitting] = React.useState(false);
   const [sponsorDialogOpen, setSponsorDialogOpen] = React.useState(false);
+  const [claimIsSubmitting, setClaimIsSubmitting] = React.useState(false);
+  const [claimDialogOpen, setClaimDialogOpen] = React.useState(false);
 
   const handleOpenSponsorDialog = () => {
     setSponsorDialogOpen(true);
@@ -44,13 +48,36 @@ const SponsorAndClaimManual = ({ manual }: SponsorAndClaimManualProps) => {
     setSponsorIsSubmitting(false);
   };
 
+  const handleCloseClaimDialog = () => {
+    setClaimDialogOpen(false);
+  };
+
+  const handleClaim = async () => {
+    setClaimIsSubmitting(true);
+    try {
+      await claimManual(manual.id);
+      setClaimDialogOpen(true);
+    } catch (ex) {
+      toastExpectedError(ex);
+    }
+    setClaimIsSubmitting(false);
+  };
+
   return (
     <>
       {manual?.paid && !manual?.is_free && !manual?.sponsored ? (
         <Button onClick={handleOpenSponsorDialog}>Sponsor People</Button>
       ) : (
         <>
-          {!manual?.paid && !manual?.is_free && <Button>Claim Manual</Button>}
+          {!manual?.paid && !manual?.is_free && manual?.sponsored && (
+            <Button
+              onClick={handleClaim}
+              loading={claimIsSubmitting}
+              component={LoadingButton}
+            >
+              Claim Manual
+            </Button>
+          )}
         </>
       )}
       <SponsorDialog
@@ -63,6 +90,12 @@ const SponsorAndClaimManual = ({ manual }: SponsorAndClaimManualProps) => {
         onOpen={handleOpenSponsorDialog}
         onClose={handleCloseSponsorDialog}
         onEmailChange={handleSponsorEmailChange}
+      />
+
+      <ClaimDialog
+        manual={manual}
+        open={claimDialogOpen}
+        onClose={handleCloseClaimDialog}
       />
     </>
   );

@@ -24,3 +24,7 @@ export function savePayment(request: ManualPayInfo) {
 export function sponsorManual(request: SponsorManual, id: number) {
   return http.post(`${apiEndpoint}/assign/${id}`, request, headers);
 }
+
+export function claimManual(id: number) {
+  return http.post(`${apiEndpoint}/claim/${id}`, {}, headers);
+}
