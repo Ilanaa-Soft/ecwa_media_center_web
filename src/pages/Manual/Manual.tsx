@@ -36,6 +36,7 @@ const Manual = () => {
             manual={manual}
             user={user}
             onUpdatePayInfo={handleUpdatePayInfo}
+            onUpdateManuals={handleUpdateManuals}
           />
           <RelatedManuals relatedManuals={relatedManuals} />
         </>

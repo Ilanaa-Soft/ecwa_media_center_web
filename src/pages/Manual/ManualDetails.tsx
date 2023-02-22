@@ -6,14 +6,13 @@ import OpenAndBuyManual from "./OpenAndBuyManual";
 type ManualDetailsProps = {
   user: User;
   manual: Manual;
+  onUpdateManuals: (manuals: Manual[]) => void;
   onUpdatePayInfo: (payInfo: ManualPayInfo) => void;
 };
 
-const ManualDetails = ({
-  manual,
-  user,
-  onUpdatePayInfo,
-}: ManualDetailsProps) => {
+const ManualDetails = (props: ManualDetailsProps) => {
+  const { manual, user, onUpdatePayInfo, onUpdateManuals } = props;
+  
   return (
     <>
       <Box
@@ -52,7 +51,7 @@ const ManualDetails = ({
             onUpdatePayInfo={onUpdatePayInfo}
           />
 
-          <SponsorAndClaim manual={manual} />
+          <SponsorAndClaim onUpdateManuals={onUpdateManuals} manual={manual} />
         </Box>
       </Box>
     </>

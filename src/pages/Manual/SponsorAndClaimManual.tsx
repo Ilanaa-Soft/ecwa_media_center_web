@@ -5,13 +5,21 @@ import { LoadingButton } from "@mui/lab";
 import SponsorDialog from "./SponsorDialog";
 import ClaimDialog from "./ClaimDialog";
 import toastExpectedError from "../../utils/toastExpectedError";
-import { sponsorManual, claimManual } from "../../services/ManualsService";
+import {
+  sponsorManual,
+  claimManual,
+  getAllManuals,
+  getUnPaidManuals,
+} from "../../services/ManualsService";
 
 type SponsorAndClaimManualProps = {
   manual: Manual;
+  onUpdateManuals: (manuals: Manual[]) => void;
 };
 
-const SponsorAndClaimManual = ({ manual }: SponsorAndClaimManualProps) => {
+const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
+  const { manual, onUpdateManuals } = props;
+
   const [email, setEmail] = React.useState("");
   const [sponsorSuccess, setSponsorSuccess] = React.useState(false);
   const [sponsorIsSubmitting, setSponsorIsSubmitting] = React.useState(false);
@@ -56,7 +64,11 @@ const SponsorAndClaimManual = ({ manual }: SponsorAndClaimManualProps) => {
     setClaimIsSubmitting(true);
     try {
       await claimManual(manual.id);
+      const { data: allManuals } = await getAllManuals();
+      const { data: unPaidManuals } = await getUnPaidManuals();
+
       setClaimDialogOpen(true);
+      onUpdateManuals([...allManuals, ...unPaidManuals]);
     } catch (ex) {
       toastExpectedError(ex);
     }
