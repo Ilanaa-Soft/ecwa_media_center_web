@@ -1,3 +1,5 @@
+import { AppActionTypes, AppState } from "../types";
+
 const reducer = (state: AppState, action: AppActionTypes) => {
   switch (action.type) {
     case "SET_APP_DATA":

@@ -1,4 +1,5 @@
 import http from "./httpService";
+import { RequestLoginCode, LoginWithCode, SignUp } from "../types";
 
 const apiEndpoint = "/user";
 

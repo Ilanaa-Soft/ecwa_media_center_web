@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 
 import SponsorAndClaim from "./SponsorAndClaimManual";
 import OpenAndBuyManual from "./OpenAndBuyManual";
+import { User, Manual, ManualPayInfo } from "../../types";
 
 type ManualDetailsProps = {
   user: User;
@@ -12,7 +13,7 @@ type ManualDetailsProps = {
 
 const ManualDetails = (props: ManualDetailsProps) => {
   const { manual, user, onUpdatePayInfo, onUpdateManuals } = props;
-  
+
   return (
     <>
       <Box

@@ -10,6 +10,7 @@ import logo from "../../assets/ecwalogo.png";
 import { requestLoginCode } from "../../services/authService";
 import { getUser } from "../../auth/storage";
 import toastExpectedError from "../../utils/toastExpectedError";
+import { RequestLoginCode } from "../../types";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),

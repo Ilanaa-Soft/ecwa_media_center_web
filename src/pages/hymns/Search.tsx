@@ -2,6 +2,8 @@ import * as React from "react";
 import { TextField, Box, InputAdornment } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
 
+import { Hymn } from "../../types";
+
 type SearchProps = {
   search: string;
   hymns: Hymn[];

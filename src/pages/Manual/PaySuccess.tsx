@@ -5,6 +5,7 @@ import Loading from "../../components/Loading";
 import Error from "../../components/Error";
 import { savePayment } from "../../services/ManualsService";
 import { getAllManuals, getUnPaidManuals } from "../../services/ManualsService";
+import { Manual, ManualPayInfo } from "../../types";
 
 type PaySuccessProps = {
   payInfo: ManualPayInfo;

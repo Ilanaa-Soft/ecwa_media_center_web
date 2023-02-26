@@ -5,6 +5,7 @@ import Form from "../../components/Form";
 import TextInput from "../../components/TextInput";
 import SubmitButton from "../../components/SubmitButton";
 import districts from "../../utils/districts";
+import { User, UserProfile } from "../../types";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),

@@ -1,5 +1,6 @@
 import http from "./httpService";
 import { getHeaders } from "./authService";
+import { User, UserUpdateProfile } from "../types";
 
 const apiEndpoint = "/user";
 

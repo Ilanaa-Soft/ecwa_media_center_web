@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 
 import Calendar from "../../components/Calendar";
 import defaultUser from "../../assets/user.webp";
+import { User } from "../../types";
 
 type ProfileProps = {
   user: User;

@@ -1,6 +1,8 @@
 import { CardContent, CardMedia, Typography, Card } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
+import { Manual } from "../../types";
+
 type ManualsCardProps = {
   manual: Manual;
   imgName: string;

@@ -1,11 +1,11 @@
-type HymnVerses = {
+export type HymnVerses = {
   id: number;
   number: number;
   content: string;
   hymn_id: number;
 };
 
-type Hymn = {
+export type Hymn = {
   id: number;
   title: string;
   number: number;

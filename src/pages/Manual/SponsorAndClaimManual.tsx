@@ -11,6 +11,7 @@ import {
   getAllManuals,
   getUnPaidManuals,
 } from "../../services/ManualsService";
+import { Manual } from "../../types";
 
 type SponsorAndClaimManualProps = {
   manual: Manual;

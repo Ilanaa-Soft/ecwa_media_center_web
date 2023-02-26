@@ -1,5 +1,7 @@
 import { Typography, Box } from "@mui/material";
 
+import { Hymn } from "../../types";
+
 type HymnProps = {
   hymn: Hymn;
   onPushToHymn: (id: number) => void;
