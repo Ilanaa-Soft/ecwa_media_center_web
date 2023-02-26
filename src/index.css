@@ -1,19 +1,13 @@
-/* @syncfusion/ej2-react-calendars style */
-.e-calendar {
-  min-width: 100%;
-  border: none;
+/* React Alert
+-------------------------------- */
+
+.MuiTypography-colorTextSecondary {
+  color: rgba(0, 0, 0, 0.87) !important;
 }
 
-.e-calendar .e-footer-container {
-  display: none;
-}
+/* CalendarPicker
+------------------------------------ */
 
-/* Set the containing div  */
-body > div:last-of-type {
-  display: none;
-}
-
-/* Override the display none when it applies to the root div */
-#root {
-  display: block;
+.MuiPickersCalendarHeader-label {
+  margin-right: 0 !important;
 }

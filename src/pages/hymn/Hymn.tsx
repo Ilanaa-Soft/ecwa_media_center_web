@@ -2,7 +2,7 @@ import * as React from "react";
 import { Box, Typography } from "@mui/material";
 import { useParams, Navigate } from "react-router-dom";
 
-import AppContext from "../../auth/context";
+import AppContext from "../../state/context";
 import Layout from "../../components/Layout";
 import HTMLContent from "../../components/HTMLContent";
 

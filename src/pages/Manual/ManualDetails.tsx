@@ -1,65 +1,60 @@
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+
+import SponsorAndClaim from "./SponsorAndClaimManual";
+import OpenAndBuyManual from "./OpenAndBuyManual";
 
 type ManualDetailsProps = {
+  user: User;
   manual: Manual;
-  onOpen: (id: number) => void;
+  onUpdateManuals: (manuals: Manual[]) => void;
+  onUpdatePayInfo: (payInfo: ManualPayInfo) => void;
 };
 
-const ManualDetails = ({ manual, onOpen }: ManualDetailsProps) => {
+const ManualDetails = (props: ManualDetailsProps) => {
+  const { manual, user, onUpdatePayInfo, onUpdateManuals } = props;
+  
   return (
-    <Box
-      gap={4}
-      display="grid"
-      sx={{ gridTemplateColumns: { md: "repeat(2, 1fr)" } }}
-    >
-      <Box display="flex" alignItems="center">
-        <Box
-          component="img"
-          alt="Ecwa Logo"
-          width="100%"
-          height="250px"
-          borderRadius="4px"
-          src={`/sundayschool/banner5.jpg`}
-        />
-      </Box>
-
-      <Box>
-        <Typography mb="4px" fontSize="24px" fontWeight="600" component="h2">
-          {`${manual?.year} ${manual?.language}`}
-        </Typography>
-        <Typography fontSize="18px" fontWeight="500" component="h3">
-          {manual?.name}
-        </Typography>
-        <Typography my="4px" fontSize="18px" fontWeight="500" component="h4">
-          Summary
-        </Typography>
-        <Typography fontSize="18px" mb="16px">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
-          nisi autem reiciendis dignissimos neque a, sunt modi quos tenetur
-          beatae facere dolore quam obcaecati exercitationem totam voluptatem
-          hic eius? Necessitatibus. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Asperiores nisi autem reiciendis dignissimos neque
-          a, sunt modi quos tenetur beatae facere dolore quam obcaecati
-          exercitationem totam voluptatem hic eius? Necessitatibus.
-        </Typography>
+    <>
+      <Box
+        gap={4}
+        display="grid"
+        sx={{ gridTemplateColumns: { md: "repeat(2, 1fr)" } }}
+      >
+        <Box display="flex" alignItems="center">
+          <Box
+            component="img"
+            alt="Ecwa Logo"
+            width="100%"
+            height="250px"
+            borderRadius="4px"
+            src={`/sundayschool/banner5.jpg`}
+          />
+        </Box>
 
         <Box>
-          {!manual?.paid && !manual?.sponsored && !manual?.is_free && (
-            <Button>Buy Manual</Button>
-          )}
+          <Typography mb="4px" fontSize="24px" fontWeight="600" component="h2">
+            {`${manual?.year} ${manual?.language} ${manual?.name}`}
+          </Typography>
+          <Typography my="4px" fontSize="18px" fontWeight="500" component="h4">
+            Summary
+          </Typography>
+          <Typography fontSize="18px" mb={1}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+            nisi autem reiciendis dignissimos neque a, sunt modi quos tenetur
+            beatae facere dolore quam obcaecati exercitationem totam voluptatem
+            hic eius? Necessitatibus.
+          </Typography>
 
-          {manual?.paid && !manual?.sponsored && !manual?.is_free && (
-            <Button>Sponsor People</Button>
-          )}
+          <OpenAndBuyManual
+            user={user}
+            manual={manual}
+            onUpdatePayInfo={onUpdatePayInfo}
+          />
 
-          {manual?.sponsored && !manual?.paid && <Button>Claim Manual</Button>}
-
-          {(manual?.paid || manual?.is_free === 1) && (
-            <Button onClick={() => onOpen(manual.id)}>Open Manual</Button>
-          )}
+          <SponsorAndClaim onUpdateManuals={onUpdateManuals} manual={manual} />
         </Box>
       </Box>
-    </Box>
+    </>
   );
 };
 

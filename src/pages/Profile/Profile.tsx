@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import AppContext from "../../auth/context";
+import AppContext from "../../state/context";
 import Layout from "../../components/Layout";
 import ProfileForm from "./ProfileForm";
 import ProfileInfo from "./ProfileInfo";

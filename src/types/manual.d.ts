@@ -22,3 +22,14 @@ type ManualTopic = {
   type: string;
   manual_id: number;
 };
+
+type ManualPayInfo = {
+  reference: string;
+  amount: number;
+  copy: number;
+  manual_id: number;
+} | null;
+
+type SponsorManual = {
+  emails: string[];
+}

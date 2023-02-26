@@ -1,22 +1,26 @@
 import * as React from "react";
-import { useParams, useNavigate, Navigate } from "react-router-dom";
-import { Box, Typography } from "@mui/material";
+import { useParams, Navigate } from "react-router-dom";
 
 import Layout from "../../components/Layout";
-import AppContext from "../../auth/context";
+import AppContext from "../../state/context";
+import PaySuccess from "./PaySuccess";
 import ManualDetails from "./ManualDetails";
-import ManualCard from "./ManualCard";
+import RelatedManuals from "./RelatedManuals";
 
 const Manual = () => {
   const {
-    state: { manuals },
+    dispatch,
+    state: { manuals, user, manualPayInfo },
   } = React.useContext(AppContext);
 
   const { id } = useParams();
-  const navigate = useNavigate();
 
-  const handleOpenManual = (id: number) => {
-    navigate(`/manual-topics/${id}`);
+  const handleUpdatePayInfo = (payInfo: ManualPayInfo) => {
+    dispatch({ type: "SET_MANUAL_PAYMENT", payload: payInfo });
+  };
+
+  const handleUpdateManuals = (manuals: Manual[]) => {
+    dispatch({ type: "SET_MANUALS", payload: manuals });
   };
 
   const manual = manuals?.find((manual) => manual.id === Number(id));
@@ -26,30 +30,22 @@ const Manual = () => {
 
   return (
     <Layout>
-      <ManualDetails manual={manual} onOpen={handleOpenManual} />
-
-      <Typography component="h2" fontWeight="600" my={2} fontSize="20px">
-        Related Manuals
-      </Typography>
-      
-      <Box
-        gap={4}
-        display="grid"
-        sx={{
-          gridTemplateColumns: {
-            sm: "repeat(2, 1fr)",
-            md: "repeat(3, 1fr)",
-          },
-        }}
-      >
-        {relatedManuals.map((manual, i) => (
-          <ManualCard
+      {!manualPayInfo ? (
+        <>
+          <ManualDetails
             manual={manual}
-            key={manual.id}
-            imgName={`banner${i + 1}`}
+            user={user}
+            onUpdatePayInfo={handleUpdatePayInfo}
+            onUpdateManuals={handleUpdateManuals}
           />
-        ))}
-      </Box>
+          <RelatedManuals relatedManuals={relatedManuals} />
+        </>
+      ) : (
+        <PaySuccess
+          payInfo={manualPayInfo}
+          onUpdateManuals={handleUpdateManuals}
+        />
+      )}
     </Layout>
   );
 };

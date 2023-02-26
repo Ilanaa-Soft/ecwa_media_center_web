@@ -11,10 +11,10 @@ const initialState: AppState = {
   manuals: [],
   user: null,
   hymns: [],
-}
+  manualPayInfo: null,
+};
 
 const AppProvider = ({ children }: AppProviderProps) => {
-
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   return (

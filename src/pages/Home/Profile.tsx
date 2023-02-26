@@ -10,7 +10,7 @@ type ProfileProps = {
 const Profile = ({ user }: ProfileProps) => {
   return (
     <Box
-      p="16px"
+      p={2}
       textAlign="center"
       flexDirection="column"
       alignItems="center"

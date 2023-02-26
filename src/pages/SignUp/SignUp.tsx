@@ -37,18 +37,17 @@ const SignUp = () => {
   };
 
   return (
-    <Box px="16px" height="100vh" display="flex" alignItems="center">
+    <Box px={2} my={4} display="flex">
       <Grid
         px={2}
         py={4}
-        mt={4}
         container
         mx="auto"
         maxWidth={400}
         borderRadius={2}
         boxShadow="0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%)"
       >
-        <Box mb={3} textAlign="center" width="100%">
+        <Box mb={4} textAlign="center" width="100%">
           <Box
             component="img"
             alt="Ecwa Logo"
@@ -57,12 +56,12 @@ const SignUp = () => {
             src={logo}
           />
           <Typography
+            mt={1}
             variant="h1"
             fontSize="26px"
-            letterSpacing="0.2px"
             lineHeight="1.2"
             fontWeight="800"
-            marginTop={1}
+            letterSpacing="0.2px"
           >
             Create Account
           </Typography>
@@ -146,7 +145,7 @@ const SignUp = () => {
               />
             </Grid>
 
-            <Grid item xs={12} marginBottom={2}>
+            <Grid item xs={12} mb={2}>
               <TextInput
                 size="small"
                 fullWidth

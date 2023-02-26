@@ -1,5 +1,6 @@
 import { Box, Link, Grid, Typography } from "@mui/material";
 import { Link as RouterLink, Navigate, useNavigate } from "react-router-dom";
+import { useAlert } from "react-alert";
 import * as Yup from "yup";
 
 import TextInput from "../../components/TextInput";
@@ -16,11 +17,17 @@ const validationSchema = Yup.object().shape({
 
 const RequestLogin = () => {
   const navigate = useNavigate();
+  const alert = useAlert();
   const user = getUser();
 
   const handleSubmit = async (formValues: RequestLoginCode) => {
     try {
       await requestLoginCode(formValues);
+
+      alert.show(
+        "Hi👋, a login code has been sent to your email address, use the code to login into your account."
+      );
+
       navigate("/login", { state: formValues.email });
     } catch (ex) {
       toastExpectedError(ex);
@@ -30,17 +37,17 @@ const RequestLogin = () => {
   if (user) return <Navigate to="/" />;
 
   return (
-    <Box px="16px" height="100vh" display="flex" alignItems="center">
+    <Box px={2} height="100vh" display="flex" alignItems="center">
       <Grid
-        p={4}
-        mt={4}
+        px={2}
+        py={4}
         container
         mx="auto"
         maxWidth={400}
         borderRadius={2}
         boxShadow="0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%)"
       >
-        <Box my={4} textAlign="center" width="100%">
+        <Box mb={4} textAlign="center" width="100%">
           <Box
             component="img"
             alt="Ecwa Logo"

@@ -2,7 +2,7 @@ import * as React from "react";
 import { Typography, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-import AppContext from "../../auth/context";
+import AppContext from "../../state/context";
 import Layout from "../../components/Layout";
 import Hymn from "./Hymn";
 import Search from "./Search";

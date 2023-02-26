@@ -3,7 +3,7 @@ import { useParams, Navigate } from "react-router-dom";
 import { Box } from "@mui/material";
 
 import Layout from "../../components/Layout";
-import AppContext from "../../auth/context";
+import AppContext from "../../state/context";
 import ManualTopicsCard from "./manualTopicsCard";
 
 const ManualTopics = () => {

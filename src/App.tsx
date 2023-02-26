@@ -2,7 +2,7 @@ import * as React from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import AppContext from "./auth/context";
+import AppContext from "./state/context";
 import { Navigation } from "./navigation";
 import Loading from "./components/Loading";
 import Error from "./components/Error";
@@ -44,7 +44,7 @@ function App() {
   return (
     <>
       {loading ? (
-        <Loading />
+        <Loading text="Please wait while we download your materials" />
       ) : (
         <>{hasError ? <Error onTryAgain={handleTryAgain} /> : <Navigation />}</>
       )}

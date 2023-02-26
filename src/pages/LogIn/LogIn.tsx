@@ -40,17 +40,17 @@ const Login = () => {
   if (!email) return <Navigate to="/login-code" />;
 
   return (
-    <Box px="16px" height="100vh" display="flex" alignItems="center">
+    <Box px={2} height="100vh" display="flex" alignItems="center">
       <Grid
-        p={4}
-        mt={4}
+        px={2}
+        py={4}
         container
         mx="auto"
         maxWidth={400}
         borderRadius={2}
         boxShadow="0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%)"
       >
-        <Box my={4} textAlign="center" width="100%">
+        <Box mb={4} textAlign="center" width="100%">
           <Box
             component="img"
             alt="Ecwa Logo"

@@ -15,6 +15,16 @@ const theme = createTheme({
       '"Segoe UI Symbol"',
     ].join(","),
   },
+
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          margin: 0,
+        },
+      },
+    },
+  },
 });
 
 export default theme;
