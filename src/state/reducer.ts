@@ -2,7 +2,7 @@ import { AppActionTypes, AppState } from "../types";
 
 const reducer = (state: AppState, action: AppActionTypes) => {
   switch (action.type) {
-    case "SET_APP_DATA":
+    case "SET_INITIAL_STATE":
       return {
         ...state,
         user: action.payload.user,

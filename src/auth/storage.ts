@@ -8,7 +8,7 @@ export const storeUser = (user: User) => {
 export const getUser = () => {
   const userStr = localStorage.getItem("user");
 
-  if (!userStr) return;
+  if (!userStr) return null;
 
   return JSON.parse(userStr) as User;
 };

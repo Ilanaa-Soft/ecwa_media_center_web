@@ -30,7 +30,10 @@ function App() {
       const { data: hymns } = await getAllHymns();
 
       const manuals = [...allManuals, ...unPaidManuals];
-      dispatch({ type: "SET_APP_DATA", payload: { user, manuals, hymns } });
+      dispatch({
+        type: "SET_INITIAL_STATE",
+        payload: { user, manuals, hymns },
+      });
     } catch (ex) {
       setError(true);
     }
