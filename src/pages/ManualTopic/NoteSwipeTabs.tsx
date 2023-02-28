@@ -38,14 +38,17 @@ const NoteSwipeTabs = (props: NoteSwipeTabsProps) => {
     onTabChange,
     onTryAgain,
   } = props;
+
+  const handleTabChange = (e: React.SyntheticEvent, newValue: number) => {
+    onTabChange(newValue);
+  };
+
   return (
     <Box width="100%" height="100%">
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
           value={tabValue}
-          onChange={(e: React.SyntheticEvent, newValue: number) =>
-            onTabChange(newValue)
-          }
+          onChange={handleTabChange}
           aria-label="basic tabs example"
         >
           <Tab label="New Note" {...a11yProps("note", 0)} />
