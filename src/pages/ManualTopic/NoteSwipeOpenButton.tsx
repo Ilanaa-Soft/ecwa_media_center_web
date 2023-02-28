@@ -1,19 +1,5 @@
 import { IconButton } from "@mui/material";
 import { EditRounded } from "@mui/icons-material";
-import { makeStyles } from "@mui/styles";
-
-const useStyles = makeStyles(() => ({
-  root: {
-    overflow: "auto",
-  },
-  truncate: {
-    display: "-webkit-box",
-    "-webkit-box-orient": "vertical",
-    "-webkit-line-clamp": 2,
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-  },
-}));
 
 type NoteSwipeOpenButtonProps = {
   onToggle: (
