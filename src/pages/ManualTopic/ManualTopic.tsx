@@ -3,6 +3,7 @@ import { useLocation, Navigate } from "react-router-dom";
 
 import Layout from "../../components/Layout";
 import HTMLContent from "../../components/HTMLContent";
+import NoteSwipe from "./NoteSwipe";
 
 const ManualTopic = () => {
   const { state: topic } = useLocation();
@@ -27,6 +28,8 @@ const ManualTopic = () => {
         </Typography>
         <HTMLContent html={topic.content} />
       </Box>
+
+      <NoteSwipe topicId={topic.id} />
     </Layout>
   );
 };

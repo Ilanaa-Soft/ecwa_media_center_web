@@ -3,8 +3,8 @@ import { Box } from "@mui/material";
 
 import Loading from "../../components/Loading";
 import Error from "../../components/Error";
-import { savePayment } from "../../services/ManualsService";
-import { getAllManuals, getUnPaidManuals } from "../../services/ManualsService";
+import { savePayment } from "../../services/manualsService";
+import { getAllManuals, getUnPaidManuals } from "../../services/manualsService";
 import { Manual, ManualPayInfo } from "../../types";
 
 type PaySuccessProps = {

@@ -1,11 +1,22 @@
-/* React Alert
+/* Global style
+-------------------------------- */
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+/* React Alert style
 -------------------------------- */
 
 .MuiTypography-colorTextSecondary {
   color: rgba(0, 0, 0, 0.87) !important;
 }
 
-/* CalendarPicker
+/* CalendarPicker style
 ------------------------------------ */
 
 .MuiPickersCalendarHeader-label {

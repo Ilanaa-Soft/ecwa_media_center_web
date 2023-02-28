@@ -10,7 +10,7 @@ const Loading = ({ text }: LoadingProps) => {
   return (
     <Box
       px="16px"
-      height="100vh"
+      height="100%"
       display="flex"
       flexDirection="column"
       alignItems="center"

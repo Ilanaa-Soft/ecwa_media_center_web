@@ -7,7 +7,7 @@ import { Navigation } from "./navigation";
 import Loading from "./components/Loading";
 import Error from "./components/Error";
 import { getUser } from "./auth/storage";
-import { getAllManuals, getUnPaidManuals } from "./services/ManualsService";
+import { getAllManuals, getUnPaidManuals } from "./services/manualsService";
 import { getAllHymns } from "./services/hymnsService";
 
 function App() {
