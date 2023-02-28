@@ -33,7 +33,7 @@ const NotesEditor = ({ onSave, note }: NotesEditorprops) => {
 
   return (
     <MUIRichTextEditor
-      label="Type something here..."
+      label="Type your note here..."
       onSave={handleSave}
       onChange={(value) => setEditorState(value)}
       inlineToolbar={true}
