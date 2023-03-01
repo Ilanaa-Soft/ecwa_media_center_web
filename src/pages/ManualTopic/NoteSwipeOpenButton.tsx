@@ -16,11 +16,11 @@ const NoteSwipeOpenButton = ({ onToggle }: NoteSwipeOpenButtonProps) => {
         position: "fixed",
         bottom: "80px",
         right: "30px",
-        background: "grey",
+        background: "#1976d2",
         color: "#fff",
         opacity: "1",
         "&:hover": {
-          background: "grey",
+          background: "#1565c0",
         },
       }}
       onClick={onToggle(true)}

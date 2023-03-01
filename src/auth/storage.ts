@@ -6,8 +6,8 @@ export const storeUser = (user: User) => {
 };
 
 export const removeUser = () => {
-  localStorage.removeItem("user")
-}
+  localStorage.removeItem("user");
+};
 
 export const getUser = () => {
   const userStr = localStorage.getItem("user");
