@@ -1,5 +1,7 @@
 import { Box, Typography, Button } from "@mui/material";
 
+import dateFormatter from "../../utils/longDateFormatter";
+
 const CurrentTopic = () => {
   return (
     <Box
@@ -16,7 +18,7 @@ const CurrentTopic = () => {
         Signs of Life
       </Typography>
       <Typography component="h3" mb="18px">
-        October 20, 2022
+        {dateFormatter(new Date())}
       </Typography>
       <Button
         variant="outlined"
