@@ -1,9 +1,14 @@
 import * as React from "react";
 import { Box, Typography, Link, IconButton } from "@mui/material";
-import { SettingsOutlined, ArrowBackRounded } from "@mui/icons-material";
+import {
+  SettingsOutlined,
+  ArrowBackRounded,
+  LogoutRounded,
+} from "@mui/icons-material";
 import { Link as RouterLink, useNavigate, useLocation } from "react-router-dom";
 
 import AppContext from "../state/context";
+import useAuth from "../auth/useAuth";
 
 const Header = () => {
   const {
@@ -12,6 +17,7 @@ const Header = () => {
 
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { logOut } = useAuth();
 
   const handleGoToBack = () => {
     navigate(-1);
@@ -19,6 +25,11 @@ const Header = () => {
 
   const handleGoToProfile = () => {
     navigate("/profile");
+  };
+
+  const handleLogOut = () => {
+    logOut();
+    window.location.href = "/";
   };
 
   return (
@@ -45,7 +56,7 @@ const Header = () => {
           underline="none"
           sx={{
             fontSize: { xs: "18px", md: "20px" },
-            padding: { sm: "12px", md: "16px" },
+            padding: { sm: "8px", md: "16px" },
           }}
           color="inherit"
           component={RouterLink}
@@ -58,7 +69,7 @@ const Header = () => {
           underline="none"
           sx={{
             fontSize: { xs: "18px", md: "20px" },
-            padding: { sm: "12px", md: "16px" },
+            padding: { sm: "8px", md: "16px" },
           }}
           color="inherit"
           component={RouterLink}
@@ -71,7 +82,7 @@ const Header = () => {
           underline="none"
           sx={{
             fontSize: { xs: "18px", md: "20px" },
-            padding: { sm: "12px", md: "16px" },
+            padding: { sm: "8px", md: "16px" },
           }}
           color="inherit"
           component={RouterLink}
@@ -84,7 +95,7 @@ const Header = () => {
           underline="none"
           sx={{
             fontSize: { xs: "18px", md: "20px" },
-            padding: { sm: "12px", md: "16px" },
+            padding: { sm: "8px", md: "16px" },
           }}
           color="inherit"
           component={RouterLink}
@@ -97,7 +108,7 @@ const Header = () => {
           underline="none"
           sx={{
             fontSize: { xs: "18px", md: "20px" },
-            padding: { sm: "12px", md: "16px" },
+            padding: { sm: "8px", md: "16px" },
           }}
           color="inherit"
           component={RouterLink}
@@ -105,16 +116,34 @@ const Header = () => {
         >
           Profile
         </Link>
+        <Link
+          display="inline-block"
+          underline="none"
+          sx={{
+            fontSize: { xs: "18px", md: "20px" },
+            padding: { sm: "8px", md: "16px" },
+          }}
+          color="inherit"
+          component="button"
+          onClick={handleLogOut}
+        >
+          Log out
+        </Link>
       </Box>
 
       {pathname === "/" && (
-        <IconButton
-          onClick={handleGoToProfile}
-          sx={{ display: { sm: "none" } }}
-          aria-label="settings"
-        >
-          <SettingsOutlined sx={{ fontSize: "32px" }} />
-        </IconButton>
+        <Box sx={{ display: { sm: "none" } }}>
+          <IconButton
+            onClick={handleLogOut}
+            sx={{ marginRight: "6px" }}
+            aria-label="settings"
+          >
+            <LogoutRounded sx={{ fontSize: "32px" }} />
+          </IconButton>
+          <IconButton onClick={handleGoToProfile} aria-label="settings">
+            <SettingsOutlined sx={{ fontSize: "32px" }} />
+          </IconButton>
+        </Box>
       )}
     </Box>
   );
