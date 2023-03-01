@@ -11,7 +11,12 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <Box px="16px" maxWidth="1100px" marginX="auto">
+      <Box
+        px="16px"
+        maxWidth="1100px"
+        marginX="auto"
+        sx={{ paddingBottom: { xs: "91px", sm: 0 } }}
+      >
         <Header />
         {children}
       </Box>
