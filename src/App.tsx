@@ -12,17 +12,20 @@ import { getAllHymns } from "./services/hymnsService";
 
 function App() {
   const { dispatch } = React.useContext(AppContext);
-  const [loading, setLoading] = React.useState(false);
+  const isMountedRef = React.useRef(false);
+  const [loading, setLoading] = React.useState(true);
   const [hasError, setError] = React.useState(false);
 
   const user = getUser();
 
   React.useEffect(() => {
-    if (user) fetch();
+    if (!isMountedRef.current) {
+      isMountedRef.current = true;
+      if (user) fetch();
+    }
   }, []);
 
   const fetch = async () => {
-    setLoading(true);
     setError(false);
     try {
       const { data: allManuals } = await getAllManuals();
@@ -46,7 +49,7 @@ function App() {
 
   return (
     <>
-      {loading ? (
+      {loading && user ? (
         <Loading text="Please wait while we download your materials" />
       ) : (
         <>{hasError ? <Error onTryAgain={handleTryAgain} /> : <Navigation />}</>
