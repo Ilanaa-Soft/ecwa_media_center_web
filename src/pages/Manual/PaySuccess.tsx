@@ -17,10 +17,10 @@ const PaySuccess = ({ payInfo, onUpdateManuals }: PaySuccessProps) => {
   const [error, setError] = React.useState(false);
 
   React.useEffect(() => {
-    fetch();
+    fetchData();
   }, []);
 
-  const fetch = async () => {
+  const fetchData = async () => {
     setLoading(true);
     setError(false);
     try {
@@ -35,9 +35,7 @@ const PaySuccess = ({ payInfo, onUpdateManuals }: PaySuccessProps) => {
     setLoading(false);
   };
 
-  const handleTryAgain = () => {
-    fetch();
-  };
+  const handleTryAgain = () => fetchData();
 
   return (
     <Box>
