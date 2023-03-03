@@ -14,7 +14,7 @@ type PaySuccessProps = {
 
 const PaySuccess = ({ payInfo, onUpdateManuals }: PaySuccessProps) => {
   const [loading, setLoading] = React.useState(true);
-  const [hasError, setError] = React.useState(false);
+  const [error, setError] = React.useState(false);
 
   React.useEffect(() => {
     fetch();
@@ -44,7 +44,7 @@ const PaySuccess = ({ payInfo, onUpdateManuals }: PaySuccessProps) => {
       {loading ? (
         <Loading text="Please wait while we update your payment info" />
       ) : (
-        <>{hasError && <Error onTryAgain={handleTryAgain} />}</>
+        <>{error && <Error onTryAgain={handleTryAgain} />}</>
       )}
     </Box>
   );
