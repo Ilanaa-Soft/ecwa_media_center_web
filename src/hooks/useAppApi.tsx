@@ -5,7 +5,7 @@ import { getUser } from "../auth/storage";
 import { getAllManuals, getUnPaidManuals } from "../services/manualsService";
 import { getAllHymns } from "../services/hymnsService";
 
-const useApi = () => {
+const useAppApi = () => {
   const { dispatch } = React.useContext(AppContext);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
@@ -36,4 +36,4 @@ const useApi = () => {
   return { error, loading, request };
 };
 
-export default useApi;
+export default useAppApi;
