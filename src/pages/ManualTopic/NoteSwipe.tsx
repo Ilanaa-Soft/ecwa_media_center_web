@@ -6,7 +6,8 @@ import NoteSwipeOpenButton from "./NoteSwipeOpenButton";
 import NoteSwipeCloseButton from "./NoteSwipeCloseButton";
 import { TopicNote } from "../../types";
 import toastExpectedError from "../../utils/toastExpectedError";
-import { getNotes, saveNote, updateNote } from "../../services/manualsService";
+import { saveNote, updateNote } from "../../services/manualsService";
+import useNotesApi from "../../hooks/useNotesApi";
 
 type NoteSwipeProps = {
   topicId: number;
@@ -15,28 +16,11 @@ type NoteSwipeProps = {
 const NoteSwipe = ({ topicId }: NoteSwipeProps) => {
   const [open, setIsOpen] = React.useState(false);
   const [tabValue, setTabValue] = React.useState(0);
-  const [notes, setNotes] = React.useState<TopicNote[]>([]);
   const [editNote, setEditNote] = React.useState<TopicNote | null>(null);
   const [readNote, setReadNote] = React.useState<TopicNote | null>(null);
+  const { notes, error, loading, request } = useNotesApi(topicId);
 
-  const [loading, setLoading] = React.useState(true);
-  const [hasError, setError] = React.useState(false);
-
-  const fetch = async () => {
-    setLoading(true);
-    setError(false);
-    try {
-      const { data } = await getNotes(topicId);
-      setNotes(data);
-    } catch (ex) {
-      setError(true);
-    }
-    setLoading(false);
-  };
-
-  const handleTryAgain = () => {
-    fetch();
-  };
+  const handleTryAgain = () => request();
 
   const handleToggle = (open: boolean) => (
     event: React.KeyboardEvent | React.MouseEvent
@@ -57,7 +41,7 @@ const NoteSwipe = ({ topicId }: NoteSwipeProps) => {
 
   const handleTabChange = (newValue: number) => {
     setTabValue(newValue);
-    if (newValue === 1) fetch();
+    if (newValue === 1) request();
   };
 
   const handleSave = async (newNote: string) => {
@@ -99,7 +83,7 @@ const NoteSwipe = ({ topicId }: NoteSwipeProps) => {
             notes={notes}
             tabValue={tabValue}
             loading={loading}
-            hasError={hasError}
+            hasError={error}
             editNote={editNote}
             readNote={readNote}
             onTabChange={handleTabChange}
