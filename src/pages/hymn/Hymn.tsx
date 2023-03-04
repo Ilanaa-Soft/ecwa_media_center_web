@@ -44,7 +44,7 @@ const Hymn = () => {
             },
           }}
         >
-          {hymn.verses.map((verse) => (
+          {hymn.verses.map((verse, i) => (
             <Box
               p={2}
               key={verse.id}
@@ -53,6 +53,14 @@ const Hymn = () => {
                   "0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%)",
               }}
             >
+              <Typography
+                component="h4"
+                fontSize="18px"
+                fontWeight="600"
+                textAlign="center"
+              >
+                Verse {i + 1}
+              </Typography>
               <HTMLContent html={verse.content} />
             </Box>
           ))}
