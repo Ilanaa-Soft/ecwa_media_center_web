@@ -1,11 +1,11 @@
 import * as React from "react";
 import { Box, Typography, Link, IconButton } from "@mui/material";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import {
   SettingsOutlined,
   ArrowBackRounded,
   LogoutRounded,
 } from "@mui/icons-material";
-import { Link as RouterLink, useNavigate, useLocation } from "react-router-dom";
 
 import AppContext from "../state/context";
 import useAuth from "../auth/useAuth";
@@ -13,6 +13,13 @@ import useAuth from "../auth/useAuth";
 type HeaderProps = {
   title?: string;
 };
+
+const navItems = [
+  { label: "Home", path: "/" },
+  { label: "Hymns", path: "/hymns" },
+  { label: "Manuals", path: "/manuals" },
+  { label: "Profile", path: "/profile" },
+];
 
 const Header = ({ title }: HeaderProps) => {
   const {
@@ -35,131 +42,94 @@ const Header = ({ title }: HeaderProps) => {
   return (
     <Box
       py={1}
-      mb={2}
-      display="flex"
-      alignItems="center"
-      justifyContent="space-between"
+      px="12px"
+      top={0}
+      zIndex="1100"
+      position="sticky"
+      sx={{ background: "#fff", marginBottom: { xs: 3, md: 5 } }}
+      boxShadow="1px 2px 4px rgba(214, 217, 223, .5)"
     >
-      {pathname === "/" ? (
-        <Typography fontSize="20px" fontWeight="500">
-          Hi, {user?.name?.split(" ")[0]}
-        </Typography>
-      ) : (
-        <IconButton onClick={handleGoToBack}>
-          <ArrowBackRounded />
-        </IconButton>
-      )}
-
-      {title && (
-        <Box
-          textAlign="center"
-          width="calc(100% - 40px)"
-          sx={{ display: { sm: "none" } }}
-        >
-          <Typography noWrap fontSize="24px" fontWeight="600" component="h1">
-            {title}
+      <Box
+        display="flex"
+        marginX="auto"
+        maxWidth="1100px"
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        {pathname === "/" ? (
+          <Typography fontSize="20px" fontWeight="500">
+            Hi, {user?.name?.split(" ")[0]}
           </Typography>
-        </Box>
-      )}
+        ) : (
+          <IconButton onClick={handleGoToBack}>
+            <ArrowBackRounded />
+          </IconButton>
+        )}
 
-      <Box sx={{ display: { xs: "none", sm: "block" } }}>
-        <Link
-          display="inline-block"
-          underline="none"
-          sx={{
-            fontSize: { xs: "18px", md: "20px" },
-            padding: { sm: "8px", md: "16px" },
-          }}
-          color="inherit"
-          component={RouterLink}
-          to="/"
-        >
-          Home
-        </Link>
-        <Link
-          display="inline-block"
-          underline="none"
-          sx={{
-            fontSize: { xs: "18px", md: "20px" },
-            padding: { sm: "8px", md: "16px" },
-          }}
-          color="inherit"
-          component={RouterLink}
-          to="/hymns"
-        >
-          Hymns
-        </Link>
-        <Link
-          display="inline-block"
-          underline="none"
-          sx={{
-            fontSize: { xs: "18px", md: "20px" },
-            padding: { sm: "8px", md: "16px" },
-          }}
-          color="inherit"
-          component={RouterLink}
-          to=""
-        >
-          Flow
-        </Link>
-        <Link
-          display="inline-block"
-          underline="none"
-          sx={{
-            fontSize: { xs: "18px", md: "20px" },
-            padding: { sm: "8px", md: "16px" },
-          }}
-          color="inherit"
-          component={RouterLink}
-          to="/manuals"
-        >
-          Manuals
-        </Link>
-        <Link
-          display="inline-block"
-          underline="none"
-          sx={{
-            fontSize: { xs: "18px", md: "20px" },
-            padding: { sm: "8px", md: "16px" },
-          }}
-          color="inherit"
-          component={RouterLink}
-          to="/profile"
-        >
-          Profile
-        </Link>
-        <Link
-          display="inline-block"
-          underline="none"
-          sx={{
-            fontSize: { xs: "18px", md: "20px" },
-            padding: { sm: "8px", md: "16px" },
-            verticalAlign: "baseline",
-          }}
-          color="inherit"
-          component="button"
-          lineHeight="inherit"
-          fontFamily="inherit"
-          onClick={handleLogOut}
-        >
-          Log out
-        </Link>
-      </Box>
-
-      {pathname === "/" && (
-        <Box sx={{ display: { sm: "none" } }}>
-          <IconButton
-            onClick={handleLogOut}
-            sx={{ marginRight: "6px" }}
-            aria-label="settings"
+        {title && (
+          <Box
+            textAlign="center"
+            width="calc(100% - 40px)"
+            sx={{ display: { sm: "none" } }}
           >
-            <LogoutRounded sx={{ fontSize: "32px" }} />
-          </IconButton>
-          <IconButton onClick={handleGoToProfile} aria-label="settings">
-            <SettingsOutlined sx={{ fontSize: "32px" }} />
-          </IconButton>
+            <Typography noWrap fontSize="24px" fontWeight="600" component="h1">
+              {title}
+            </Typography>
+          </Box>
+        )}
+
+        <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          {navItems.map((item) => (
+            <Link
+              key={item.label}
+              display="inline-block"
+              underline="none"
+              sx={{
+                fontSize: { xs: "18px", md: "20px" },
+                padding: { sm: "8px", md: "12px" },
+                "&.active": { color: "#1976d2" },
+              }}
+              color="inherit"
+              component={NavLink}
+              to={item.path}
+            >
+              {item.label}
+            </Link>
+          ))}
+
+          <Link
+            display="inline-block"
+            underline="none"
+            sx={{
+              fontSize: { xs: "18px", md: "20px" },
+              padding: { sm: "8px", md: "12px" },
+              verticalAlign: "baseline",
+            }}
+            color="inherit"
+            component="button"
+            lineHeight="inherit"
+            fontFamily="inherit"
+            onClick={handleLogOut}
+          >
+            Log out
+          </Link>
         </Box>
-      )}
+
+        {pathname === "/" && (
+          <Box sx={{ display: { sm: "none" } }}>
+            <IconButton
+              onClick={handleLogOut}
+              sx={{ marginRight: "6px" }}
+              aria-label="settings"
+            >
+              <LogoutRounded sx={{ fontSize: "32px" }} />
+            </IconButton>
+            <IconButton onClick={handleGoToProfile} aria-label="settings">
+              <SettingsOutlined sx={{ fontSize: "32px" }} />
+            </IconButton>
+          </Box>
+        )}
+      </Box>
     </Box>
   );
 };
