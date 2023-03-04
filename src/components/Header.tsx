@@ -33,7 +33,13 @@ const Header = ({ title }: HeaderProps) => {
   };
 
   return (
-    <Box py={1} mb={2} display="flex" justifyContent="space-between">
+    <Box
+      py={1}
+      mb={2}
+      display="flex"
+      alignItems="center"
+      justifyContent="space-between"
+    >
       {pathname === "/" ? (
         <Typography fontSize="20px" fontWeight="500">
           Hi, {user?.name?.split(" ")[0]}
