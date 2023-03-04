@@ -26,10 +26,8 @@ const Login = () => {
 
   const handleSubmit = async (formValues: FormValues) => {
     try {
-      const { data: user } = await loginWithCode({ ...formValues, email });
-      login(user);
-
-      window.location.href = "/";
+      const { data } = await loginWithCode({ ...formValues, email });
+      login(data);
     } catch (ex) {
       toastExpectedError(ex);
     }

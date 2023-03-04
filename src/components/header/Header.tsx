@@ -25,10 +25,7 @@ const Header = ({ title }: HeaderProps) => {
 
   const handleGoToProfile = () => navigate("/profile");
 
-  const handleLogOut = () => {
-    logOut();
-    window.location.href = "/";
-  };
+  const handleLogOut = () => logOut();
 
   return (
     <Box
