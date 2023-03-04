@@ -19,13 +19,9 @@ const Header = () => {
   const { pathname } = useLocation();
   const { logOut } = useAuth();
 
-  const handleGoToBack = () => {
-    navigate(-1);
-  };
+  const handleGoToBack = () => navigate(-1);
 
-  const handleGoToProfile = () => {
-    navigate("/profile");
-  };
+  const handleGoToProfile = () => navigate("/profile");
 
   const handleLogOut = () => {
     logOut();
@@ -122,9 +118,12 @@ const Header = () => {
           sx={{
             fontSize: { xs: "18px", md: "20px" },
             padding: { sm: "8px", md: "16px" },
+            verticalAlign: "baseline",
           }}
           color="inherit"
           component="button"
+          lineHeight="inherit"
+          fontFamily="inherit"
           onClick={handleLogOut}
         >
           Log out
