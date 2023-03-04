@@ -20,7 +20,7 @@ const getPageValue = (route: string) => {
   }
 };
 
-const items = [
+const navItems = [
   { label: "Home", path: "/", icon: <HouseRounded /> },
   {
     label: "Hymns",
@@ -51,7 +51,7 @@ const AppBottomNavigation = () => {
       elevation={3}
     >
       <BottomNavigation showLabels value={value}>
-        {items.map((item) => (
+        {navItems.map((item) => (
           <BottomNavigationAction
             key={item.label}
             label={item.label}
