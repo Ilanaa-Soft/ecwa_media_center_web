@@ -18,7 +18,7 @@ const Hymn = () => {
   if (!hymn) return <Navigate to="/hymns" />;
 
   return (
-    <Layout>
+    <Layout title={`Hymm ${hymn.number}`}>
       <Box>
         <Box mb={3}>
           <Typography fontSize="24px" fontWeight="700" component="h2">

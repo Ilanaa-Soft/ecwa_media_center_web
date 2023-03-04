@@ -11,7 +11,7 @@ const ManualTopic = () => {
   if (!topic) return <Navigate to="/manuals" />;
 
   return (
-    <Layout>
+    <Layout title={`Lesson ${topic.number}`}>
       <Box>
         <Typography fontSize="20px" fontWeight="500" component="h2">
           {topic.bible_text}

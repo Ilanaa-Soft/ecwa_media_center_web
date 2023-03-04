@@ -34,7 +34,7 @@ const Profile = () => {
   const handleEdit = () => setEdit(true);
 
   return (
-    <Layout>
+    <Layout title="Profile Settings">
       {edit ? (
         <ProfileForm user={user} onSubmit={handleSubmit} />
       ) : (

@@ -30,7 +30,7 @@ const Manual = () => {
   if (!manual) return <Navigate to="/manuals" />;
 
   return (
-    <Layout>
+    <Layout title="Manual Cover">
       {!manualPayInfo ? (
         <>
           <ManualDetails

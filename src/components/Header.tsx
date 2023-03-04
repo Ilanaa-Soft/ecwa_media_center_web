@@ -10,7 +10,11 @@ import { Link as RouterLink, useNavigate, useLocation } from "react-router-dom";
 import AppContext from "../state/context";
 import useAuth from "../auth/useAuth";
 
-const Header = () => {
+type HeaderProps = {
+  title?: string;
+};
+
+const Header = ({ title }: HeaderProps) => {
   const {
     state: { user },
   } = React.useContext(AppContext);
@@ -29,13 +33,7 @@ const Header = () => {
   };
 
   return (
-    <Box
-      py={1}
-      mb={2}
-      display="flex"
-      justifyContent="space-between"
-      alignItems="center"
-    >
+    <Box py={1} mb={2} display="flex" justifyContent="space-between">
       {pathname === "/" ? (
         <Typography fontSize="20px" fontWeight="500">
           Hi, {user?.name?.split(" ")[0]}
@@ -44,6 +42,18 @@ const Header = () => {
         <IconButton onClick={handleGoToBack}>
           <ArrowBackRounded />
         </IconButton>
+      )}
+
+      {title && (
+        <Box
+          textAlign="center"
+          width="calc(100% - 40px)"
+          sx={{ display: { sm: "none" } }}
+        >
+          <Typography noWrap fontSize="24px" fontWeight="600" component="h1">
+            {title}
+          </Typography>
+        </Box>
       )}
 
       <Box sx={{ display: { xs: "none", sm: "block" } }}>

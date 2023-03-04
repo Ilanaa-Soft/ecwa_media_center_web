@@ -39,7 +39,7 @@ const Hymns = () => {
   }
 
   return (
-    <Layout>
+    <Layout title="Hymns">
       <Box mb={2} sx={{ display: { md: "flex" } }} alignItems="center">
         <Box sx={{ marginBottom: { xs: 1, md: 0 } }} flexGrow={1}>
           <Typography fontSize="18px" fontWeight="500">

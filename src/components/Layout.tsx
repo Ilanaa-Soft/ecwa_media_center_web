@@ -5,10 +5,11 @@ import Header from "./Header";
 import BottomNavigation from "./BottomNavigation";
 
 type LayoutProps = {
+  title?: string;
   children: React.ReactNode;
 };
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children, title }: LayoutProps) => {
   return (
     <>
       <Box
@@ -17,7 +18,7 @@ const Layout = ({ children }: LayoutProps) => {
         marginX="auto"
         sx={{ paddingBottom: { xs: "91px", sm: 0 } }}
       >
-        <Header />
+        <Header title={title} />
         {children}
       </Box>
       <BottomNavigation />
