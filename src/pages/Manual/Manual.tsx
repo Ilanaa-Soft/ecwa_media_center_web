@@ -6,6 +6,7 @@ import AppContext from "../../state/context";
 import PaySuccess from "./PaySuccess";
 import ManualDetails from "./ManualDetails";
 import RelatedManuals from "./RelatedManuals";
+import { Manual, ManualPayInfo } from "../../types";
 
 const Manual = () => {
   const {

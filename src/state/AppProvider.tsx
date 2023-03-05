@@ -2,6 +2,7 @@ import * as React from "react";
 
 import reducer from "./reducer";
 import AppContext from "./context";
+import { AppState } from "../types";
 
 type AppProviderProps = {
   children: React.ReactNode;

@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { AppState, AppActionTypes } from "../types";
+
 type AppContext = {
   state: AppState;
   dispatch: React.Dispatch<AppActionTypes>;

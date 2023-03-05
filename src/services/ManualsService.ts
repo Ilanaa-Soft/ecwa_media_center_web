@@ -1,5 +1,7 @@
 import http from "./httpService";
 import { getHeaders } from "./authService";
+import { Manual, ManualPayInfo, SponsorManual } from "../types";
+
 
 const apiEndpoint = "/sunday-school";
 

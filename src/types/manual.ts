@@ -1,4 +1,4 @@
-type Manual = {
+export type Manual = {
   id: number;
   name: string;
   language: string;
@@ -10,7 +10,7 @@ type Manual = {
   topics: ManualTopic[];
 };
 
-type ManualTopic = {
+export type ManualTopic = {
   id: number;
   category: string;
   topic: string;
@@ -23,13 +23,13 @@ type ManualTopic = {
   manual_id: number;
 };
 
-type ManualPayInfo = {
+export type ManualPayInfo = {
   reference: string;
   amount: number;
   copy: number;
   manual_id: number;
 } | null;
 
-type SponsorManual = {
+export type SponsorManual = {
   emails: string[];
 }

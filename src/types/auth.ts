@@ -1,4 +1,4 @@
-type SignUp = {
+export type SignUp = {
   name: string;
   email: string;
   mobile: string;
@@ -8,11 +8,11 @@ type SignUp = {
   language: string;
 };
 
-type LoginWithCode = {
+export type LoginWithCode = {
   email: string;
   code: string;
 };
 
-type RequestLoginCode = { 
+export type RequestLoginCode = { 
   email: string 
 };

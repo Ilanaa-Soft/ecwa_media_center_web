@@ -1,3 +1,5 @@
+import { User } from "../types";
+
 export const storeUser = (user: User) => {
   const userStr = JSON.stringify(user);
   localStorage.setItem("user", userStr);

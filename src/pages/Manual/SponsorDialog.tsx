@@ -11,6 +11,7 @@ import {
 import { LoadingButton } from "@mui/lab";
 
 import DialogTransition from "../../components/DialogTransition";
+import { Manual } from "../../types";
 
 type SponsorDialogProps = {
   manual: Manual;

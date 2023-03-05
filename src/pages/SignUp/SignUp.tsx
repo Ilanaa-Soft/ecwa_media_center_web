@@ -11,6 +11,7 @@ import districts from "../../utils/districts";
 import languages from "../../utils/languages";
 import toastExpectedError from "../../utils/toastExpectedError";
 import logo from "../../assets/ecwalogo.png";
+import { SignUp } from "../../types";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),

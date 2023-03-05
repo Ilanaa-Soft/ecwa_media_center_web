@@ -15,6 +15,7 @@ import { usePaystackPayment } from "react-paystack";
 import DialogTransition from "../../components/DialogTransition";
 import currencyFormtter from "../../utils/currencyFormatter";
 import payMethods from "../../utils/paymethods";
+import { User, Manual, ManualPayInfo } from "../../types";
 
 type PayDialogProps = {
   user: User;

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import PayDialog from "./PayDialog";
 import currencyFormtter from "../../utils/currencyFormatter";
+import { User, Manual, ManualPayInfo } from "../../types";
 
 type OpenAndBuyManualProps = {
   user: User;

@@ -1,6 +1,8 @@
 import { CardContent, Typography, Card } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
+import { ManualTopic } from "../../types";
+
 type ManualTopicsCardProps = {
   topic: ManualTopic;
 };

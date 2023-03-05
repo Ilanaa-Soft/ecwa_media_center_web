@@ -1,6 +1,8 @@
 import { Box, Typography, IconButton } from "@mui/material";
 import { EditRounded } from "@mui/icons-material";
+
 import defaultUser from "../../assets/user.webp";
+import { User } from "../../types";
 
 type ProfileInfoProps = {
   user: User;

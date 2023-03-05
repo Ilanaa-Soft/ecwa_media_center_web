@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 
 import ManualCard from "./ManualCard";
+import { Manual } from "../../types";
 
 type RelatedManualsProps = {
   relatedManuals: Manual[];

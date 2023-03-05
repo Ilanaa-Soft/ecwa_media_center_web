@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 
 import DialogTransition from "../../components/DialogTransition";
+import { Manual } from "../../types";
 
 type ClaimDialogProps = {
   manual: Manual;

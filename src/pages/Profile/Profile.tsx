@@ -7,6 +7,7 @@ import ProfileInfo from "./ProfileInfo";
 import toastExpectedError from "../../utils/toastExpectedError";
 import { updateUser } from "../../services/userService";
 import { storeUser } from "../../auth/storage";
+import { UserProfile } from "../../types";
 
 const Profile = () => {
   const [edit, setEdit] = React.useState(false);

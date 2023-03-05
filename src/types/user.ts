@@ -1,4 +1,4 @@
-type AppUser = {
+export type AppUser = {
   id: number;
   mobile: string;
   dcc: string;
@@ -9,7 +9,7 @@ type AppUser = {
   updated_at: string;
 };
 
-type User = {
+export type User = {
   id: number;
   role_id: number;
   name: string;
@@ -22,7 +22,7 @@ type User = {
   app_user: AppUser;
 } | null;
 
-type UserProfile = {
+export type UserProfile = {
   name: string;
   email: string;
   mobile: string;
@@ -30,7 +30,7 @@ type UserProfile = {
   lcb: string;
 };
 
-type UserUpdateProfile = {
+export type UserUpdateProfile = {
   name: string;
   mobile: string;
   dcc: string;
