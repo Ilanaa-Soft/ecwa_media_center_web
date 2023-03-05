@@ -22,6 +22,14 @@ const theme = createTheme({
         body: {
           margin: 0,
         },
+        h2: {
+          margin: 0,
+          fontSize: "20px",
+          fontWeight: "500",
+        },
+        p: {
+          margin: 0,
+        },
       },
     },
   },

@@ -18,7 +18,7 @@ const ManualTopics = () => {
   if (!manual) return <Navigate to="/manuals" />;
 
   return (
-    <Layout>
+    <Layout title={`Year ${manual.year} ${manual.name}`}>
       <Box
         gap={4}
         display="grid"

@@ -5,10 +5,14 @@ export const storeUser = (user: User) => {
   localStorage.setItem("user", userStr);
 };
 
+export const removeUser = () => {
+  localStorage.removeItem("user");
+};
+
 export const getUser = () => {
   const userStr = localStorage.getItem("user");
 
-  if (!userStr) return;
+  if (!userStr) return null;
 
   return JSON.parse(userStr) as User;
 };

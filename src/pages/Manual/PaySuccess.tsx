@@ -3,8 +3,8 @@ import { Box } from "@mui/material";
 
 import Loading from "../../components/Loading";
 import Error from "../../components/Error";
-import { savePayment } from "../../services/ManualsService";
-import { getAllManuals, getUnPaidManuals } from "../../services/ManualsService";
+import { savePayment } from "../../services/manualsService";
+import { getAllManuals, getUnPaidManuals } from "../../services/manualsService";
 import { Manual, ManualPayInfo } from "../../types";
 
 type PaySuccessProps = {
@@ -14,13 +14,13 @@ type PaySuccessProps = {
 
 const PaySuccess = ({ payInfo, onUpdateManuals }: PaySuccessProps) => {
   const [loading, setLoading] = React.useState(true);
-  const [hasError, setError] = React.useState(false);
+  const [error, setError] = React.useState(false);
 
   React.useEffect(() => {
-    fetch();
+    fetchData();
   }, []);
 
-  const fetch = async () => {
+  const fetchData = async () => {
     setLoading(true);
     setError(false);
     try {
@@ -35,16 +35,14 @@ const PaySuccess = ({ payInfo, onUpdateManuals }: PaySuccessProps) => {
     setLoading(false);
   };
 
-  const handleTryAgain = () => {
-    fetch();
-  };
+  const handleTryAgain = () => fetchData();
 
   return (
     <Box>
       {loading ? (
         <Loading text="Please wait while we update your payment info" />
       ) : (
-        <>{hasError && <Error onTryAgain={handleTryAgain} />}</>
+        <>{error && <Error onTryAgain={handleTryAgain} />}</>
       )}
     </Box>
   );

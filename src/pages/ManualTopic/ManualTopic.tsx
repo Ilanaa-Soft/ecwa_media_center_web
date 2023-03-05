@@ -3,6 +3,7 @@ import { useLocation, Navigate } from "react-router-dom";
 
 import Layout from "../../components/Layout";
 import HTMLContent from "../../components/HTMLContent";
+import NoteSwipe from "./NoteSwipe";
 
 const ManualTopic = () => {
   const { state: topic } = useLocation();
@@ -10,7 +11,7 @@ const ManualTopic = () => {
   if (!topic) return <Navigate to="/manuals" />;
 
   return (
-    <Layout>
+    <Layout title={`Lesson ${topic.number}`}>
       <Box>
         <Typography fontSize="20px" fontWeight="500" component="h2">
           {topic.bible_text}
@@ -27,6 +28,8 @@ const ManualTopic = () => {
         </Typography>
         <HTMLContent html={topic.content} />
       </Box>
+
+      <NoteSwipe topicId={topic.id} />
     </Layout>
   );
 };

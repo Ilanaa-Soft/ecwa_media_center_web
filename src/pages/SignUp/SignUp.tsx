@@ -1,5 +1,6 @@
 import { Box, Grid, Link, Typography } from "@mui/material";
 import { Link as RouterLink, useNavigate, Navigate } from "react-router-dom";
+import { useAlert } from "react-alert";
 import * as Yup from "yup";
 
 import TextInput from "../../components/TextInput";
@@ -24,6 +25,7 @@ const validationSchema = Yup.object().shape({
 
 const SignUp = () => {
   const user = getUser();
+  const alert = useAlert();
   const navigate = useNavigate();
 
   if (user) return <Navigate to="/" />;
@@ -31,6 +33,11 @@ const SignUp = () => {
   const handleSubmit = async (formValues: SignUp) => {
     try {
       await signUp(formValues);
+
+      alert.show(
+        "Hi👋, your registration has been completed. Enter your email address to request a login code."
+      );
+
       navigate("login-code");
     } catch (ex) {
       toastExpectedError(ex);

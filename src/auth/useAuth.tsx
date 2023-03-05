@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import AppContext from "../state/context";
-import { storeUser } from "./storage";
+import { storeUser, removeUser } from "./storage";
 import { User } from "../types";
 
 const useAuth = () => {
@@ -9,11 +9,17 @@ const useAuth = () => {
     state: { user },
   } = React.useContext(AppContext);
 
-  const login = async (user: User) => {
+  const login = (user: User) => {
     storeUser(user);
+    window.location.href = "/";
   };
 
-  return { user, login };
+  const logOut = () => {
+    removeUser();
+    window.location.href = "/";
+  };
+
+  return { user, login, logOut };
 };
 
 export default useAuth;

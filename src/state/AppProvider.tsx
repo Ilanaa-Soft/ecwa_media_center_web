@@ -8,7 +8,7 @@ type AppProviderProps = {
   children: React.ReactNode;
 };
 
-const initialState: AppState = {
+const appState: AppState = {
   manuals: [],
   user: null,
   hymns: [],
@@ -16,7 +16,7 @@ const initialState: AppState = {
 };
 
 const AppProvider = ({ children }: AppProviderProps) => {
-  const [state, dispatch] = React.useReducer(reducer, initialState);
+  const [state, dispatch] = React.useReducer(reducer, appState);
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>

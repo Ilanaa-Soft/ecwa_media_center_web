@@ -32,4 +32,19 @@ export type ManualPayInfo = {
 
 export type SponsorManual = {
   emails: string[];
-}
+};
+
+export type TopicNote = {
+  id: number;
+  note: string;
+  sunday_school_topic_id: number;
+  user_id: number;
+  deleted_at: string;
+  created_at: string;
+  updated_at: string;
+};
+
+export type TopicNoteUpdate = {
+  sunday_school_topic_id: number;
+  note: string;
+};

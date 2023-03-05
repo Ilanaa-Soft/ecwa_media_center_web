@@ -1,55 +1,49 @@
 import * as React from "react";
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import { positions, Provider as AlertProvider } from "react-alert";
+import AlertTemplateMui from "react-alert-template-mui";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import AppContext from "./state/context";
 import { Navigation } from "./navigation";
 import Loading from "./components/Loading";
 import Error from "./components/Error";
+import RouteScrollToTop from "./components/RouteScrollToTop";
 import { getUser } from "./auth/storage";
-import { getAllManuals, getUnPaidManuals } from "./services/ManualsService";
-import { getAllHymns } from "./services/hymnsService";
+import useAppApi from "./hooks/useAppApi";
+import theme from "./theme/theme";
+
+const alertOptions = {
+  position: positions.MIDDLE,
+};
 
 function App() {
-  const { dispatch } = React.useContext(AppContext);
-  const [loading, setLoading] = React.useState(false);
-  const [hasError, setError] = React.useState(false);
-
   const user = getUser();
+  const isMountedRef = React.useRef(false);
+  const { error, loading, request } = useAppApi();
 
   React.useEffect(() => {
-    if (user) fetch();
+    if (!isMountedRef.current) {
+      isMountedRef.current = true;
+      if (user) request();
+    }
   }, []);
 
-  const fetch = async () => {
-    setLoading(true);
-    setError(false);
-    try {
-      const { data: allManuals } = await getAllManuals();
-      const { data: unPaidManuals } = await getUnPaidManuals();
-      const { data: hymns } = await getAllHymns();
-
-      const manuals = [...allManuals, ...unPaidManuals];
-      dispatch({ type: "SET_APP_DATA", payload: { user, manuals, hymns } });
-    } catch (ex) {
-      setError(true);
-    }
-    setLoading(false);
-  };
-
-  const handleTryAgain = () => {
-    fetch();
-  };
+  const handleTryAgain = () => request();
 
   return (
-    <>
-      {loading ? (
-        <Loading text="Please wait while we download your materials" />
-      ) : (
-        <>{hasError ? <Error onTryAgain={handleTryAgain} /> : <Navigation />}</>
-      )}
-      <ToastContainer position="bottom-left" hideProgressBar={true} />
-    </>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <AlertProvider template={AlertTemplateMui} {...alertOptions}>
+        <RouteScrollToTop />
+        {loading && user ? (
+          <Loading text="Please wait while we download your materials" />
+        ) : (
+          <>{error ? <Error onTryAgain={handleTryAgain} /> : <Navigation />}</>
+        )}
+        <ToastContainer position="bottom-left" hideProgressBar={true} />
+      </AlertProvider>
+    </ThemeProvider>
   );
 }
 

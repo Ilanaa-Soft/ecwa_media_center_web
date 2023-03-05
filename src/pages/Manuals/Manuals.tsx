@@ -11,7 +11,7 @@ const Manuals = () => {
   } = React.useContext(AppContext);
 
   return (
-    <Layout>
+    <Layout title="Available Manuals">
       <Box
         display="grid"
         sx={{ gridTemplateColumns: { sm: "repeat(2, 1fr)" } }}

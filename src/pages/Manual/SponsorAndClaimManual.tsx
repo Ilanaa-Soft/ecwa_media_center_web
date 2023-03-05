@@ -10,7 +10,7 @@ import {
   claimManual,
   getAllManuals,
   getUnPaidManuals,
-} from "../../services/ManualsService";
+} from "../../services/manualsService";
 import { Manual } from "../../types";
 
 type SponsorAndClaimManualProps = {
