@@ -1,31 +1,36 @@
 import * as React from "react";
 
 import AppContext from "../state/context";
-import { getUser } from "../auth/storage";
 import { getAllManuals, getUnPaidManuals } from "../services/manualsService";
 import { getAllHymns } from "../services/hymnsService";
+import { getDashboard } from "../services/userService";
+import { User } from "../types";
 
 const useAppApi = () => {
   const { dispatch } = React.useContext(AppContext);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
-  const user = getUser();
 
-  const request = async () => {
+  const request = async (user: User) => {
     setLoading(true);
     setError(false);
     try {
-      const requests = [getAllManuals(), getUnPaidManuals(), getAllHymns()];
+      const requests = [
+        getAllManuals(),
+        getUnPaidManuals(),
+        getAllHymns(),
+        getDashboard(),
+      ];
       const responses = await Promise.all(requests);
-
       const { data: allManuals } = responses[0];
       const { data: unPaidManuals } = responses[1];
       const { data: hymns } = responses[2];
-      const manuals = [...allManuals, ...unPaidManuals];
+      const { data: dashboard } = responses[3];
 
+      const manuals = [...allManuals, ...unPaidManuals];
       dispatch({
         type: "SET_INITIAL_STATE",
-        payload: { user, manuals, hymns },
+        payload: { user, manuals, hymns, dashboard },
       });
     } catch (ex) {
       setError(true);

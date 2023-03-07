@@ -1,6 +1,13 @@
 import { Box, Typography } from "@mui/material";
+import { Event } from "@mui/icons-material";
 
-const WeeklyDose = () => {
+import { CurrentTopic } from "../../types";
+
+type WeeklyDoseProps = {
+  currentTopic: CurrentTopic;
+};
+
+const WeeklyDose = ({ currentTopic }: WeeklyDoseProps) => {
   return (
     <Box
       p="16px"
@@ -20,28 +27,14 @@ const WeeklyDose = () => {
             Weekly Dose
           </Typography>
           <Typography component="h3" fontSize="15px" fontWeight="400">
-            John 1:5 NLT
+            {currentTopic.bible_text}
           </Typography>
         </Box>
 
-        <Box
-          color="#fff"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          borderRadius="30px"
-          width="52px"
-          height="30px"
-          fontSize="14px"
-          fontWeight="600"
-          style={{ background: "#46bd84" }}
-        >
-          100%
-        </Box>
+        <Event sx={{ fontSize: 40, color: "#46bd84" }} />
       </Box>
       <Typography pt="16px" textAlign="center">
-        The Light Shine in the darkness, and the darkness can never extinguish
-        it
+        {currentTopic.aim}
       </Typography>
     </Box>
   );

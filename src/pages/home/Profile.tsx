@@ -2,13 +2,14 @@ import { Box, Typography } from "@mui/material";
 
 import Calendar from "../../components/Calendar";
 import defaultUser from "../../assets/user.webp";
-import { User } from "../../types";
+import { User, UserParticipation } from "../../types";
 
 type ProfileProps = {
   user: User;
+  progress: UserParticipation;
 };
 
-const Profile = ({ user }: ProfileProps) => {
+const Profile = ({ user, progress }: ProfileProps) => {
   return (
     <Box
       p={2}
@@ -35,7 +36,9 @@ const Profile = ({ user }: ProfileProps) => {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Typography>You're on week 32 of 52</Typography>
+        <Typography>
+          You're on week {progress?.read_topics} of {progress?.current_week}
+        </Typography>
         <Box
           color="#fff"
           display="flex"

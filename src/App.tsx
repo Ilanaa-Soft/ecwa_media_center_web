@@ -25,11 +25,13 @@ function App() {
   React.useEffect(() => {
     if (!isMountedRef.current) {
       isMountedRef.current = true;
-      if (user) request();
+      if (user) request(user);
     }
   }, []);
 
-  const handleTryAgain = () => request();
+  const handleTryAgain = () => {
+    if (user) request(user);
+  };
 
   return (
     <ThemeProvider theme={theme}>

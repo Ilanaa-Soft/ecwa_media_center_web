@@ -1,6 +1,12 @@
 import { Box, Typography } from "@mui/material";
 
-const Progress = () => {
+import { UserParticipation } from "../../types";
+
+type ProgressProps = {
+  progress: UserParticipation;
+};
+
+const Progress = ({ progress }: ProgressProps) => {
   return (
     <Box
       mb={4}
@@ -8,7 +14,9 @@ const Progress = () => {
       justifyContent="space-between"
       sx={{ display: { xs: "flex", md: "none" } }}
     >
-      <Typography>You're on week 32 of 52</Typography>
+      <Typography>
+        You're on week {progress?.read_topics} of {progress?.current_week}
+      </Typography>
       <Box
         color="#fff"
         display="flex"
@@ -21,7 +29,7 @@ const Progress = () => {
         fontWeight="600"
         sx={{ background: "#46bd84" }}
       >
-        80%
+        {progress?.percentage}%
       </Box>
     </Box>
   );

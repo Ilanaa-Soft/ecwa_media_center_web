@@ -1,8 +1,14 @@
 import { Box, Typography, Button } from "@mui/material";
+import { CurrentTopic } from "../../types";
 
 import dateFormatter from "../../utils/longDateFormatter";
 
-const CurrentTopic = () => {
+type CurrentTopicProps = {
+  currentTopic: CurrentTopic;
+  onRead: () => void;
+};
+
+const CurrentTopic = ({ currentTopic, onRead }: CurrentTopicProps) => {
   return (
     <Box
       p="16px"
@@ -14,20 +20,28 @@ const CurrentTopic = () => {
       justifyContent="center"
       boxShadow="0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%)"
     >
-      <Typography component="h2" mb="4px" fontSize="20px" fontWeight="700">
-        Signs of Life
+      <Typography
+        mb="4px"
+        component="h2"
+        textAlign="center"
+        fontSize="20px"
+        fontWeight="700"
+        width="270px"
+      >
+        {currentTopic.topic}
       </Typography>
       <Typography component="h3" mb="18px">
         {dateFormatter(new Date())}
       </Typography>
       <Button
-        variant="outlined"
         fullWidth
+        variant="outlined"
         sx={{
           height: "42px",
           borderWidth: "1.5px",
           borderRadius: "10px",
         }}
+        onClick={() => onRead()}
       >
         Read Now
       </Button>
