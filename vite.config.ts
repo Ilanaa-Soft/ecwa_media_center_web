@@ -42,7 +42,7 @@ const replaceOptions = { __DATE__: new Date().toISOString() }
 // const selfDestroying = process.env.SW_DESTROY === 'false'
 
 if (process.env.SW === 'true') {
-  pwaOptions.srcDir = 'dist'
+  pwaOptions.srcDir = '/dist'
   //  pwaOptions.filename = claims ? 'claims-sw.ts' : 'prompt-sw.ts'
   pwaOptions.strategies = 'injectManifest'
     ; (pwaOptions.manifest as Partial<ManifestOptions>).name = 'Ecwa Media Center'
