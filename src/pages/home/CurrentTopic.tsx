@@ -1,10 +1,10 @@
 import { Box, Typography, Button } from "@mui/material";
-import { CurrentTopic } from "../../types";
+import { CurrentTopic as CurrentTopicType } from "../../types";
 
 import dateFormatter from "../../utils/longDateFormatter";
 
 type CurrentTopicProps = {
-  currentTopic: CurrentTopic;
+  currentTopic: CurrentTopicType;
   onRead: () => void;
 };
 

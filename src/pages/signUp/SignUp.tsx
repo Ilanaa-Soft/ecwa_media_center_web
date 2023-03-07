@@ -12,7 +12,7 @@ import districts from "../../utils/districts";
 import languages from "../../utils/languages";
 import toastExpectedError from "../../utils/toastExpectedError";
 import logo from "../../assets/ecwalogo.png";
-import { SignUp } from "../../types";
+import { SignUp as SignUpType } from "../../types";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
@@ -30,7 +30,7 @@ const SignUp = () => {
 
   if (user) return <Navigate to="/" />;
 
-  const handleSubmit = async (formValues: SignUp) => {
+  const handleSubmit = async (formValues: SignUpType) => {
     try {
       await signUp(formValues);
 

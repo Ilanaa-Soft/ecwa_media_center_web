@@ -48,7 +48,7 @@ const PayDialog = ({
   const config = {
     email: user?.email || "",
     amount: amount * 100,
-    publicKey: `${import.meta.env.VITE_APP_PAYSTACK_PK_KEY}`,
+    publicKey: `${process.env.REACT_APP_PAYSTACK_PK_KEY}`,
     reference: `ref-${Math.ceil(Math.random() * 10e13)}`,
   };
 
