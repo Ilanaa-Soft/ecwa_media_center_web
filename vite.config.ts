@@ -61,6 +61,6 @@ replaceOptions.__RELOAD_SW__ = 'true'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), VitePWA(pwaOptions)],
+  plugins: [react(), VitePWA()],
 })
 
