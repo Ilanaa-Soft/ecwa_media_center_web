@@ -38,28 +38,25 @@ const pwaOptions: Partial<VitePWAOptions> = {
 }
 
 const replaceOptions = { __DATE__: new Date().toISOString() }
-const claims = process.env.CLAIMS === 'true'
-const reload = process.env.RELOAD_SW === 'true'
-const selfDestroying = process.env.SW_DESTROY === 'true'
+
+// const selfDestroying = process.env.SW_DESTROY === 'false'
 
 if (process.env.SW === 'true') {
-  pwaOptions.srcDir = 'src/dist'
-//  pwaOptions.filename = claims ? 'claims-sw.ts' : 'prompt-sw.ts'
+  pwaOptions.srcDir = 'dist'
+  //  pwaOptions.filename = claims ? 'claims-sw.ts' : 'prompt-sw.ts'
   pwaOptions.strategies = 'injectManifest'
     ; (pwaOptions.manifest as Partial<ManifestOptions>).name = 'Ecwa Media Center'
     ; (pwaOptions.manifest as Partial<ManifestOptions>).short_name = 'EMC'
 }
 
-if (claims)
-  pwaOptions.registerType = 'autoUpdate'
 
-if (reload) {
-  // @ts-expect-error overrides
-  replaceOptions.__RELOAD_SW__ = 'true'
-}
+pwaOptions.registerType = 'autoUpdate'
 
-if (selfDestroying)
-  pwaOptions.selfDestroying = selfDestroying
+// @ts-expect-error overrides
+replaceOptions.__RELOAD_SW__ = 'true'
+
+// if (selfDestroying)
+//   pwaOptions.selfDestroying = selfDestroying
 
 
 // https://vitejs.dev/config/
