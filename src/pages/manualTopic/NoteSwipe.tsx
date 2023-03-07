@@ -49,7 +49,7 @@ const NoteSwipe = ({ topicId }: NoteSwipeProps) => {
     try {
       if (!editNote) await saveNote(request);
       else {
-        await updateNote(request, topicId);
+        await updateNote(request, editNote.id);
         setEditNote(null);
       }
 

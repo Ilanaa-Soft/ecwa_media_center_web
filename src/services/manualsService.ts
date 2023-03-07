@@ -47,6 +47,6 @@ export function saveNote(request: TopicNoteUpdate) {
   return http.post(`${apiEndpoint}/note/create`, request, headers);
 }
 
-export function updateNote(request: TopicNoteUpdate, topicId: number) {
-  return http.post(`${apiEndpoint}/note/edit/${topicId}`, request, headers);
+export function updateNote(request: TopicNoteUpdate, noteId: number) {
+  return http.post(`${apiEndpoint}/note/edit/${noteId}`, request, headers);
 }
