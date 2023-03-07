@@ -43,7 +43,7 @@ const reload = process.env.RELOAD_SW === 'true'
 const selfDestroying = process.env.SW_DESTROY === 'true'
 
 if (process.env.SW === 'true') {
-  pwaOptions.srcDir = 'src'
+  pwaOptions.srcDir = 'src/dist'
 //  pwaOptions.filename = claims ? 'claims-sw.ts' : 'prompt-sw.ts'
   pwaOptions.strategies = 'injectManifest'
     ; (pwaOptions.manifest as Partial<ManifestOptions>).name = 'Ecwa Media Center'
