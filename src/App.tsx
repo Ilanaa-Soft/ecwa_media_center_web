@@ -25,12 +25,12 @@ function App() {
   React.useEffect(() => {
     if (!isMountedRef.current) {
       isMountedRef.current = true;
-      if (user) request(user);
+      if (user) request();
     }
-  }, []);
+  }, [user, request]);
 
   const handleTryAgain = () => {
-    if (user) request(user);
+    request();
   };
 
   return (
