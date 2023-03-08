@@ -22,10 +22,12 @@ type PayDialogProps = {
   open: boolean;
   manual: Manual;
   amount: number;
+  hasMethod: boolean;
   numberOfCopies: string;
   paymentMethod: string;
   onOpen: () => void;
   onClose: () => void;
+  onHasMethod: (value: boolean) => void;
   onUpdatePayInfo: (payInfo: ManualPayInfo) => void;
   onCopiesChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onPayMethodChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -35,16 +37,16 @@ const PayDialog = ({
   user,
   manual,
   open,
-  onClose,
-  onCopiesChange,
-  onUpdatePayInfo,
-  onPayMethodChange,
   paymentMethod,
   amount,
   numberOfCopies,
+  hasMethod,
+  onClose,
+  onHasMethod,
+  onCopiesChange,
+  onUpdatePayInfo,
+  onPayMethodChange,
 }: PayDialogProps) => {
-  const [hasMethod, setHasMethod] = React.useState(false);
-
   const config = {
     email: user?.email || "",
     amount: amount * 100,
@@ -67,8 +69,8 @@ const PayDialog = ({
   };
 
   const handleProceedToMethod = () => {
-    if (!numberOfCopies) return;
-    setHasMethod(true);
+    if (!Number(numberOfCopies)) return;
+    onHasMethod(true);
   };
 
   const handleProceedToPayment = () => {
@@ -93,7 +95,7 @@ const PayDialog = ({
       <DialogContent>
         <DialogContentText id="alert-dialog-slide-description">
           Buy the manual for your family and friends or sponsor people who would
-          love to have the manual on the app by buying more copies
+          love to have the manual on the app by buying many copies
         </DialogContentText>
 
         <Box my={0.5} textAlign="center">

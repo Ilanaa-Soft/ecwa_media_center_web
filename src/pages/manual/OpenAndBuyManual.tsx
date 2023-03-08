@@ -16,6 +16,7 @@ const OpenAndBuyManual = (props: OpenAndBuyManualProps) => {
   const { user, manual, onUpdatePayInfo } = props;
 
   const [numberOfCopies, setCopies] = React.useState("");
+  const [hasMethod, setHasMethod] = React.useState(false);
   const [payMethod, setpayMethod] = React.useState("");
   const [isPayDialogOpen, setIsPayDialogOpen] = React.useState(false);
 
@@ -33,7 +34,12 @@ const OpenAndBuyManual = (props: OpenAndBuyManualProps) => {
   const handleClosePayDialog = () => {
     setCopies("");
     setpayMethod("");
+    setHasMethod(false);
     setIsPayDialogOpen(false);
+  };
+
+  const handleHasMethodChange = (value: boolean) => {
+    setHasMethod(value);
   };
 
   const handleCopiesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,11 +76,13 @@ const OpenAndBuyManual = (props: OpenAndBuyManualProps) => {
       <PayDialog
         user={user}
         manual={manual}
+        hasMethod={hasMethod}
         open={isPayDialogOpen}
         paymentMethod={payMethod}
         numberOfCopies={numberOfCopies}
         onOpen={handleOpenPayDialog}
         onClose={handleClosePayDialog}
+        onHasMethod={handleHasMethodChange}
         onUpdatePayInfo={onUpdatePayInfo}
         onCopiesChange={handleCopiesChange}
         onPayMethodChange={handlePayMethodChange}
