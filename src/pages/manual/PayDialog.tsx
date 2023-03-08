@@ -22,12 +22,12 @@ type PayDialogProps = {
   open: boolean;
   manual: Manual;
   amount: number;
-  hasMethod: boolean;
+  hasPayMethod: boolean;
   numberOfCopies: string;
   paymentMethod: string;
   onOpen: () => void;
   onClose: () => void;
-  onHasMethod: (value: boolean) => void;
+  onHasPayMethod: (value: boolean) => void;
   onUpdatePayInfo: (payInfo: ManualPayInfo) => void;
   onCopiesChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onPayMethodChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -40,9 +40,9 @@ const PayDialog = ({
   paymentMethod,
   amount,
   numberOfCopies,
-  hasMethod,
+  hasPayMethod,
   onClose,
-  onHasMethod,
+  onHasPayMethod,
   onCopiesChange,
   onUpdatePayInfo,
   onPayMethodChange,
@@ -70,7 +70,7 @@ const PayDialog = ({
 
   const handleProceedToMethod = () => {
     if (!Number(numberOfCopies)) return;
-    onHasMethod(true);
+    onHasPayMethod(true);
   };
 
   const handleProceedToPayment = () => {
@@ -102,7 +102,7 @@ const PayDialog = ({
           {currencyFormtter(amount)}
         </Box>
 
-        {hasMethod && numberOfCopies ? (
+        {hasPayMethod && numberOfCopies ? (
           <TextField
             select
             fullWidth
@@ -142,7 +142,7 @@ const PayDialog = ({
         <Button onClick={onClose}>Close</Button>
         <Button
           onClick={
-            hasMethod && numberOfCopies
+            hasPayMethod && numberOfCopies
               ? handleProceedToPayment
               : handleProceedToMethod
           }
