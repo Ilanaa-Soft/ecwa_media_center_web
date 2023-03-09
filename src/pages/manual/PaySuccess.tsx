@@ -3,8 +3,7 @@ import { Box } from "@mui/material";
 
 import Loading from "../../components/Loading";
 import Error from "../../components/Error";
-import { savePayment } from "../../services/manualsService";
-import { getAllManuals, getUnPaidManuals } from "../../services/manualsService";
+import usePaySuccessApi from "../../hooks/usePaySuccessApi";
 import { Manual, ManualPayInfo } from "../../types";
 
 type PaySuccessProps = {
@@ -14,32 +13,19 @@ type PaySuccessProps = {
 
 const PaySuccess = ({ payInfo, onUpdateManuals }: PaySuccessProps) => {
   const isMountedRef = React.useRef(false);
-  const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState(false);
+  const { loading, error, request } = usePaySuccessApi(
+    payInfo,
+    onUpdateManuals
+  );
 
   React.useEffect(() => {
     if (!isMountedRef.current) {
       isMountedRef.current = true;
-      fetchData();
+      request();
     }
-  }, []);
+  }, [request]);
 
-  const fetchData = async () => {
-    setLoading(true);
-    setError(false);
-    try {
-      await savePayment(payInfo);
-      const { data: allManuals } = await getAllManuals();
-      const { data: unPaidManuals } = await getUnPaidManuals();
-
-      onUpdateManuals([...allManuals, ...unPaidManuals]);
-    } catch (ex) {
-      setError(true);
-    }
-    setLoading(false);
-  };
-
-  const handleTryAgain = () => fetchData();
+  const handleTryAgain = () => request();
 
   return (
     <Box>
