@@ -13,11 +13,15 @@ type PaySuccessProps = {
 };
 
 const PaySuccess = ({ payInfo, onUpdateManuals }: PaySuccessProps) => {
+  const isMountedRef = React.useRef(false);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
 
   React.useEffect(() => {
-    fetchData();
+    if (!isMountedRef.current) {
+      isMountedRef.current = true;
+      fetchData();
+    }
   }, []);
 
   const fetchData = async () => {
