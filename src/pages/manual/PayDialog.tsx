@@ -143,7 +143,7 @@ const PayDialog = ({
       TransitionComponent={DialogTransition}
       keepMounted
       onClose={onClose}
-      aria-describedby="alert-dialog-slide-description"
+      aria-describedby="alert-dialog-manual-payment"
     >
       <DialogTitle sx={{ fontSize: { xs: "1rem", sm: "1.25rem" } }}>
         {`${manual?.year} ${manual?.language} ${manual?.name}`}
@@ -155,7 +155,7 @@ const PayDialog = ({
             <Box>Account Number: {account.account_number}</Box>
             <Box>Account Name: {account.account_name}</Box>
 
-            <Typography mt={1} id="alert-dialog-slide-description">
+            <Typography mt={1} id="alert-dialog-manual-payment">
               Transfer {currencyFormtter(amount)} to the account above and click
               the proceed button. Kindly note that it may take up to five
               minutes before your transfer is processed
@@ -165,7 +165,7 @@ const PayDialog = ({
           <>
             {lowBalance ? (
               <>
-                <Typography id="alert-dialog-slide-description">
+                <Typography id="alert-dialog-manual-payment">
                   The balance in your assigned account is currently not enough
                   to charge {currencyFormtter(amount)}. If you have successfully
                   made the tranfer, please try again by clicking the proceed
@@ -182,7 +182,7 @@ const PayDialog = ({
             ) : (
               <>
                 {!hasMobileNumber ? (
-                  <Typography id="alert-dialog-slide-description">
+                  <Typography id="alert-dialog-manual-payment">
                     You currently cannot use transfer payment method because you
                     don't have a mobile number on your profile. Kindly update
                     your{" "}
@@ -193,7 +193,7 @@ const PayDialog = ({
                   </Typography>
                 ) : (
                   <>
-                    <Typography id="alert-dialog-slide-description">
+                    <Typography id="alert-dialog-manual-payment">
                       Buy the manual for your family and friends or sponsor
                       people who would love to have the manual on the app by
                       buying many copies
