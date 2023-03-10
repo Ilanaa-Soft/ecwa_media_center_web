@@ -15,8 +15,8 @@ const Notes = ({ notes: unSortNotes, onRead }: NotesProps) => {
     <Box>
       {!notes.length ? (
         <Box display="flex" alignItems="center" justifyContent="center">
-          You currently do not have any note! Click on "New Note" above to
-          create one
+          You currently do not have notes for this lesson! Click on "New Note"
+          above to create one
         </Box>
       ) : (
         <>
