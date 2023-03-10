@@ -1,19 +1,11 @@
-import * as Yup from "yup";
 import { Box, Grid } from "@mui/material";
 
 import Form from "../../components/Form";
 import TextInput from "../../components/TextInput";
 import SubmitButton from "../../components/SubmitButton";
 import districts from "../../utils/districts";
+import profileSchema from "../../formSchemas/profileSchema";
 import { User, UserProfile } from "../../types";
-
-const validationSchema = Yup.object().shape({
-  name: Yup.string().required().label("Name"),
-  email: Yup.string().required().email().label("Email"),
-  mobile: Yup.string().required().label("Phone Number"),
-  lcb: Yup.string().required().label("Local Church Board"),
-  dcc: Yup.string().required().label("District"),
-});
 
 type ProfileFormProps = {
   user: User;
@@ -40,7 +32,7 @@ const ProfileForm = ({ user, onSubmit }: ProfileFormProps) => {
           lcb: user?.app_user.lcb,
         }}
         onSubmit={onSubmit}
-        validationSchema={validationSchema}
+        validationSchema={profileSchema}
       >
         <Grid container rowSpacing={3}>
           <Grid item xs={12}>
