@@ -3,7 +3,7 @@ import { Box, Grid } from "@mui/material";
 import Form from "../../components/Form";
 import TextInput from "../../components/TextInput";
 import SubmitButton from "../../components/SubmitButton";
-import districts from "../../utils/districts";
+import districts from "../../formSelectOptions/districts";
 import profileSchema from "../../formSchemas/profileSchema";
 import { User, UserProfile } from "../../types";
 
