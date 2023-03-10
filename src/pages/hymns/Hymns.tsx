@@ -63,8 +63,8 @@ const Hymns = () => {
         columnGap={5}
         display="grid"
         sx={{
-          gridTemplateColumns: { md: "repeat(2, 1fr)" },
           marginBottom: { xs: "-35px", sm: 0 },
+          gridTemplateColumns: { sm: "repeat(2, 1fr)" },
         }}
       >
         {hymns.map((hymn) => (
