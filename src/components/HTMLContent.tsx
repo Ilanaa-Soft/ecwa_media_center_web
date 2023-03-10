@@ -25,7 +25,7 @@ const HTMLContent = ({ html, truncate }: HTMLContentProps) => {
   return (
     <Typography
       fontSize="18px"
-      className={(classes.root, truncate ? classes.truncate : "")}
+      className={`${classes.root} ${truncate ? classes.truncate : ""}`}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );
