@@ -20,8 +20,6 @@ const NoteSwipe = ({ topicId }: NoteSwipeProps) => {
   const [readNote, setReadNote] = React.useState<TopicNote | null>(null);
   const { notes, error, loading, request } = useNotesApi(topicId);
 
-  const handleTryAgain = () => request();
-
   const handleToggle = (open: boolean) => (
     event: React.KeyboardEvent | React.MouseEvent
   ) => {
@@ -30,9 +28,8 @@ const NoteSwipe = ({ topicId }: NoteSwipeProps) => {
       event.type === "keydown" &&
       ((event as React.KeyboardEvent).key === "Tab" ||
         (event as React.KeyboardEvent).key === "Shift")
-    ) {
+    )
       return;
-    }
 
     if (open === false) setEditNote(null);
 
@@ -68,6 +65,8 @@ const NoteSwipe = ({ topicId }: NoteSwipeProps) => {
     setEditNote(note);
     handleTabChange(0);
   };
+
+  const handleTryAgain = () => request();
 
   return (
     <Box>
