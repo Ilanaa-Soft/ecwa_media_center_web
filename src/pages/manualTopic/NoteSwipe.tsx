@@ -78,7 +78,7 @@ const NoteSwipe = ({ topicId }: NoteSwipeProps) => {
         onClose={handleToggle(false)}
         onOpen={handleToggle(true)}
       >
-        <Box height={450} role="presentation">
+        <Box role="presentation" sx={{ height: { xs: 350, md: 450 } }}>
           <NoteSwipeTabs
             notes={notes}
             tabValue={tabValue}
