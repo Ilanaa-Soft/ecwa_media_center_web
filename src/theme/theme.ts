@@ -30,6 +30,11 @@ const theme = createTheme({
         p: {
           margin: 0,
         },
+        ol: {
+          margin: 0,
+          marginTop: "8px",
+          marginBottom: "8px",
+        },
       },
     },
   },
