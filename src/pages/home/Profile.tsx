@@ -40,18 +40,18 @@ const Profile = ({ user, progress }: ProfileProps) => {
           You're on week {progress?.read_topics} of {progress?.current_week}
         </Typography>
         <Box
+          p={1}
           color="#fff"
           display="flex"
           alignItems="center"
           justifyContent="center"
           borderRadius="30px"
-          width="52px"
           height="30px"
           fontSize="14px"
           fontWeight="600"
           sx={{ background: "#46bd84" }}
         >
-          80%
+          {progress?.percentage.toFixed(2)}%
         </Box>
       </Box>
       <Calendar />
