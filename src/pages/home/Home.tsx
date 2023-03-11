@@ -22,7 +22,7 @@ const Home = () => {
 
   const handleRead = () => {
     const manual = manuals.find(
-      (manual) => manual.id === currentTopic.manual_id + 5
+      (manual) => manual.id === currentTopic.manual_id
     );
 
     if (!manual) return;
