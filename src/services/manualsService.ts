@@ -36,6 +36,10 @@ export function claimManual(id: number) {
   return http.post(`${apiEndpoint}/claim/${id}`, {}, headers);
 }
 
+export function markTopicAsRead(topicId: number) {
+  return http.put(`${apiEndpoint}/topics/${topicId}/read`, {}, headers);
+}
+
 export function getNotes(topicId: number) {
   return http.get<TopicNote[]>(
     `${apiEndpoint}/note/search/${topicId}`,
