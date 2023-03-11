@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
+import Badge from "./Badge";
 import { UserParticipation } from "../../types";
 
 type ProgressProps = {
@@ -15,22 +16,9 @@ const Progress = ({ progress }: ProgressProps) => {
       sx={{ display: { xs: "flex", md: "none" } }}
     >
       <Typography>
-        You're on week {progress?.read_topics} of {progress?.current_week}
+        You're on week {progress.read_topics} of {progress.current_week}
       </Typography>
-      <Box
-        p={1}
-        color="#fff"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        borderRadius="30px"
-        height="30px"
-        fontSize="14px"
-        fontWeight="600"
-        sx={{ background: "#46bd84" }}
-      >
-        {progress?.percentage.toFixed(2)}%
-      </Box>
+      <Badge label={progress.percentage} />
     </Box>
   );
 };
