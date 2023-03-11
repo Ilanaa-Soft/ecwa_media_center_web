@@ -59,7 +59,11 @@ const Header = ({ title }: HeaderProps) => {
               <ArrowBackRounded />
             </IconButton>
             {title && (
-              <Box width="calc(100% - 40px)" sx={{ display: { sm: "none" } }}>
+              <Box
+                pl={1}
+                width="calc(100% - 40px)"
+                sx={{ display: { sm: "none" } }}
+              >
                 <Typography
                   noWrap
                   fontSize="20px"
