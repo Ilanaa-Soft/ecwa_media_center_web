@@ -14,4 +14,5 @@ export type AppActionTypes =
   | { type: "SET_MANUALS"; payload: Manual[] }
   | { type: "SET_USER"; payload: User }
   | { type: "SET_INITIAL_STATE"; payload: AppState }
-  | { type: "SET_MANUAL_PAYMENT"; payload: ManualPayInfo };
+  | { type: "SET_MANUAL_PAYMENT"; payload: ManualPayInfo }
+  | { type: "SET_DASHBOARD"; payload: Dashboard };

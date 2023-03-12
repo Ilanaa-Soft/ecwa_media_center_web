@@ -30,6 +30,11 @@ const reducer = (state: AppState, action: AppActionTypes) => {
         manualPayInfo: action.payload,
       };
 
+    case "SET_DASHBOARD":
+      return {
+        ...state, dashboard: action.payload
+      }
+
     default:
       return state;
   }
