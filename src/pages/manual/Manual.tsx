@@ -6,7 +6,7 @@ import AppContext from "../../state/context";
 import PaySuccess from "./PaySuccess";
 import ManualDetails from "./ManualDetails";
 import RelatedManuals from "./RelatedManuals";
-import { Manual, ManualPayInfo } from "../../types";
+import { Manual as ManualType, ManualPayInfo } from "../../types";
 
 const Manual = () => {
   const {
@@ -20,7 +20,7 @@ const Manual = () => {
     dispatch({ type: "SET_MANUAL_PAYMENT", payload: payInfo });
   };
 
-  const handleUpdateManuals = (manuals: Manual[]) => {
+  const handleUpdateManuals = (manuals: ManualType[]) => {
     dispatch({ type: "SET_MANUALS", payload: manuals });
   };
 

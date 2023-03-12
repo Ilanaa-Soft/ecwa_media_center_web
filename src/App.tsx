@@ -27,9 +27,11 @@ function App() {
       isMountedRef.current = true;
       if (user) request();
     }
-  }, []);
+  }, [user, request]);
 
-  const handleTryAgain = () => request();
+  const handleTryAgain = () => {
+    request();
+  };
 
   return (
     <ThemeProvider theme={theme}>

@@ -2,7 +2,7 @@ import * as React from "react";
 
 import reducer from "./reducer";
 import AppContext from "./context";
-import { AppState } from "../types";
+import { AppState, Dashboard, User } from "../types";
 
 type AppProviderProps = {
   children: React.ReactNode;
@@ -10,9 +10,10 @@ type AppProviderProps = {
 
 const appState: AppState = {
   manuals: [],
-  user: null,
+  user: {} as User,
   hymns: [],
   manualPayInfo: null,
+  dashboard: {} as Dashboard,
 };
 
 const AppProvider = ({ children }: AppProviderProps) => {

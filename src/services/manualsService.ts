@@ -36,6 +36,10 @@ export function claimManual(id: number) {
   return http.post(`${apiEndpoint}/claim/${id}`, {}, headers);
 }
 
+export function markTopicAsRead(topicId: number) {
+  return http.put(`${apiEndpoint}/topics/${topicId}/read`, {}, headers);
+}
+
 export function getNotes(topicId: number) {
   return http.get<TopicNote[]>(
     `${apiEndpoint}/note/search/${topicId}`,
@@ -47,6 +51,6 @@ export function saveNote(request: TopicNoteUpdate) {
   return http.post(`${apiEndpoint}/note/create`, request, headers);
 }
 
-export function updateNote(request: TopicNoteUpdate, topicId: number) {
-  return http.post(`${apiEndpoint}/note/edit/${topicId}`, request, headers);
+export function updateNote(request: TopicNoteUpdate, noteId: number) {
+  return http.post(`${apiEndpoint}/note/edit/${noteId}`, request, headers);
 }

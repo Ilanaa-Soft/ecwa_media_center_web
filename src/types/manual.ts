@@ -28,7 +28,7 @@ export type ManualPayInfo = {
   amount: number;
   copy: number;
   manual_id: number;
-} | null;
+};
 
 export type SponsorManual = {
   emails: string[];

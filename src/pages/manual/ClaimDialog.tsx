@@ -3,7 +3,7 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
+  Typography,
   DialogTitle,
 } from "@mui/material";
 
@@ -29,9 +29,9 @@ const ClaimDialog = ({ manual, open, onClose }: ClaimDialogProps) => {
         {`${manual?.year} ${manual?.language} ${manual?.name}`}
       </DialogTitle>
       <DialogContent>
-        <DialogContentText mb={2} id="alert-dialog-claim-manual">
+        <Typography mb={2} id="alert-dialog-claim-manual">
           Successful! You have claimed this manual
-        </DialogContentText>
+        </Typography>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Close</Button>

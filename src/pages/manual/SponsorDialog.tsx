@@ -4,8 +4,8 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
+  Typography,
   TextField,
 } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
@@ -47,11 +47,11 @@ const SponsorDialog = ({
         {`${manual?.year} ${manual?.language} ${manual?.name}`}
       </DialogTitle>
       <DialogContent>
-        <DialogContentText mb={2} id="alert-dialog-sponsor-manual">
+        <Typography mb={2} id="alert-dialog-sponsor-manual">
           {!isSuccess
             ? "Please enter the registered email address of the user you will like to sponsor"
             : `Successful! You have sponsored ${email}`}
-        </DialogContentText>
+        </Typography>
 
         {!isSuccess && (
           <TextField

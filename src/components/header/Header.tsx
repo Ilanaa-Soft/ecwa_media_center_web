@@ -34,12 +34,17 @@ const Header = ({ title }: HeaderProps) => {
       top={0}
       zIndex="1100"
       position="sticky"
-      sx={{ background: "#fff", marginBottom: { xs: 3, md: 5 } }}
+      sx={{
+        background: "#fff",
+        marginBottom: { xs: 3, md: 5 },
+        height: { xs: "60px", sm: "auto" },
+      }}
       boxShadow="1px 2px 4px rgba(214, 217, 223, .5)"
     >
       <Box
         display="flex"
         marginX="auto"
+        height="100%"
         maxWidth="1100px"
         alignItems="center"
         justifyContent="space-between"
@@ -49,21 +54,27 @@ const Header = ({ title }: HeaderProps) => {
             Hi, {user?.name?.split(" ")[0]}
           </Typography>
         ) : (
-          <IconButton onClick={handleGoToBack}>
-            <ArrowBackRounded />
-          </IconButton>
-        )}
-
-        {title && (
-          <Box
-            textAlign="center"
-            width="calc(100% - 40px)"
-            sx={{ display: { sm: "none" } }}
-          >
-            <Typography noWrap fontSize="24px" fontWeight="600" component="h1">
-              {title}
-            </Typography>
-          </Box>
+          <>
+            <IconButton onClick={handleGoToBack}>
+              <ArrowBackRounded />
+            </IconButton>
+            {title && (
+              <Box
+                pl={1}
+                width="calc(100% - 40px)"
+                sx={{ display: { sm: "none" } }}
+              >
+                <Typography
+                  noWrap
+                  fontSize="20px"
+                  fontWeight="600"
+                  component="h1"
+                >
+                  {title}
+                </Typography>
+              </Box>
+            )}
+          </>
         )}
 
         <LargeScreenMenu onLogOut={handleLogOut} />

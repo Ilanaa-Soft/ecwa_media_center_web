@@ -7,6 +7,7 @@ import Layout from "../../components/Layout";
 import Hymn from "./Hymn";
 import Search from "./Search";
 import HymnsCategoryMenu from "./HymnsCategoryMenu";
+import { Hymn as HymnType } from "../../types";
 
 const Hymns = () => {
   const {
@@ -16,7 +17,7 @@ const Hymns = () => {
   const [search, setSearch] = React.useState("");
 
   const navigate = useNavigate();
-  let searchHymns: Hymn[] = [];
+  let searchHymns: HymnType[] = [];
 
   const handleSelect = (category: string) => {
     setCategory(category);
@@ -62,8 +63,8 @@ const Hymns = () => {
         columnGap={5}
         display="grid"
         sx={{
-          gridTemplateColumns: { md: "repeat(2, 1fr)" },
           marginBottom: { xs: "-35px", sm: 0 },
+          gridTemplateColumns: { sm: "repeat(2, 1fr)" },
         }}
       >
         {hymns.map((hymn) => (

@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
-const Podcast = () => {
+const Quiz = () => {
   return (
     <Box
       p="16px"
@@ -9,14 +9,15 @@ const Podcast = () => {
       boxShadow="0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%)"
     >
       <Typography component="h2" fontSize="20px" fontWeight="700" mb={1}>
-        Podcast
+        Quiz
       </Typography>
       <Typography textAlign="center">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-        dignissimos quibusdam vel illo est magni delectus velit eius obcaecati
+        Get ready to put your knowledge to the test! We're thrilled to announce
+        that a quiz feature will be added soon, allowing you to challenge
+        yourself and deepen your understanding.
       </Typography>
     </Box>
   );
 };
 
-export default Podcast;
+export default Quiz;

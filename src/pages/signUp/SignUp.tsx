@@ -1,27 +1,18 @@
 import { Box, Grid, Link, Typography } from "@mui/material";
 import { Link as RouterLink, useNavigate, Navigate } from "react-router-dom";
 import { useAlert } from "react-alert";
-import * as Yup from "yup";
 
 import TextInput from "../../components/TextInput";
 import SubmitButton from "../../components/SubmitButton";
 import Form from "../../components/Form";
 import { getUser } from "../../auth/storage";
 import { signUp } from "../../services/authService";
-import districts from "../../utils/districts";
-import languages from "../../utils/languages";
+import districts from "../../formSelectOptions/districts";
+import languages from "../../formSelectOptions/languages";
 import toastExpectedError from "../../utils/toastExpectedError";
+import signUpSchema from "../../formSchemas/signUpSchema";
 import logo from "../../assets/ecwalogo.png";
-import { SignUp } from "../../types";
-
-const validationSchema = Yup.object().shape({
-  name: Yup.string().required().label("Name"),
-  email: Yup.string().required().email().label("Email"),
-  language: Yup.string().required().label("Language"),
-  mobile: Yup.string(),
-  lcb: Yup.string().required().label("Local Church Board"),
-  dcc: Yup.string().required().label("District"),
-});
+import { SignUp as SignUpType } from "../../types";
 
 const SignUp = () => {
   const user = getUser();
@@ -30,7 +21,7 @@ const SignUp = () => {
 
   if (user) return <Navigate to="/" />;
 
-  const handleSubmit = async (formValues: SignUp) => {
+  const handleSubmit = async (formValues: SignUpType) => {
     try {
       await signUp(formValues);
 
@@ -85,7 +76,7 @@ const SignUp = () => {
             dcc: "",
           }}
           onSubmit={handleSubmit}
-          validationSchema={validationSchema}
+          validationSchema={signUpSchema}
         >
           <Grid container rowSpacing={2}>
             <Grid item xs={12}>

@@ -8,6 +8,7 @@ const reducer = (state: AppState, action: AppActionTypes) => {
         user: action.payload.user,
         manuals: action.payload.manuals,
         hymns: action.payload.hymns,
+        dashboard: action.payload.dashboard,
       };
 
     case "SET_MANUALS":

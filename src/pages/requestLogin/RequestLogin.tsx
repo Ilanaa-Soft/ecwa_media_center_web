@@ -1,7 +1,6 @@
 import { Box, Link, Grid, Typography } from "@mui/material";
 import { Link as RouterLink, Navigate, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
-import * as Yup from "yup";
 
 import TextInput from "../../components/TextInput";
 import SubmitButton from "../../components/SubmitButton";
@@ -9,12 +8,9 @@ import Form from "../../components/Form";
 import logo from "../../assets/ecwalogo.png";
 import { requestLoginCode } from "../../services/authService";
 import { getUser } from "../../auth/storage";
+import requestLoginSchema from "../../formSchemas/requestLoginSchema";
 import toastExpectedError from "../../utils/toastExpectedError";
 import { RequestLoginCode } from "../../types";
-
-const validationSchema = Yup.object().shape({
-  email: Yup.string().required().email().label("Email"),
-});
 
 const RequestLogin = () => {
   const navigate = useNavigate();
@@ -70,7 +66,7 @@ const RequestLogin = () => {
         <Form
           initialValues={{ email: "" }}
           onSubmit={handleSubmit}
-          validationSchema={validationSchema}
+          validationSchema={requestLoginSchema}
         >
           <Box mb={3}>
             <TextInput

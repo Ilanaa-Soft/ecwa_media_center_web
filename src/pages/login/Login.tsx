@@ -1,6 +1,5 @@
 import { Box, Grid, Link, Typography } from "@mui/material";
 import { Link as RouterLink, Navigate, useLocation } from "react-router-dom";
-import * as Yup from "yup";
 
 import TextInput from "../../components/TextInput";
 import SubmitButton from "../../components/SubmitButton";
@@ -10,14 +9,11 @@ import { loginWithCode } from "../../services/authService";
 import useAuth from "../../auth/useAuth";
 import { getUser } from "../../auth/storage";
 import toastExpectedError from "../../utils/toastExpectedError";
+import loginSchema from "../../formSchemas/loginSchema";
 
 type FormValues = {
   code: string;
 };
-
-const validationSchema = Yup.object().shape({
-  code: Yup.string().required().label("Code"),
-});
 
 const Login = () => {
   const { state: email } = useLocation();
@@ -70,7 +66,7 @@ const Login = () => {
         <Form
           initialValues={{ code: "" }}
           onSubmit={handleSubmit}
-          validationSchema={validationSchema}
+          validationSchema={loginSchema}
         >
           <Box mb={3}>
             <TextInput

@@ -1,12 +1,23 @@
+import * as React from "react";
 import { Box, Typography } from "@mui/material";
 import { useLocation, Navigate } from "react-router-dom";
 
 import Layout from "../../components/Layout";
 import HTMLContent from "../../components/HTMLContent";
 import NoteSwipe from "./NoteSwipe";
+import useMarkTopicApi from "../../hooks/useMarkTopicApi";
 
 const ManualTopic = () => {
   const { state: topic } = useLocation();
+  const isMountedRef = React.useRef(false);
+  const { request } = useMarkTopicApi();
+
+  React.useEffect(() => {
+    if (!isMountedRef.current) {
+      isMountedRef.current = true;
+      if (topic) request(topic);
+    }
+  }, [topic, request]);
 
   if (!topic) return <Navigate to="/manuals" />;
 

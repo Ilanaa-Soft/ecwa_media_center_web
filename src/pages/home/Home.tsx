@@ -1,23 +1,43 @@
 import * as React from "react";
 import { Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 import Layout from "../../components/Layout";
 import AppContext from "../../state/context";
 import Profile from "./Profile";
 import Progress from "./Progress";
-import Podcast from "./Podcast";
+import Quiz from "./Quiz";
 import Flow from "./Flow";
 import WeeklyDose from "./WeeklyDose";
 import CurrentTopic from "./CurrentTopic";
 
 const Home = () => {
   const {
-    state: { user },
+    state: { user, manuals, dashboard },
   } = React.useContext(AppContext);
+
+  const navigate = useNavigate();
+
+  const { currentTopic, userParticipation } = dashboard;
+
+  const handleRead = () => {
+    const manual = manuals.find(
+      (manual) => manual.id === currentTopic.manual_id
+    );
+
+    if (!manual) return;
+
+    if (manual.paid || manual.sponsored || manual.is_free) {
+      const { topics } = manual;
+      const topic = topics.find((topic) => topic.id === currentTopic.id);
+      if (!topic) return;
+      navigate(`/manual-topic`, { state: topic });
+    } else navigate(`/manuals/${manual.id}`);
+  };
 
   return (
     <Layout>
-      <Progress />
+      <Progress progress={userParticipation} />
 
       <Box
         sx={{
@@ -34,13 +54,13 @@ const Home = () => {
             gridTemplateColumns: { sm: "repeat(2, 1fr)" },
           }}
         >
-          <CurrentTopic />
-          <WeeklyDose />
+          <CurrentTopic currentTopic={currentTopic} onRead={handleRead} />
+          <WeeklyDose currentTopic={currentTopic} />
           <Flow />
-          <Podcast />
+          <Quiz />
         </Box>
 
-        <Profile user={user} />
+        <Profile user={user} progress={userParticipation} />
       </Box>
     </Layout>
   );

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import PayDialog from "./PayDialog";
 import currencyFormtter from "../../utils/currencyFormatter";
 import { User, Manual, ManualPayInfo } from "../../types";
+import { Account } from "../../types/payment";
 
 type OpenAndBuyManualProps = {
   user: User;
@@ -15,9 +16,15 @@ type OpenAndBuyManualProps = {
 const OpenAndBuyManual = (props: OpenAndBuyManualProps) => {
   const { user, manual, onUpdatePayInfo } = props;
 
-  const [numberOfCopies, setCopies] = React.useState("");
-  const [payMethod, setpayMethod] = React.useState("");
   const [isPayDialogOpen, setIsPayDialogOpen] = React.useState(false);
+  const [numberOfCopies, setCopies] = React.useState("");
+  const [payMethod, setPayMethod] = React.useState("");
+  const [hasPayMethod, setHasPayMethod] = React.useState(false);
+  const [hasMobileNumber, setHasMobileNumber] = React.useState(true);
+  const [account, setAccount] = React.useState<Account | null>(null);
+  const [accountLoading, setAccountLoading] = React.useState(false);
+  const [balanceLoading, setBalanceLoading] = React.useState(false);
+  const [lowBalance, setLowBalance] = React.useState(false);
 
   const price = 400;
   const navigate = useNavigate();
@@ -32,8 +39,18 @@ const OpenAndBuyManual = (props: OpenAndBuyManualProps) => {
 
   const handleClosePayDialog = () => {
     setCopies("");
-    setpayMethod("");
+    setPayMethod("");
+    setHasPayMethod(false);
+    setHasMobileNumber(true);
+    setAccount(null);
+    setLowBalance(false);
+    setAccountLoading(false);
+    setBalanceLoading(false);
     setIsPayDialogOpen(false);
+  };
+
+  const handleHasPayMethod = (value: boolean) => {
+    setHasPayMethod(value);
   };
 
   const handleCopiesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,7 +60,27 @@ const OpenAndBuyManual = (props: OpenAndBuyManualProps) => {
   const handlePayMethodChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setpayMethod(event.target.value);
+    setPayMethod(event.target.value);
+  };
+
+  const handleHasMobileNumber = (value: boolean) => {
+    setHasMobileNumber(value);
+  };
+
+  const handleAccount = (account: Account) => {
+    setAccount(account);
+  };
+
+  const handleAccountLoading = (value: boolean) => {
+    setAccountLoading(value);
+  };
+
+  const handleBalanceLoading = (value: boolean) => {
+    setBalanceLoading(value);
+  };
+
+  const handleLowBalance = (value: boolean) => {
+    setLowBalance(value);
   };
 
   return (
@@ -70,11 +107,23 @@ const OpenAndBuyManual = (props: OpenAndBuyManualProps) => {
       <PayDialog
         user={user}
         manual={manual}
+        hasMobileNumber={hasMobileNumber}
+        hasPayMethod={hasPayMethod}
         open={isPayDialogOpen}
         paymentMethod={payMethod}
         numberOfCopies={numberOfCopies}
+        account={account}
+        lowBalance={lowBalance}
+        accountLoading={accountLoading}
+        balanceLoading={balanceLoading}
         onOpen={handleOpenPayDialog}
         onClose={handleClosePayDialog}
+        onHasPayMethod={handleHasPayMethod}
+        onHasMobileNumber={handleHasMobileNumber}
+        onAccount={handleAccount}
+        onLowBalance={handleLowBalance}
+        onAccountLoading={handleAccountLoading}
+        onBalanceLoading={handleBalanceLoading}
         onUpdatePayInfo={onUpdatePayInfo}
         onCopiesChange={handleCopiesChange}
         onPayMethodChange={handlePayMethodChange}
