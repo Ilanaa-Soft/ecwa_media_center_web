@@ -2,7 +2,8 @@ import * as React from "react";
 
 import reducer from "./reducer";
 import AppContext from "./context";
-import { AppState, Dashboard, User } from "../types";
+import { Dashboard, User } from "../types";
+import { AppState } from "./reducer";
 
 type AppProviderProps = {
   children: React.ReactNode;
