@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useParams, Navigate } from "react-router-dom";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import Layout from "../../components/Layout";
 import AppContext from "../../state/context";
@@ -19,6 +19,16 @@ const ManualTopics = () => {
 
   return (
     <Layout title={`Year ${manual.year} ${manual.name}`}>
+      <Typography
+        mb={3}
+        component="h1"
+        fontSize="20px"
+        fontWeight="600"
+        sx={{ display: { xs: "none", sm: "block" } }}
+      >
+        {`Year ${manual.year} ${manual.name}`}
+      </Typography>
+
       <Box
         gap={4}
         display="grid"

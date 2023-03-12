@@ -36,7 +36,7 @@ const Header = ({ title }: HeaderProps) => {
       position="sticky"
       sx={{
         background: "#fff",
-        marginBottom: { xs: 3, md: 5 },
+        marginBottom: { xs: 3, md: 4 },
         height: { xs: "60px", sm: "auto" },
       }}
       boxShadow="1px 2px 4px rgba(214, 217, 223, .5)"
