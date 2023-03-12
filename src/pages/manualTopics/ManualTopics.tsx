@@ -13,7 +13,7 @@ const ManualTopics = () => {
 
   const { id } = useParams();
 
-  const manual = manuals?.find((manual) => manual.id === Number(id));
+  const manual = manuals.find((manual) => manual.id === Number(id));
 
   if (!manual) return <Navigate to="/manuals" />;
 
@@ -39,8 +39,8 @@ const ManualTopics = () => {
           },
         }}
       >
-        {manual?.topics.map((topic) => (
-          <ManualTopicsCard topic={topic} key={topic.id} />
+        {manual.topics.map((topic) => (
+          <ManualTopicsCard manual={manual} topic={topic} key={topic.id} />
         ))}
       </Box>
     </Layout>
