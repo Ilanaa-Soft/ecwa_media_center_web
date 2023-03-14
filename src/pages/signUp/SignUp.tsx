@@ -19,7 +19,7 @@ const SignUp = () => {
   const alert = useAlert();
   const navigate = useNavigate();
 
-  if (user) return <Navigate to="/" />;
+  if (user) return <Navigate to="/home" />;
 
   const handleSubmit = async (formValues: SignUpType) => {
     try {

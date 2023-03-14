@@ -11,12 +11,12 @@ const useAuth = () => {
 
   const login = (user: User) => {
     storeUser(user);
-    window.location.href = "/";
+    window.location.href = "/home";
   };
 
   const logOut = () => {
     removeUser();
-    window.location.href = "/";
+    window.location.href = "/home";
   };
 
   return { user, login, logOut };

@@ -8,7 +8,7 @@ type RequireAuthProps = {
 const RequireAuth = ({ children }: RequireAuthProps) => {
   const user = getUser();
 
-  if (!user) return <Navigate to="/login-code" replace />;
+  if (!user) return <Navigate to="/" replace />;
 
   return children;
 };

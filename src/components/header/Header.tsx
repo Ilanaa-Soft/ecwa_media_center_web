@@ -49,7 +49,7 @@ const Header = ({ title }: HeaderProps) => {
         alignItems="center"
         justifyContent="space-between"
       >
-        {pathname === "/" ? (
+        {pathname === "/home" ? (
           <Typography fontSize="20px" fontWeight="500">
             Hi, {user?.name?.split(" ")[0]}
           </Typography>
@@ -79,7 +79,7 @@ const Header = ({ title }: HeaderProps) => {
 
         <LargeScreenMenu onLogOut={handleLogOut} />
 
-        {pathname === "/" && (
+        {pathname === "/home" && (
           <SmallScreenMenu
             onLogOut={handleLogOut}
             onGoToProfile={handleGoToProfile}

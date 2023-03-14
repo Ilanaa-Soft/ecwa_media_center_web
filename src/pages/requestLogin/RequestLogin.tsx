@@ -31,7 +31,7 @@ const RequestLogin = () => {
     }
   };
 
-  if (user) return <Navigate to="/" />;
+  if (user) return <Navigate to="/home" />;
 
   return (
     <Box px={2} height="100vh" display="flex" alignItems="center">
