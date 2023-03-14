@@ -68,7 +68,7 @@ const Landing = () => {
               height: "40px",
               width: "100%",
               background: "#fff",
-              marginBottom: "16px",
+              marginBottom: "20px",
               borderRadius: "30px",
               border: "1px solid #fff",
               "&:hover": { background: "#fff" },
