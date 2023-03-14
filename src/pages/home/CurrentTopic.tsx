@@ -26,7 +26,7 @@ const CurrentTopic = ({ currentTopic, onRead }: CurrentTopicProps) => {
         textAlign="center"
         fontSize="20px"
         fontWeight="700"
-        width="270px"
+        maxWidth="270px"
       >
         {currentTopic.topic}
       </Typography>
