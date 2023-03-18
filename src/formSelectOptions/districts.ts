@@ -10,7 +10,7 @@ export const districts = [
   { value: "isanlu", label: "Isanlu" },
   { value: "lokoja", label: "Lokoja" },
   { value: "mopa", label: "Mopa" },
-  { value: "mushin", label: "Mushin" },
+  { value: "mushin", label: "Lagos West DCC" },
   { value: "odo_ere", label: "Odo-Ere" },
   { value: "omu_aran", label: "Omu-Aran" },
   { value: "oro_ago", label: "Oro-Ago" },
