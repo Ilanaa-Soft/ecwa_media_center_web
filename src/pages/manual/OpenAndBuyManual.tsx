@@ -88,7 +88,7 @@ const OpenAndBuyManual = (props: OpenAndBuyManualProps) => {
       {manual?.paid || manual?.is_free ? (
         <Box mr={2} display="inline-block">
           <Button onClick={() => handleOpenManual(manual.id)}>
-            Open Manual
+            Open
           </Button>
         </Box>
       ) : (
@@ -98,7 +98,7 @@ const OpenAndBuyManual = (props: OpenAndBuyManualProps) => {
               <Typography mb={2} fontWeight="500">
                 {currencyFormtter(price)}
               </Typography>
-              <Button onClick={handleOpenPayDialog}>Buy Manual</Button>
+              <Button onClick={handleOpenPayDialog}>Buy</Button>
             </Box>
           )}
         </>

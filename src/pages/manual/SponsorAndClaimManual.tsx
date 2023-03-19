@@ -79,7 +79,7 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
   return (
     <>
       {manual?.paid && !manual?.is_free && !manual?.sponsored ? (
-        <Button onClick={handleOpenSponsorDialog}>Sponsor People</Button>
+        <Button onClick={handleOpenSponsorDialog}>Sponsor</Button>
       ) : (
         <>
           {!manual?.paid && !manual?.is_free && manual?.sponsored && (
@@ -88,7 +88,7 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
               loading={claimIsSubmitting}
               component={LoadingButton}
             >
-              Claim Manual
+              Claim
             </Button>
           )}
         </>
