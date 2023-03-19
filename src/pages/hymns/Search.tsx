@@ -49,7 +49,7 @@ const Search = ({ search, hymns, onSearch, onPushToHymn }: SearchProps) => {
               sx={{ cursor: "pointer" }}
               onClick={() => onPushToHymn(hymn.id)}
             >
-              {hymn.title}
+              {`${hymn.number}. ${hymn.title}`}
             </Box>
           ))}
         </Box>
