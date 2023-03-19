@@ -45,6 +45,9 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
   };
 
   const handleSponsor = async () => {
+    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!isValidEmail) return;
+
     setSponsorIsSubmitting(true);
     try {
       const request = { emails: [email] };
@@ -79,7 +82,7 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
   return (
     <>
       {manual?.paid && !manual?.is_free && !manual?.sponsored ? (
-        <Button onClick={handleOpenSponsorDialog}>Sponsor</Button>
+        <Button onClick={handleOpenSponsorDialog}>Sponsor People</Button>
       ) : (
         <>
           {!manual?.paid && !manual?.is_free && manual?.sponsored && (
@@ -88,7 +91,7 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
               loading={claimIsSubmitting}
               component={LoadingButton}
             >
-              Claim
+              Claim Manual
             </Button>
           )}
         </>
