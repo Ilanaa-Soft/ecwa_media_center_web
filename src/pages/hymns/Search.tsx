@@ -29,7 +29,7 @@ const Search = ({ search, hymns, onSearch, onPushToHymn }: SearchProps) => {
           ),
         }}
       />
-      {search && (
+      {hymns.length !== 0 && (
         <Box
           px="6px"
           mt="6px"
