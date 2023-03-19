@@ -34,7 +34,7 @@ const Hymn = ({ hymn, onPushToHymn }: HymnProps) => {
         textTransform="capitalize"
         className={classes.truncate}
       >
-        {hymn.title}
+        {`${hymn.number}. ${hymn.title}`}
       </Typography>
       <Typography className={classes.truncate} textTransform="capitalize">
         {hymn.extra}
