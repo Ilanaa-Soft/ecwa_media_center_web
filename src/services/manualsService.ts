@@ -32,6 +32,14 @@ export function sponsorManual(request: SponsorManual, id: number) {
   return http.post(`${apiEndpoint}/assign/${id}`, request, headers);
 }
 
+export function getSponsors(manualId: number) {
+  return http.get(`${apiEndpoint}/recipients/${manualId}`, headers);
+}
+
+export function revokeManual(manualId: number, request: { email: string }) {
+  return http.post(`${apiEndpoint}/revoke/${manualId}`, request, headers);
+}
+
 export function claimManual(id: number) {
   return http.post(`${apiEndpoint}/claim/${id}`, {}, headers);
 }

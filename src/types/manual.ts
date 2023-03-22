@@ -34,6 +34,17 @@ export type SponsorManual = {
   emails: string[];
 };
 
+export type Sponsors = {
+  assigned_to: string;
+  claimed: number;
+  created_at: string;
+  from_user_id: number;
+  id: number;
+  reference: string;
+  reference_id: number;
+  updated_at: string;
+};
+
 export type TopicNote = {
   id: number;
   note: string;

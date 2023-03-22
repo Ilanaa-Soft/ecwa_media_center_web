@@ -86,11 +86,7 @@ const OpenAndBuyManual = (props: OpenAndBuyManualProps) => {
   return (
     <>
       {manual?.paid || manual?.is_free ? (
-        <Box mr={2} display="inline-block">
-          <Button onClick={() => handleOpenManual(manual.id)}>
-            Open Manual
-          </Button>
-        </Box>
+        <Button onClick={() => handleOpenManual(manual.id)}>Open Manual</Button>
       ) : (
         <>
           {!manual?.paid && !manual?.is_free && !manual?.sponsored && (
