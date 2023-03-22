@@ -39,7 +39,7 @@ type PayDialogProps = {
   onClose: () => void;
   onHasPayMethod: (value: boolean) => void;
   onHasMobileNumber: (value: boolean) => void;
-  onAccount: (account: Account) => void;
+  onAccountChange: (account: Account) => void;
   onAccountLoading: (value: boolean) => void;
   onBalanceLoading: (value: boolean) => void;
   onLowBalance: (value: boolean) => void;
@@ -64,7 +64,7 @@ const PayDialog = ({
   onClose,
   onHasPayMethod,
   onHasMobileNumber,
-  onAccount,
+  onAccountChange,
   onLowBalance,
   onAccountLoading,
   onBalanceLoading,
@@ -111,7 +111,7 @@ const PayDialog = ({
 
       try {
         const { data } = await createAccount();
-        onAccount(data);
+        onAccountChange(data);
       } catch (ex) {}
 
       onAccountLoading(true);
