@@ -36,10 +36,11 @@ const SignUp = () => {
   };
 
   return (
-    <Box px={2} my={4} display="flex">
+    <Box px={2} display="flex">
       <Grid
         px={2}
         py={4}
+        my={4}
         container
         mx="auto"
         maxWidth={400}
