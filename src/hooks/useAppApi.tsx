@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import AppContext from "../state/context";
-import { getUser } from "../auth/storage";
+import { getUser, setStorageState } from "../auth/storage";
 import { getAllManuals, getUnPaidManuals } from "../services/manualsService";
 import { getAllHymns } from "../services/hymnsService";
 import { getDashboard } from "../services/userService";
@@ -30,6 +30,7 @@ const useAppApi = () => {
       const { data: dashboard } = responses[3];
 
       const manuals = [...allManuals, ...unPaidManuals];
+      setStorageState({ manuals, hymns, dashboard });
       dispatch({
         type: "SET_INITIAL_STATE",
         payload: { user, manuals, hymns, dashboard },

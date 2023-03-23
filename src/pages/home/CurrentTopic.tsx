@@ -28,7 +28,7 @@ const CurrentTopic = ({ currentTopic, onRead }: CurrentTopicProps) => {
         fontWeight="700"
         maxWidth="270px"
       >
-        {currentTopic.topic}
+        {currentTopic?.topic}
       </Typography>
       <Typography component="h3" mb="18px">
         {dateFormatter(new Date())}

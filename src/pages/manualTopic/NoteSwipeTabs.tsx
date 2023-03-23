@@ -39,6 +39,8 @@ const NoteSwipeTabs = (props: NoteSwipeTabsProps) => {
     onTryAgain,
   } = props;
 
+  const isOnline = navigator.onLine;
+
   const handleTabChange = (e: React.SyntheticEvent, newValue: number) => {
     onTabChange(newValue);
   };
@@ -64,7 +66,7 @@ const NoteSwipeTabs = (props: NoteSwipeTabsProps) => {
           <Loading text="Please wait while we load your notes" />
         ) : (
           <>
-            {hasError ? (
+            {hasError && isOnline ? (
               <Error onTryAgain={onTryAgain} />
             ) : (
               <Notes onRead={onRead} notes={notes} />

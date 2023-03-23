@@ -16,9 +16,9 @@ const Progress = ({ progress }: ProgressProps) => {
       sx={{ display: { xs: "flex", md: "none" } }}
     >
       <Typography>
-        You're on week {progress.read_topics} of {progress.current_week}
+        You're on week {progress?.read_topics} of {progress?.current_week}
       </Typography>
-      <Badge label={progress.percentage} />
+      <Badge label={progress?.percentage} />
     </Box>
   );
 };
