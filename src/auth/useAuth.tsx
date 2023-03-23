@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import AppContext from "../state/context";
-import { storeUser, clearStorage } from "./storage";
+import { setStoreUser, clearStorage } from "./storage";
 import { User } from "../types";
 
 const useAuth = () => {
@@ -10,7 +10,7 @@ const useAuth = () => {
   } = React.useContext(AppContext);
 
   const login = (user: User) => {
-    storeUser(user);
+    setStoreUser(user);
     window.location.href = "/home";
   };
 

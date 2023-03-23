@@ -6,7 +6,7 @@ import ProfileForm from "./ProfileForm";
 import ProfileInfo from "./ProfileInfo";
 import toastExpectedError from "../../utils/toastExpectedError";
 import { updateUser } from "../../services/userService";
-import { storeUser } from "../../auth/storage";
+import { setStoreUser } from "../../auth/storage";
 import { UserProfile } from "../../types";
 
 const Profile = () => {
@@ -23,7 +23,7 @@ const Profile = () => {
     try {
       const { data: updatedUser } = await updateUser(request);
 
-      storeUser(updatedUser);
+      setStoreUser(updatedUser);
       dispatch({ type: "SET_USER", payload: updatedUser });
       setEdit(false);
     } catch (ex) {

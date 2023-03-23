@@ -6,7 +6,7 @@ type StorageState = {
   dashboard: Dashboard;
 };
 
-export const storeUser = (user: User) => {
+export const setStoreUser = (user: User) => {
   const userStr = JSON.stringify(user);
   localStorage.setItem("user", userStr);
 };
