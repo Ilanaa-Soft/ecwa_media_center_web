@@ -16,7 +16,7 @@ const useAuth = () => {
 
   const logOut = () => {
     clearStorage();
-    window.location.href = "/home";
+    window.location.href = "/";
   };
 
   return { user, login, logOut };
