@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import AppContext from "../state/context";
-import { storeUser, removeUser } from "./storage";
+import { storeUser, clearStorage } from "./storage";
 import { User } from "../types";
 
 const useAuth = () => {
@@ -15,7 +15,7 @@ const useAuth = () => {
   };
 
   const logOut = () => {
-    removeUser();
+    clearStorage();
     window.location.href = "/home";
   };
 

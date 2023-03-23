@@ -41,7 +41,7 @@ export const updateStorageManuals = (manuals: Manual[]) => {
   }
 };
 
-export const removeUser = () => {
+export const clearStorage = () => {
   localStorage.removeItem("user");
   localStorage.removeItem("state");
 };
