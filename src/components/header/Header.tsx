@@ -39,7 +39,7 @@ const Header = ({ title }: HeaderProps) => {
         marginBottom: { xs: 3, md: 4 },
         height: { xs: "60px", sm: "auto" },
       }}
-      boxShadow="1px 2px 4px rgba(214, 217, 223, .5)"
+      boxShadow="0px 3px 3px -2px rgba(0,0,0,0.2)"
     >
       <Box
         display="flex"
