@@ -58,7 +58,7 @@ const Landing = () => {
                 Ecwa Media Center
               </Typography>
               <Typography maxWidth="250px">
-                Get inspiring content to assist you getting closer to Christ
+                Get inspiring content to assist you in getting closer to Christ
               </Typography>
             </Box>
           </Box>
