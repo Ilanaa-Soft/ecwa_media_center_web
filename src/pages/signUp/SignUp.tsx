@@ -5,7 +5,7 @@ import { useAlert } from "react-alert";
 import TextInput from "../../components/TextInput";
 import SubmitButton from "../../components/SubmitButton";
 import Form from "../../components/Form";
-import { getUser } from "../../auth/storage";
+import { getStorageUser } from "../../auth/storage";
 import { signUp } from "../../services/authService";
 import districts from "../../formSelectOptions/districts";
 import languages from "../../formSelectOptions/languages";
@@ -15,7 +15,7 @@ import logo from "../../assets/ecwalogo.png";
 import { SignUp as SignUpType } from "../../types";
 
 const SignUp = () => {
-  const user = getUser();
+  const user = getStorageUser();
   const alert = useAlert();
   const navigate = useNavigate();
 

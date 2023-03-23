@@ -10,7 +10,7 @@ import { Navigation } from "./navigation";
 import Loading from "./components/Loading";
 import Error from "./components/Error";
 import RouteScrollToTop from "./components/RouteScrollToTop";
-import { getUser, getStorageState } from "./auth/storage";
+import { getStorageUser, getStorageState } from "./auth/storage";
 import useAppApi from "./hooks/useAppApi";
 import theme from "./theme/theme";
 
@@ -19,7 +19,7 @@ const alertOptions = {
 };
 
 function App() {
-  const user = getUser();
+  const user = getStorageUser();
   const storageState = getStorageState();
   const { dispatch } = React.useContext(AppContext);
   const isMountedRef = React.useRef(false);

@@ -11,7 +11,7 @@ export const setStoreUser = (user: User) => {
   localStorage.setItem("user", userStr);
 };
 
-export const getUser = () => {
+export const getStorageUser = () => {
   const userStr = localStorage.getItem("user");
 
   if (!userStr) return null;

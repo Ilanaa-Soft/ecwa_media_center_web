@@ -7,7 +7,7 @@ import Form from "../../components/Form";
 import logo from "../../assets/ecwalogo.png";
 import { loginWithCode } from "../../services/authService";
 import useAuth from "../../auth/useAuth";
-import { getUser } from "../../auth/storage";
+import { getStorageUser } from "../../auth/storage";
 import toastExpectedError from "../../utils/toastExpectedError";
 import loginSchema from "../../formSchemas/loginSchema";
 
@@ -18,7 +18,7 @@ type FormValues = {
 const Login = () => {
   const { state: email } = useLocation();
   const { login } = useAuth();
-  const user = getUser();
+  const user = getStorageUser();
 
   const handleSubmit = async (formValues: FormValues) => {
     try {

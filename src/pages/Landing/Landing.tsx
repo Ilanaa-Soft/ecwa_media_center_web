@@ -1,12 +1,12 @@
 import { Box, Typography, Button } from "@mui/material";
 import { useNavigate, Navigate } from "react-router-dom";
 
-import { getUser } from "../../auth/storage";
+import { getStorageUser } from "../../auth/storage";
 import logo from "../../assets/ecwalogo.png";
 import landingImg from "../../assets/landing.jpg";
 
 const Landing = () => {
-  const user = getUser();
+  const user = getStorageUser();
   const navigate = useNavigate();
 
   const handleGoToSignUp = () => navigate("/sign-up");

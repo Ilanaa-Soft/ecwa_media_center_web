@@ -7,7 +7,7 @@ import SubmitButton from "../../components/SubmitButton";
 import Form from "../../components/Form";
 import logo from "../../assets/ecwalogo.png";
 import { requestLoginCode } from "../../services/authService";
-import { getUser } from "../../auth/storage";
+import { getStorageUser } from "../../auth/storage";
 import requestLoginSchema from "../../formSchemas/requestLoginSchema";
 import toastExpectedError from "../../utils/toastExpectedError";
 import { RequestLoginCode } from "../../types";
@@ -15,7 +15,7 @@ import { RequestLoginCode } from "../../types";
 const RequestLogin = () => {
   const navigate = useNavigate();
   const alert = useAlert();
-  const user = getUser();
+  const user = getStorageUser();
 
   const handleSubmit = async (formValues: RequestLoginCode) => {
     try {
