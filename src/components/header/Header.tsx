@@ -36,10 +36,10 @@ const Header = ({ title }: HeaderProps) => {
       position="sticky"
       sx={{
         background: "#fff",
-        marginBottom: { xs: 3, md: 5 },
+        marginBottom: { xs: 3, md: 4 },
         height: { xs: "60px", sm: "auto" },
       }}
-      boxShadow="1px 2px 4px rgba(214, 217, 223, .5)"
+      boxShadow="0px 3px 3px -2px rgba(0,0,0,0.2)"
     >
       <Box
         display="flex"
@@ -49,7 +49,7 @@ const Header = ({ title }: HeaderProps) => {
         alignItems="center"
         justifyContent="space-between"
       >
-        {pathname === "/" ? (
+        {pathname === "/home" ? (
           <Typography fontSize="20px" fontWeight="500">
             Hi, {user?.name?.split(" ")[0]}
           </Typography>
@@ -79,7 +79,7 @@ const Header = ({ title }: HeaderProps) => {
 
         <LargeScreenMenu onLogOut={handleLogOut} />
 
-        {pathname === "/" && (
+        {pathname === "/home" && (
           <SmallScreenMenu
             onLogOut={handleLogOut}
             onGoToProfile={handleGoToProfile}

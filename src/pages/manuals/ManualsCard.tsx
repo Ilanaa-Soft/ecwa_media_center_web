@@ -32,14 +32,10 @@ const ManualsCard = ({ manual, imgName }: ManualsCardProps) => {
         <Typography fontSize="18px" fontWeight="500" component="h3">
           {manual.name}
         </Typography>
-        <Typography fontSize="18px">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
-          nisi autem reiciendis dignissimos neque a, sunt modi quos tenetur
-          beatae facere dolore quam obcaecati exercitationem totam voluptatem
-          hic eius? Necessitatibus.
-        </Typography>
+        <Typography fontSize="18px">{manual.summary}</Typography>
       </CardContent>
     </Card>
   );
 };
+
 export default ManualsCard;

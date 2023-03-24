@@ -27,14 +27,14 @@ const WeeklyDose = ({ currentTopic }: WeeklyDoseProps) => {
             Weekly Dose
           </Typography>
           <Typography component="h3" fontSize="15px" fontWeight="400">
-            {currentTopic.bible_text}
+            {currentTopic?.bible_text}
           </Typography>
         </Box>
 
         <Event sx={{ fontSize: 40, color: "#46bd84" }} />
       </Box>
       <Typography pt="16px" textAlign="center">
-        {currentTopic.aim}
+        {currentTopic?.aim}
       </Typography>
     </Box>
   );

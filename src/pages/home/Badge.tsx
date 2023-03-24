@@ -19,7 +19,7 @@ const Badge = ({ label }: BadgeProps) => {
       fontWeight="600"
       sx={{ background: "#46bd84" }}
     >
-      {label.toFixed(2)}%
+      {label?.toFixed(2)}%
     </Box>
   );
 };

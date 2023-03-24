@@ -40,10 +40,7 @@ const ManualDetails = (props: ManualDetailsProps) => {
             Summary
           </Typography>
           <Typography fontSize="18px" mb={1}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
-            nisi autem reiciendis dignissimos neque a, sunt modi quos tenetur
-            beatae facere dolore quam obcaecati exercitationem totam voluptatem
-            hic eius? Necessitatibus.
+            {manual.summary}
           </Typography>
 
           <OpenAndBuyManual

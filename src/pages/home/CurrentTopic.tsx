@@ -26,9 +26,9 @@ const CurrentTopic = ({ currentTopic, onRead }: CurrentTopicProps) => {
         textAlign="center"
         fontSize="20px"
         fontWeight="700"
-        width="270px"
+        maxWidth="270px"
       >
-        {currentTopic.topic}
+        {currentTopic?.topic}
       </Typography>
       <Typography component="h3" mb="18px">
         {dateFormatter(new Date())}

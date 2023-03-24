@@ -28,7 +28,6 @@ const Manual = () => {
   const relatedManuals = manuals?.filter((manual) => manual.id !== Number(id));
 
   if (!manual) return <Navigate to="/manuals" />;
-
   return (
     <Layout title="Manual Cover">
       {!manualPayInfo ? (

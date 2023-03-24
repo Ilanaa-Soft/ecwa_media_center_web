@@ -6,7 +6,7 @@ type LargeScreenMenuProp = {
 };
 
 const navItems = [
-  { label: "Home", path: "/" },
+  { label: "Home", path: "/home" },
   { label: "Hymns", path: "/hymns" },
   { label: "Manuals", path: "/manuals" },
   { label: "Profile", path: "/profile" },

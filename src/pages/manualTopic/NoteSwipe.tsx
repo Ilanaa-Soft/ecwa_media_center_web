@@ -41,9 +41,9 @@ const NoteSwipe = ({ topicId }: NoteSwipeProps) => {
     if (newValue === 1) request();
   };
 
-  const handleSave = async (newNote: string) => {
-    const request = { note: newNote, sunday_school_topic_id: topicId };
-    try {
+  const handleSave = async (note: string) => {
+     try {
+      const request = { note, sunday_school_topic_id: topicId };
       if (!editNote) await saveNote(request);
       else {
         await updateNote(request, editNote.id);
