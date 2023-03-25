@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 
+import { Landing } from "../pages/Landing";
 import { Home } from "../pages/home";
 import { SignUp } from "../pages/signUp";
 import { RequestLogin } from "../pages/requestLogin";
@@ -16,11 +17,12 @@ import RequireAuth from "../components/RequireAuth";
 const Navigation = () => {
   return (
     <Routes>
+      <Route path="/" element={<Landing />} />
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/login-code" element={<RequestLogin />} />
       <Route path="/login" element={<Login />} />
       <Route
-        path="/"
+        path="/home"
         element={
           <RequireAuth>
             <Home />

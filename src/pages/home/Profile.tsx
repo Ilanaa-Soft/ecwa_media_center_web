@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 
 import Badge from "./Badge";
 import Calendar from "../../components/Calendar";
-import defaultUser from "../../assets/user.webp";
+import defaultUser from "../../assets/user.jpg";
 import { User, UserParticipation } from "../../types";
 
 type ProfileProps = {
@@ -25,11 +25,17 @@ const Profile = ({ user, progress }: ProfileProps) => {
       }}
     >
       <Box>
-        <Box component="img" width="120px" height="120px" src={defaultUser} />
+        <Box
+          component="img"
+          width="120px"
+          height="120px"
+          src={defaultUser}
+          alt="profile image"
+        />
         <Typography mt="4px" textAlign="center" lineHeight="1.2">
-          {user.name}
+          {user?.name}
         </Typography>
-        <Typography textAlign="center">{user.email}</Typography>
+        <Typography textAlign="center">{user?.email}</Typography>
       </Box>
       <Box
         my="12px"
@@ -38,9 +44,9 @@ const Profile = ({ user, progress }: ProfileProps) => {
         alignItems="center"
       >
         <Typography>
-          You're on week {progress.read_topics} of {progress.current_week}
+          You're on week {progress?.read_topics} of {progress?.current_week}
         </Typography>
-        <Badge label={progress.percentage} />
+        <Badge label={progress?.percentage} />
       </Box>
       <Calendar />
     </Box>

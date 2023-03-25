@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import { updateStorageManuals } from "../auth/storage";
 import { savePayment } from "../services/manualsService";
 import { getAllManuals, getUnPaidManuals } from "../services/manualsService";
 import { Manual, ManualPayInfo } from "../types";
@@ -21,7 +22,9 @@ const usePaySuccessApi = (
       const { data: allManuals } = await getAllManuals();
       const { data: unPaidManuals } = await getUnPaidManuals();
 
-      updateManuals([...allManuals, ...unPaidManuals]);
+      const manuals = [...allManuals, ...unPaidManuals];
+      updateStorageManuals(manuals)
+      updateManuals(manuals);
     } catch (ex) {
       setError(true);
     }

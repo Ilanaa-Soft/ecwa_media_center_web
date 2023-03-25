@@ -24,11 +24,11 @@ const ManualDetails = (props: ManualDetailsProps) => {
         <Box display="flex" alignItems="center">
           <Box
             component="img"
-            alt="Ecwa Logo"
             width="100%"
             height="250px"
             borderRadius="4px"
-            src={`/sundayschool/banner5.jpg`}
+            src={`/sundayschool/banner${manual.id}.jpg`}
+            alt={`${manual?.year} ${manual?.language} ${manual?.name}`}
           />
         </Box>
 
@@ -40,10 +40,7 @@ const ManualDetails = (props: ManualDetailsProps) => {
             Summary
           </Typography>
           <Typography fontSize="18px" mb={1}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
-            nisi autem reiciendis dignissimos neque a, sunt modi quos tenetur
-            beatae facere dolore quam obcaecati exercitationem totam voluptatem
-            hic eius? Necessitatibus.
+            {manual.summary}
           </Typography>
 
           <OpenAndBuyManual

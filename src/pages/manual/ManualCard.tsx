@@ -5,10 +5,9 @@ import { Manual } from "../../types";
 
 type ManualCardProps = {
   manual: Manual;
-  imgName: string;
 };
 
-const ManualCard = ({ manual, imgName }: ManualCardProps) => {
+const ManualCard = ({ manual }: ManualCardProps) => {
   const navigate = useNavigate();
 
   const handleClick = (id: number) => {
@@ -24,7 +23,10 @@ const ManualCard = ({ manual, imgName }: ManualCardProps) => {
       }}
       onClick={() => handleClick(manual.id)}
     >
-      <CardMedia sx={{ height: 240 }} image={`/sundayschool/${imgName}.jpg`} />
+      <CardMedia
+        sx={{ height: 240 }}
+        image={`/sundayschool/banner${manual.id}.jpg`}
+      />
       <CardContent>
         <Typography mb="4px" fontSize="20px" fontWeight="600" component="h3">
           {`${manual.year} ${manual.language}`}
@@ -32,14 +34,10 @@ const ManualCard = ({ manual, imgName }: ManualCardProps) => {
         <Typography fontSize="18px" fontWeight="500" component="h4">
           {manual.name}
         </Typography>
-        <Typography fontSize="18px">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
-          nisi autem reiciendis dignissimos neque a, sunt modi quos tenetur
-          beatae facere dolore quam obcaecati exercitationem totam voluptatem
-          hic eius? Necessitatibus.
-        </Typography>
+        <Typography fontSize="18px">{manual.summary}</Typography>
       </CardContent>
     </Card>
   );
 };
+
 export default ManualCard;

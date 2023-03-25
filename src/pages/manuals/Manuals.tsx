@@ -18,11 +18,7 @@ const Manuals = () => {
         gap={4}
       >
         {manuals?.map((manual, i) => (
-          <ManualsCard
-            manual={manual}
-            key={manual.id}
-            imgName={`banner${i + 1}`}
-          />
+          <ManualsCard key={manual.id} manual={manual} />
         ))}
       </Box>
     </Layout>

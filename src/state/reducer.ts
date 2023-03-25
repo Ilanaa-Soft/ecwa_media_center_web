@@ -1,4 +1,21 @@
-import { AppActionTypes, AppState } from "../types";
+import { Hymn } from "../types/hymn";
+import { Manual, ManualPayInfo } from "../types/manual";
+import { Dashboard, User } from "../types/user";
+
+export type AppState = {
+  user: User;
+  hymns: Hymn[];
+  manuals: Manual[];
+  manualPayInfo?: ManualPayInfo | null;
+  dashboard: Dashboard;
+};
+
+export type AppActionTypes =
+  | { type: "SET_MANUALS"; payload: Manual[] }
+  | { type: "SET_USER"; payload: User }
+  | { type: "SET_INITIAL_STATE"; payload: AppState }
+  | { type: "SET_MANUAL_PAYMENT"; payload: ManualPayInfo }
+  | { type: "SET_DASHBOARD"; payload: Dashboard };
 
 const reducer = (state: AppState, action: AppActionTypes) => {
   switch (action.type) {
@@ -28,6 +45,12 @@ const reducer = (state: AppState, action: AppActionTypes) => {
       return {
         ...state,
         manualPayInfo: action.payload,
+      };
+
+    case "SET_DASHBOARD":
+      return {
+        ...state,
+        dashboard: action.payload,
       };
 
     default:

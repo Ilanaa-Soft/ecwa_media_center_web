@@ -67,7 +67,7 @@ const OpenAndBuyManual = (props: OpenAndBuyManualProps) => {
     setHasMobileNumber(value);
   };
 
-  const handleAccount = (account: Account) => {
+  const handleAccountChange = (account: Account) => {
     setAccount(account);
   };
 
@@ -86,11 +86,7 @@ const OpenAndBuyManual = (props: OpenAndBuyManualProps) => {
   return (
     <>
       {manual?.paid || manual?.is_free ? (
-        <Box mr={2} display="inline-block">
-          <Button onClick={() => handleOpenManual(manual.id)}>
-            Open Manual
-          </Button>
-        </Box>
+        <Button onClick={() => handleOpenManual(manual.id)}>Open Manual</Button>
       ) : (
         <>
           {!manual?.paid && !manual?.is_free && !manual?.sponsored && (
@@ -120,7 +116,7 @@ const OpenAndBuyManual = (props: OpenAndBuyManualProps) => {
         onClose={handleClosePayDialog}
         onHasPayMethod={handleHasPayMethod}
         onHasMobileNumber={handleHasMobileNumber}
-        onAccount={handleAccount}
+        onAccountChange={handleAccountChange}
         onLowBalance={handleLowBalance}
         onAccountLoading={handleAccountLoading}
         onBalanceLoading={handleBalanceLoading}

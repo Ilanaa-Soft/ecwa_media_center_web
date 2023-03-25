@@ -31,7 +31,7 @@ const Home = () => {
       const { topics } = manual;
       const topic = topics.find((topic) => topic.id === currentTopic.id);
       if (!topic) return;
-      navigate(`/manual-topic`, { state: topic });
+      navigate(`/manual-topic`, { state: { manual, topic } });
     } else navigate(`/manuals/${manual.id}`);
   };
 

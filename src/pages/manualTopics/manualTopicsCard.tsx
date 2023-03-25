@@ -1,17 +1,18 @@
 import { CardContent, Typography, Card } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-import { ManualTopic } from "../../types";
+import { Manual, ManualTopic } from "../../types";
 
 type ManualTopicsCardProps = {
+  manual: Manual;
   topic: ManualTopic;
 };
 
-const ManualTopicsCard = ({ topic }: ManualTopicsCardProps) => {
+const ManualTopicsCard = ({ manual, topic }: ManualTopicsCardProps) => {
   const navigate = useNavigate();
 
   const handleClick = (topic: ManualTopic) => {
-    navigate(`/manual-topic`, { state: topic });
+    navigate(`/manual-topic`, { state: { manual, topic } });
   };
 
   return (

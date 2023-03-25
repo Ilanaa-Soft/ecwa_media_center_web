@@ -25,11 +25,7 @@ const RelatedManuals = ({ relatedManuals }: RelatedManualsProps) => {
         }}
       >
         {relatedManuals.map((manual, i) => (
-          <ManualCard
-            manual={manual}
-            key={manual.id}
-            imgName={`banner${i + 1}`}
-          />
+          <ManualCard key={manual.id} manual={manual} />
         ))}
       </Box>
     </Box>

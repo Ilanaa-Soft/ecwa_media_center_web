@@ -9,7 +9,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const getPageValue = (route: string) => {
   switch (route) {
-    case "/":
+    case "/home":
       return "Home";
     case "/hymns":
       return "Hymns";
@@ -21,7 +21,7 @@ const getPageValue = (route: string) => {
 };
 
 const navItems = [
-  { label: "Home", path: "/", icon: <HouseRounded /> },
+  { label: "Home", path: "/home", icon: <HouseRounded /> },
   {
     label: "Hymns",
     path: "/hymns",

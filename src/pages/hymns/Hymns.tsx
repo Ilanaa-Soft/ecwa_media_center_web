@@ -34,9 +34,14 @@ const Hymns = () => {
   const hymns = allHymns.filter((hymn) => hymn.language === category);
 
   if (search) {
-    searchHymns = hymns.filter((hymn) =>
-      hymn.title.toLowerCase().includes(search.toLowerCase())
-    );
+    const searchNumber = Number(search);
+
+    searchHymns = hymns.filter((hymn) => {
+      if (isNaN(searchNumber))
+        return hymn.title.toLowerCase().includes(search.toLowerCase());
+
+      return hymn.number.toString().includes(search);
+    });
   }
 
   return (
