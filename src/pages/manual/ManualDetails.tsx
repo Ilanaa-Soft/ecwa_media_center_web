@@ -24,11 +24,11 @@ const ManualDetails = (props: ManualDetailsProps) => {
         <Box display="flex" alignItems="center">
           <Box
             component="img"
-            alt="Ecwa Logo"
             width="100%"
             height="250px"
             borderRadius="4px"
             src={`/sundayschool/banner5.jpg`}
+            alt={`${manual?.year} ${manual?.language} ${manual?.name}`}
           />
         </Box>
 

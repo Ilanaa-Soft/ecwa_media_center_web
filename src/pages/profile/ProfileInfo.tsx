@@ -24,7 +24,13 @@ const ProfileInfo = ({ user, onEdit }: ProfileInfoProps) => {
             <EditRounded sx={{ fontSize: "30px" }} />
           </IconButton>
         </Box>
-        <Box component="img" width="120px" height="120px" src={defaultUser} />
+        <Box
+          component="img"
+          width="120px"
+          height="120px"
+          src={defaultUser}
+          alt="profile image"
+        />
         <Typography
           mt="4px"
           fontSize="20px"

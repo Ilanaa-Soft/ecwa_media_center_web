@@ -37,4 +37,5 @@ const ManualCard = ({ manual, imgName }: ManualCardProps) => {
     </Card>
   );
 };
+
 export default ManualCard;
