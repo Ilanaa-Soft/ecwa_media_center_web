@@ -11,14 +11,14 @@ const NoteSwipeOpenButton = ({ onToggle }: NoteSwipeOpenButtonProps) => {
   return (
     <IconButton
       sx={{
-        height: "60px",
-        width: "60px",
-        position: "fixed",
-        bottom: "80px",
-        right: "30px",
-        background: "#1976d2",
+        right: "20px",
         color: "#fff",
         opacity: "1",
+        position: "fixed",
+        background: "#1976d2",
+        height: { xs: "60px", sm: "50px" },
+        width: { xs: "60px", sm: "50px" },
+        bottom: { xs: "76px", sm: "20px" },
         "&:hover": {
           background: "#1565c0",
         },
