@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 
 import Badge from "./Badge";
 import Calendar from "../../components/Calendar";
-import defaultUser from "../../assets/user.webp";
+import defaultUser from "../../assets/user.jpg";
 import { User, UserParticipation } from "../../types";
 
 type ProfileProps = {
