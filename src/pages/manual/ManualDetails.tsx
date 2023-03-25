@@ -27,7 +27,7 @@ const ManualDetails = (props: ManualDetailsProps) => {
             width="100%"
             height="250px"
             borderRadius="4px"
-            src={`/sundayschool/banner5.jpg`}
+            src={`/sundayschool/banner${manual.id}.jpg`}
             alt={`${manual?.year} ${manual?.language} ${manual?.name}`}
           />
         </Box>
