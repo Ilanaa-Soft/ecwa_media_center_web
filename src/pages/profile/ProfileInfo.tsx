@@ -62,15 +62,15 @@ const ProfileInfo = ({ user, onEdit }: ProfileInfoProps) => {
         </Box>
         <Box>
           <Typography fontWeight="500">Phone Number:</Typography>
-          <Typography>{user?.app_user.mobile}</Typography>
+          <Typography>{user?.app_user?.mobile}</Typography>
         </Box>
         <Box>
           <Typography fontWeight="500">District:</Typography>
-          <Typography>{user?.app_user.dcc}</Typography>
+          <Typography>{user?.app_user?.dcc}</Typography>
         </Box>
         <Box>
           <Typography fontWeight="500">Local Church Board:</Typography>
-          <Typography>{user?.app_user.lcb}</Typography>
+          <Typography>{user?.app_user?.lcb}</Typography>
         </Box>
       </Box>
     </Box>
