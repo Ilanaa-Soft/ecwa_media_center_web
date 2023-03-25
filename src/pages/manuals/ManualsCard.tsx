@@ -5,10 +5,9 @@ import { Manual } from "../../types";
 
 type ManualsCardProps = {
   manual: Manual;
-  imgName: string;
 };
 
-const ManualsCard = ({ manual, imgName }: ManualsCardProps) => {
+const ManualsCard = ({ manual }: ManualsCardProps) => {
   const navigate = useNavigate();
 
   const handleClick = (id: number) => {
@@ -24,7 +23,10 @@ const ManualsCard = ({ manual, imgName }: ManualsCardProps) => {
       }}
       onClick={() => handleClick(manual.id)}
     >
-      <CardMedia sx={{ height: 240 }} image={`/sundayschool/${imgName}.jpg`} />
+      <CardMedia
+        sx={{ height: 240 }}
+        image={`/sundayschool/banner${manual.id}.jpg`}
+      />
       <CardContent>
         <Typography fontSize="24px" mb="4px" fontWeight="600" component="h2">
           {`${manual.year} ${manual.language}`}

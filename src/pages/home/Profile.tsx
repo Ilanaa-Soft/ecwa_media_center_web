@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 
 import Badge from "./Badge";
 import Calendar from "../../components/Calendar";
-import defaultUser from "../../assets/user.webp";
+import defaultUser from "../../assets/user.jpg";
 import { User, UserParticipation } from "../../types";
 
 type ProfileProps = {
@@ -25,7 +25,13 @@ const Profile = ({ user, progress }: ProfileProps) => {
       }}
     >
       <Box>
-        <Box component="img" width="120px" height="120px" src={defaultUser} />
+        <Box
+          component="img"
+          width="120px"
+          height="120px"
+          src={defaultUser}
+          alt="profile image"
+        />
         <Typography mt="4px" textAlign="center" lineHeight="1.2">
           {user?.name}
         </Typography>

@@ -1,7 +1,7 @@
 import { Box, Typography, IconButton } from "@mui/material";
 import { EditRounded } from "@mui/icons-material";
 
-import defaultUser from "../../assets/user.webp";
+import defaultUser from "../../assets/user.jpg";
 import { User } from "../../types";
 
 type ProfileInfoProps = {
@@ -24,7 +24,13 @@ const ProfileInfo = ({ user, onEdit }: ProfileInfoProps) => {
             <EditRounded sx={{ fontSize: "30px" }} />
           </IconButton>
         </Box>
-        <Box component="img" width="120px" height="120px" src={defaultUser} />
+        <Box
+          component="img"
+          width="120px"
+          height="120px"
+          src={defaultUser}
+          alt="profile image"
+        />
         <Typography
           mt="4px"
           fontSize="20px"
@@ -56,15 +62,15 @@ const ProfileInfo = ({ user, onEdit }: ProfileInfoProps) => {
         </Box>
         <Box>
           <Typography fontWeight="500">Phone Number:</Typography>
-          <Typography>{user?.app_user.mobile}</Typography>
+          <Typography>{user?.app_user?.mobile}</Typography>
         </Box>
         <Box>
           <Typography fontWeight="500">District:</Typography>
-          <Typography>{user?.app_user.dcc}</Typography>
+          <Typography>{user?.app_user?.dcc}</Typography>
         </Box>
         <Box>
           <Typography fontWeight="500">Local Church Board:</Typography>
-          <Typography>{user?.app_user.lcb}</Typography>
+          <Typography>{user?.app_user?.lcb}</Typography>
         </Box>
       </Box>
     </Box>
