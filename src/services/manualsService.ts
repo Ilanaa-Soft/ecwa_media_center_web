@@ -36,8 +36,8 @@ export function savePayment(request: ManualPayInfo) {
   return http.post(`${apiEndpoint}/pay`, request, headers);
 }
 
-export function sponsorManual(request: SponsorManual, id: number) {
-  return http.post(`${apiEndpoint}/assign/${id}`, request, headers);
+export function sponsorManual(request: SponsorManual, manualId: number) {
+  return http.post(`${apiEndpoint}/assign/${manualId}`, request, headers);
 }
 
 export function getSponsors(manualId: number) {
@@ -48,8 +48,8 @@ export function revokeManual(manualId: number, request: { email: string }) {
   return http.post(`${apiEndpoint}/revoke/${manualId}`, request, headers);
 }
 
-export function claimManual(id: number) {
-  return http.post(`${apiEndpoint}/claim/${id}`, {}, headers);
+export function claimManual(manualId: number) {
+  return http.post(`${apiEndpoint}/claim/${manualId}`, {}, headers);
 }
 
 export function markTopicAsRead(topicId: number) {
