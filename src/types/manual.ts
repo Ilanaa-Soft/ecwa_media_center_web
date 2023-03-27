@@ -23,6 +23,15 @@ export type ManualTopic = {
   manual_id: number;
 };
 
+export type UserManual = {
+  id: number;
+  user_id: number;
+  manual_id: number;
+  copy: number;
+  created_at: string;
+  updated_at: string;
+};
+
 export type ManualPayInfo = {
   reference: string;
   amount: number;

@@ -2,6 +2,7 @@ import http from "./httpService";
 import { getHeaders } from "./authService";
 import {
   Manual,
+  UserManual,
   ManualPayInfo,
   SponsorManual,
   TopicNote,
@@ -22,6 +23,13 @@ export function getUnPaidManuals() {
 
 export function getManualsCategories() {
   return http.get(`${apiEndpoint}/categories`, headers);
+}
+
+export function getUserManual(manualId: number) {
+  return http.get<UserManual>(
+    `${apiEndpoint}/user-manual/${manualId}`,
+    headers
+  );
 }
 
 export function savePayment(request: ManualPayInfo) {

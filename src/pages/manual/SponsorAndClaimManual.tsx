@@ -13,6 +13,7 @@ import {
   getUnPaidManuals,
   getSponsors,
   revokeManual,
+  getUserManual,
 } from "../../services/manualsService";
 import { Manual, Sponsors } from "../../types";
 
@@ -36,9 +37,18 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
   );
   const [claimIsSubmitting, setClaimIsSubmitting] = React.useState(false);
   const [claimDialogOpen, setClaimDialogOpen] = React.useState(false);
+  const [userManualLoading, setUserManualLoading] = React.useState(false);
+  const [numOfCopies, setNumOfCopies] = React.useState(0);
 
-  const handleOpenSponsorDialog = () => {
-    setSponsorDialogOpen(true);
+  const handleOpenSponsorDialog = async () => {
+    try {
+      setUserManualLoading(true);
+      const { data } = await getUserManual(manual.id);
+
+      setNumOfCopies(data.copy);
+      setSponsorDialogOpen(true);
+    } catch (ex) {}
+    setUserManualLoading(false);
   };
 
   const handleCloseSponsorDialog = () => {
@@ -118,7 +128,13 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
     <>
       {manual?.paid && !manual?.is_free && !manual?.sponsored ? (
         <>
-          <Button onClick={handleOpenSponsorDialog}>Sponsor People</Button>
+          <Button
+            onClick={handleOpenSponsorDialog}
+            loading={userManualLoading}
+            component={LoadingButton}
+          >
+            Sponsor People
+          </Button>
           <Button
             onClick={handleGetSponsors}
             loading={gettingSponsors}
@@ -144,6 +160,7 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
       <SponsorDialog
         email={email}
         manual={manual}
+        numOfCopies={numOfCopies}
         open={sponsorDialogOpen}
         onSponsor={handleSponsor}
         isSubmitting={sponsorIsSubmitting}
