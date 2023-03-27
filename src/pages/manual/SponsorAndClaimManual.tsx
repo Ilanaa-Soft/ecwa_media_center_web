@@ -116,7 +116,7 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
   const handleRevoke = async (email: string) => {
     try {
       setRevoking(true);
-      const { data: revoke } = await revokeManual(manual.id, { email });
+      await revokeManual(manual.id, { email });
       const { data } = await getSponsors(manual.id);
 
       setSponsors(data);
