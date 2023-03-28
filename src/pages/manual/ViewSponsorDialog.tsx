@@ -17,8 +17,9 @@ type ViewSponsorDialogProps = {
   manual: Manual;
   open: boolean;
   revoking: boolean;
+  revokingIndex: number;
   onClose: () => void;
-  onRevoke: (email: string) => Promise<void>;
+  onRevoke: (email: string, index: number) => Promise<void>;
 };
 
 const ViewSponsorDialog = ({
@@ -26,6 +27,7 @@ const ViewSponsorDialog = ({
   open,
   sponsors,
   revoking,
+  revokingIndex,
   onClose,
   onRevoke,
 }: ViewSponsorDialogProps) => {
@@ -54,19 +56,19 @@ const ViewSponsorDialog = ({
             >
               Emails you have sponsored:
             </Typography>
-            {sponsors.map((sponsor) => (
+            {sponsors.map((sponsor, index) => (
               <Box
                 key={sponsor.id}
                 display="flex"
+                alignItems="baseline"
                 justifyContent="space-between"
-                alignItems="center"
               >
-                {sponsor.assigned_to}
+                <Box mr={1}>{sponsor.assigned_to}</Box>
                 {sponsor.claimed === 0 && (
                   <Button
-                    loading={revoking}
                     component={LoadingButton}
-                    onClick={() => onRevoke(sponsor.assigned_to)}
+                    loading={revoking && revokingIndex === index}
+                    onClick={() => onRevoke(sponsor.assigned_to, index)}
                   >
                     Revoke
                   </Button>

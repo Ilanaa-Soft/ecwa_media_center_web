@@ -30,6 +30,7 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
   const [sponsorSuccess, setSponsorSuccess] = React.useState(false);
   const [gettingSponsors, setGettingSponsors] = React.useState(false);
   const [revoking, setRevoking] = React.useState(false);
+  const [revokingIndex, setRevokingIndex] = React.useState(-1);
   const [sponsorIsSubmitting, setSponsorIsSubmitting] = React.useState(false);
   const [sponsorDialogOpen, setSponsorDialogOpen] = React.useState(false);
   const [viewSponsorDialogOpen, setViewSponsorDialogOpen] = React.useState(
@@ -113,15 +114,18 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
     setGettingSponsors(false);
   };
 
-  const handleRevoke = async (email: string) => {
+  const handleRevoke = async (email: string, index: number) => {
     try {
       setRevoking(true);
+      setRevokingIndex(index);
+
       await revokeManual(manual.id, { email });
       const { data } = await getSponsors(manual.id);
 
       setSponsors(data);
     } catch (ex) {}
     setRevoking(false);
+    setRevokingIndex(-1);
   };
 
   return (
@@ -174,6 +178,7 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
         sponsors={sponsors}
         manual={manual}
         revoking={revoking}
+        revokingIndex={revokingIndex}
         onRevoke={handleRevoke}
         open={viewSponsorDialogOpen}
         onClose={handleCloseViewSponsorDialog}
