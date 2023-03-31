@@ -29,18 +29,20 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
   const isOnline = useNetworkInfo();
 
   const [email, setEmail] = React.useState("");
-  const [recipients, setRecipients] = React.useState<Recipients[]>([]);
+  const [numOfCopies, setNumOfCopies] = React.useState(0);
+  const [sponsorDialogOpen, setSponsorDialogOpen] = React.useState(false);
   const [sponsorSuccess, setSponsorSuccess] = React.useState(false);
-  const [gettingRecipients, setGettingRecipients] = React.useState(false);
+  const [sponsorIsSubmitting, setSponsorIsSubmitting] = React.useState(false);
+  const [userManualLoading, setUserManualLoading] = React.useState(false);
+
+  const [recipients, setRecipients] = React.useState<Recipients[]>([]);
   const [revoking, setRevoking] = React.useState(false);
   const [revokingIndex, setRevokingIndex] = React.useState(-1);
-  const [sponsorIsSubmitting, setSponsorIsSubmitting] = React.useState(false);
-  const [sponsorDialogOpen, setSponsorDialogOpen] = React.useState(false);
+  const [gettingRecipients, setGettingRecipients] = React.useState(false);
   const [recipientsDialogOpen, setRecipientsDialogOpen] = React.useState(false);
+
   const [claimIsSubmitting, setClaimIsSubmitting] = React.useState(false);
   const [claimDialogOpen, setClaimDialogOpen] = React.useState(false);
-  const [userManualLoading, setUserManualLoading] = React.useState(false);
-  const [numOfCopies, setNumOfCopies] = React.useState(0);
 
   const handleOpenSponsorDialog = async () => {
     try {
@@ -57,10 +59,6 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
     setEmail("");
     setSponsorSuccess(false);
     setSponsorDialogOpen(false);
-  };
-
-  const handleCloseRecipientsDialog = () => {
-    setRecipientsDialogOpen(false);
   };
 
   const handleSponsorEmailChange = (
@@ -85,23 +83,8 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
     setSponsorIsSubmitting(false);
   };
 
-  const handleCloseClaimDialog = () => {
-    setClaimDialogOpen(false);
-  };
-
-  const handleClaim = async () => {
-    setClaimIsSubmitting(true);
-    try {
-      await claimManual(manual.id);
-      const { data: allManuals } = await getAllManuals();
-      const { data: unPaidManuals } = await getUnPaidManuals();
-
-      setClaimDialogOpen(true);
-      onUpdateManuals([...allManuals, ...unPaidManuals]);
-    } catch (ex) {
-      toastExpectedError(ex);
-    }
-    setClaimIsSubmitting(false);
+  const handleCloseRecipientsDialog = () => {
+    setRecipientsDialogOpen(false);
   };
 
   const handleGetRecipients = async () => {
@@ -127,6 +110,25 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
     } catch (ex) {}
     setRevoking(false);
     setRevokingIndex(-1);
+  };
+
+  const handleCloseClaimDialog = () => {
+    setClaimDialogOpen(false);
+  };
+
+  const handleClaim = async () => {
+    setClaimIsSubmitting(true);
+    try {
+      await claimManual(manual.id);
+      const { data: allManuals } = await getAllManuals();
+      const { data: unPaidManuals } = await getUnPaidManuals();
+
+      setClaimDialogOpen(true);
+      onUpdateManuals([...allManuals, ...unPaidManuals]);
+    } catch (ex) {
+      toastExpectedError(ex);
+    }
+    setClaimIsSubmitting(false);
   };
 
   return (
