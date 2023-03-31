@@ -43,7 +43,7 @@ export type SponsorManual = {
   emails: string[];
 };
 
-export type Sponsors = {
+export type Recipients = {
   assigned_to: string;
   claimed: number;
   created_at: string;

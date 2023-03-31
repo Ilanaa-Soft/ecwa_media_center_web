@@ -10,10 +10,10 @@ import {
 import { LoadingButton } from "@mui/lab";
 
 import DialogTransition from "../../components/DialogTransition";
-import { Manual, Sponsors } from "../../types";
+import { Manual, Recipients } from "../../types";
 
 type ViewSponsorDialogProps = {
-  sponsors: Sponsors[];
+  recipients: Recipients[];
   manual: Manual;
   open: boolean;
   revoking: boolean;
@@ -25,7 +25,7 @@ type ViewSponsorDialogProps = {
 const ViewSponsorDialog = ({
   manual,
   open,
-  sponsors,
+  recipients,
   revoking,
   revokingIndex,
   onClose,
@@ -43,7 +43,7 @@ const ViewSponsorDialog = ({
         {`${manual?.year} ${manual?.language} ${manual?.name}`}
       </DialogTitle>
       <DialogContent>
-        {sponsors.length === 0 ? (
+        {recipients.length === 0 ? (
           <Typography id="alert-dialog-view-sponsor-manual">
             You are yet to sponsor anyone
           </Typography>
@@ -56,7 +56,7 @@ const ViewSponsorDialog = ({
             >
               Emails you have sponsored:
             </Typography>
-            {sponsors.map((sponsor, index) => (
+            {recipients.map((sponsor, index) => (
               <Box
                 key={sponsor.id}
                 display="flex"

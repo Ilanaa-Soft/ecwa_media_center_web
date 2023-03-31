@@ -16,7 +16,7 @@ import {
   getUserManual,
 } from "../../services/manualsService";
 import useNetworkInfo from "../../hooks/useNetworkInfo";
-import { Manual, Sponsors } from "../../types";
+import { Manual, Recipients } from "../../types";
 
 type SponsorAndClaimManualProps = {
   manual: Manual;
@@ -29,16 +29,14 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
   const isOnline = useNetworkInfo();
 
   const [email, setEmail] = React.useState("");
-  const [sponsors, setSponsors] = React.useState<Sponsors[]>([]);
+  const [recipients, setRecipients] = React.useState<Recipients[]>([]);
   const [sponsorSuccess, setSponsorSuccess] = React.useState(false);
-  const [gettingSponsors, setGettingSponsors] = React.useState(false);
+  const [gettingRecipients, setGettingRecipients] = React.useState(false);
   const [revoking, setRevoking] = React.useState(false);
   const [revokingIndex, setRevokingIndex] = React.useState(-1);
   const [sponsorIsSubmitting, setSponsorIsSubmitting] = React.useState(false);
   const [sponsorDialogOpen, setSponsorDialogOpen] = React.useState(false);
-  const [viewSponsorDialogOpen, setViewSponsorDialogOpen] = React.useState(
-    false
-  );
+  const [recipientsDialogOpen, setRecipientsDialogOpen] = React.useState(false);
   const [claimIsSubmitting, setClaimIsSubmitting] = React.useState(false);
   const [claimDialogOpen, setClaimDialogOpen] = React.useState(false);
   const [userManualLoading, setUserManualLoading] = React.useState(false);
@@ -61,8 +59,8 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
     setSponsorDialogOpen(false);
   };
 
-  const handleCloseViewSponsorDialog = () => {
-    setViewSponsorDialogOpen(false);
+  const handleCloseRecipientsDialog = () => {
+    setRecipientsDialogOpen(false);
   };
 
   const handleSponsorEmailChange = (
@@ -106,15 +104,15 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
     setClaimIsSubmitting(false);
   };
 
-  const handleGetSponsors = async () => {
+  const handleGetRecipients = async () => {
     try {
-      setGettingSponsors(true);
+      setGettingRecipients(true);
       const { data } = await getRecipients(manual.id);
 
-      setSponsors(data);
-      setViewSponsorDialogOpen(true);
+      setRecipients(data);
+      setRecipientsDialogOpen(true);
     } catch (ex) {}
-    setGettingSponsors(false);
+    setGettingRecipients(false);
   };
 
   const handleRevoke = async (email: string, index: number) => {
@@ -125,7 +123,7 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
       await revokeManual(manual.id, { email });
       const { data } = await getRecipients(manual.id);
 
-      setSponsors(data);
+      setRecipients(data);
     } catch (ex) {}
     setRevoking(false);
     setRevokingIndex(-1);
@@ -145,11 +143,11 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
           </Button>
           <Button
             disabled={!isOnline}
-            onClick={handleGetSponsors}
-            loading={gettingSponsors}
+            onClick={handleGetRecipients}
+            loading={gettingRecipients}
             component={LoadingButton}
           >
-            View Sponsors
+            View Recipients
           </Button>
         </>
       ) : (
@@ -181,13 +179,13 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
       />
 
       <RecipientsDialog
-        sponsors={sponsors}
+        recipients={recipients}
         manual={manual}
         revoking={revoking}
         revokingIndex={revokingIndex}
         onRevoke={handleRevoke}
-        open={viewSponsorDialogOpen}
-        onClose={handleCloseViewSponsorDialog}
+        open={recipientsDialogOpen}
+        onClose={handleCloseRecipientsDialog}
       />
 
       <ClaimDialog
