@@ -40,7 +40,7 @@ export function sponsorManual(request: SponsorManual, manualId: number) {
   return http.post(`${apiEndpoint}/assign/${manualId}`, request, headers);
 }
 
-export function getSponsors(manualId: number) {
+export function getRecipients(manualId: number) {
   return http.get(`${apiEndpoint}/recipients/${manualId}`, headers);
 }
 

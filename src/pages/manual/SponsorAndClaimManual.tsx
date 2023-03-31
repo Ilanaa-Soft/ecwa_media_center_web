@@ -11,7 +11,7 @@ import {
   claimManual,
   getAllManuals,
   getUnPaidManuals,
-  getSponsors,
+  getRecipients,
   revokeManual,
   getUserManual,
 } from "../../services/manualsService";
@@ -109,7 +109,7 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
   const handleGetSponsors = async () => {
     try {
       setGettingSponsors(true);
-      const { data } = await getSponsors(manual.id);
+      const { data } = await getRecipients(manual.id);
 
       setSponsors(data);
       setViewSponsorDialogOpen(true);
@@ -123,7 +123,7 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
       setRevokingIndex(index);
 
       await revokeManual(manual.id, { email });
-      const { data } = await getSponsors(manual.id);
+      const { data } = await getRecipients(manual.id);
 
       setSponsors(data);
     } catch (ex) {}
