@@ -6,17 +6,19 @@ import Layout from "../../components/Layout";
 import HTMLContent from "../../components/HTMLContent";
 import NoteSwipe from "./NoteSwipe";
 import useMarkTopicApi from "../../hooks/useMarkTopicApi";
+import useNetworkInfo from "../../hooks/useNetworkInfo";
 
 const ManualTopic = () => {
   const { state } = useLocation();
   const { manual, topic } = state;
   const isMountedRef = React.useRef(false);
   const { request } = useMarkTopicApi();
+  const isOnline = useNetworkInfo();
 
   React.useEffect(() => {
     if (!isMountedRef.current) {
       isMountedRef.current = true;
-      if (state) request(state.topic);
+      if (state && isOnline) request(state.topic);
     }
   }, [state, request]);
 

@@ -15,6 +15,7 @@ import {
   revokeManual,
   getUserManual,
 } from "../../services/manualsService";
+import useNetworkInfo from "../../hooks/useNetworkInfo";
 import { Manual, Sponsors } from "../../types";
 
 type SponsorAndClaimManualProps = {
@@ -24,6 +25,8 @@ type SponsorAndClaimManualProps = {
 
 const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
   const { manual, onUpdateManuals } = props;
+
+  const isOnline = useNetworkInfo();
 
   const [email, setEmail] = React.useState("");
   const [sponsors, setSponsors] = React.useState<Sponsors[]>([]);
@@ -133,6 +136,7 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
       {manual?.paid && !manual?.is_free && !manual?.sponsored ? (
         <>
           <Button
+            disabled={!isOnline}
             onClick={handleOpenSponsorDialog}
             loading={userManualLoading}
             component={LoadingButton}
@@ -140,6 +144,7 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
             Sponsor People
           </Button>
           <Button
+            disabled={!isOnline}
             onClick={handleGetSponsors}
             loading={gettingSponsors}
             component={LoadingButton}
@@ -151,6 +156,7 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
         <>
           {!manual?.paid && !manual?.is_free && manual?.sponsored && (
             <Button
+              disabled={!isOnline}
               onClick={handleClaim}
               loading={claimIsSubmitting}
               component={LoadingButton}

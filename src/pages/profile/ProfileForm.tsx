@@ -3,6 +3,7 @@ import { Box, Grid } from "@mui/material";
 import Form from "../../components/Form";
 import TextInput from "../../components/TextInput";
 import SubmitButton from "../../components/SubmitButton";
+import useNetworkInfo from "../../hooks/useNetworkInfo";
 import districts from "../../formSelectOptions/districts";
 import profileSchema from "../../formSchemas/profileSchema";
 import { User, UserProfile } from "../../types";
@@ -13,6 +14,7 @@ type ProfileFormProps = {
 };
 
 const ProfileForm = ({ user, onSubmit }: ProfileFormProps) => {
+  const isOnline = useNetworkInfo();
   return (
     <Box
       py={3}
@@ -102,7 +104,12 @@ const ProfileForm = ({ user, onSubmit }: ProfileFormProps) => {
             />
           </Grid>
 
-          <SubmitButton fullWidth variant="contained" text="Update Profile" />
+          <SubmitButton
+            fullWidth
+            disabled={!isOnline}
+            variant="contained"
+            text="Update Profile"
+          />
         </Grid>
       </Form>
     </Box>
