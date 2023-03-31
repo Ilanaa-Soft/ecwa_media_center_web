@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 
 import SponsorDialog from "./SponsorDialog";
-import ViewSponsorDialog from "./ViewSponsorDialog";
+import RecipientsDialog from "./RecipientsDialog";
 import ClaimDialog from "./ClaimDialog";
 import toastExpectedError from "../../utils/toastExpectedError";
 import {
@@ -180,7 +180,7 @@ const SponsorAndClaimManual = (props: SponsorAndClaimManualProps) => {
         onEmailChange={handleSponsorEmailChange}
       />
 
-      <ViewSponsorDialog
+      <RecipientsDialog
         sponsors={sponsors}
         manual={manual}
         revoking={revoking}
