@@ -7,10 +7,16 @@ import HTMLContent from "../../components/HTMLContent";
 import NoteSwipe from "./NoteSwipe";
 import useMarkTopicApi from "../../hooks/useMarkTopicApi";
 import useNetworkInfo from "../../hooks/useNetworkInfo";
+import { Manual, ManualTopic as Topic } from "../../types";
+
+type LocationState = {
+  manual: Manual;
+  topic: Topic;
+};
 
 const ManualTopic = () => {
-  const { state } = useLocation();
-  const { manual, topic } = state;
+  const location = useLocation();
+  const state = location.state as LocationState;
   const isMountedRef = React.useRef(false);
   const { request } = useMarkTopicApi();
   const isOnline = useNetworkInfo();
@@ -20,40 +26,40 @@ const ManualTopic = () => {
       isMountedRef.current = true;
       if (state && isOnline) request(state.topic);
     }
-  }, [state, request]);
+  }, [state, request, isOnline]);
 
   if (!state) return <Navigate to="/manuals" />;
-  
+
   return (
-    <Layout title={`Lesson ${topic.number}`}>
+    <Layout title={`Lesson ${state?.topic.number}`}>
       <Box mb={2}>
         <Typography component="h1" fontSize="18px" fontWeight="600">
-          {topic.topic}
+          {state?.topic.topic}
         </Typography>
         <Typography component="h2" fontSize="16px" fontWeight="600">
-          {`Year ${manual.year} ${manual.name}`}
+          {`Year ${state?.manual.year} ${state?.manual.name}`}
         </Typography>
-        <Typography>{topic.aim}</Typography>
+        <Typography>{state?.topic.aim}</Typography>
       </Box>
 
       <Box>
         <Typography fontSize="20px" fontWeight="500" component="h2">
-          {topic.bible_text}
+          {state?.topic.bible_text}
         </Typography>
         <Typography fontSize="18px" fontWeight="500" component="h3">
           Introduction
         </Typography>
-        <HTMLContent html={topic.introduction} />
+        <HTMLContent html={state?.topic.introduction} />
       </Box>
 
       <Box>
         <Typography component="h2" fontSize="20px" fontWeight="500">
           Study
         </Typography>
-        <HTMLContent html={topic.content} />
+        <HTMLContent html={state?.topic.content} />
       </Box>
 
-      <NoteSwipe topicId={topic.id} />
+      <NoteSwipe topicId={state?.topic.id} />
     </Layout>
   );
 };
