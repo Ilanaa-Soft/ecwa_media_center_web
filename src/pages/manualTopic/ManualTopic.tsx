@@ -16,7 +16,7 @@ type LocationState = {
 
 const ManualTopic = () => {
   const location = useLocation();
-  const state = location.state as LocationState;
+  const locationState = location.state as LocationState;
   const isMountedRef = React.useRef(false);
   const { request } = useMarkTopicApi();
   const isOnline = useNetworkInfo();
@@ -24,42 +24,42 @@ const ManualTopic = () => {
   React.useEffect(() => {
     if (!isMountedRef.current) {
       isMountedRef.current = true;
-      if (state && isOnline) request(state.topic);
+      if (locationState && isOnline) request(locationState.topic);
     }
-  }, [state, request, isOnline]);
+  }, [locationState, request, isOnline]);
 
-  if (!state) return <Navigate to="/manuals" />;
+  if (!locationState) return <Navigate to="/manuals" />;
 
   return (
-    <Layout title={`Lesson ${state?.topic.number}`}>
+    <Layout title={`Lesson ${locationState?.topic.number}`}>
       <Box mb={2}>
         <Typography component="h1" fontSize="18px" fontWeight="600">
-          {state?.topic.topic}
+          {locationState?.topic.topic}
         </Typography>
         <Typography component="h2" fontSize="16px" fontWeight="600">
-          {`Year ${state?.manual.year} ${state?.manual.name}`}
+          {`Year ${locationState?.manual.year} ${locationState?.manual.name}`}
         </Typography>
-        <Typography>{state?.topic.aim}</Typography>
+        <Typography>{locationState?.topic.aim}</Typography>
       </Box>
 
       <Box>
         <Typography fontSize="20px" fontWeight="500" component="h2">
-          {state?.topic.bible_text}
+          {locationState?.topic.bible_text}
         </Typography>
         <Typography fontSize="18px" fontWeight="500" component="h3">
           Introduction
         </Typography>
-        <HTMLContent html={state?.topic.introduction} />
+        <HTMLContent html={locationState?.topic.introduction} />
       </Box>
 
       <Box>
         <Typography component="h2" fontSize="20px" fontWeight="500">
           Study
         </Typography>
-        <HTMLContent html={state?.topic.content} />
+        <HTMLContent html={locationState?.topic.content} />
       </Box>
 
-      <NoteSwipe topicId={state?.topic.id} />
+      <NoteSwipe topicId={locationState?.topic.id} />
     </Layout>
   );
 };
