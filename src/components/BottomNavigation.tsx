@@ -36,8 +36,8 @@ const navItems = [
 ];
 
 const AppBottomNavigation = () => {
-  const location = useLocation();
-  const value = getPageValue(location.pathname);
+  const { pathname } = useLocation();
+  const value = getPageValue(pathname);
 
   return (
     <Paper

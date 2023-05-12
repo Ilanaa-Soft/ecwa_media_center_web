@@ -16,7 +16,8 @@ type FormValues = {
 };
 
 const Login = () => {
-  const { state: email } = useLocation();
+  const location = useLocation();
+  const email = location.state as string;
   const { login } = useAuth();
   const user = getStorageUser();
 

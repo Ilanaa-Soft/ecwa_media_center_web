@@ -2,6 +2,7 @@ import http from "./httpService";
 import { getHeaders } from "./authService";
 import {
   Manual,
+  UserManual,
   ManualPayInfo,
   SponsorManual,
   TopicNote,
@@ -24,15 +25,22 @@ export function getManualsCategories() {
   return http.get(`${apiEndpoint}/categories`, headers);
 }
 
+export function getUserManual(manualId: number) {
+  return http.get<UserManual>(
+    `${apiEndpoint}/user-manual/${manualId}`,
+    headers
+  );
+}
+
 export function savePayment(request: ManualPayInfo) {
   return http.post(`${apiEndpoint}/pay`, request, headers);
 }
 
-export function sponsorManual(request: SponsorManual, id: number) {
-  return http.post(`${apiEndpoint}/assign/${id}`, request, headers);
+export function sponsorManual(request: SponsorManual, manualId: number) {
+  return http.post(`${apiEndpoint}/assign/${manualId}`, request, headers);
 }
 
-export function getSponsors(manualId: number) {
+export function getRecipients(manualId: number) {
   return http.get(`${apiEndpoint}/recipients/${manualId}`, headers);
 }
 
@@ -40,8 +48,8 @@ export function revokeManual(manualId: number, request: { email: string }) {
   return http.post(`${apiEndpoint}/revoke/${manualId}`, request, headers);
 }
 
-export function claimManual(id: number) {
-  return http.post(`${apiEndpoint}/claim/${id}`, {}, headers);
+export function claimManual(manualId: number) {
+  return http.post(`${apiEndpoint}/claim/${manualId}`, {}, headers);
 }
 
 export function markTopicAsRead(topicId: number) {

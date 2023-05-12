@@ -7,8 +7,9 @@ import NoteEditor from "./NoteEditor";
 import TabPanel from "../../components/TabPanel";
 import Loading from "../../components/Loading";
 import Error from "../../components/Error";
-import { TopicNote } from "../../types";
+import useNetworkInfo from "../../hooks/useNetworkInfo";
 import a11yProps from "../../utils/getTabA11yProps";
+import { TopicNote } from "../../types";
 
 type NoteSwipeTabsProps = {
   notes: TopicNote[];
@@ -39,7 +40,7 @@ const NoteSwipeTabs = (props: NoteSwipeTabsProps) => {
     onTryAgain,
   } = props;
 
-  const isOnline = navigator.onLine;
+  const isOnline = useNetworkInfo();
 
   const handleTabChange = (e: React.SyntheticEvent, newValue: number) => {
     onTabChange(newValue);
