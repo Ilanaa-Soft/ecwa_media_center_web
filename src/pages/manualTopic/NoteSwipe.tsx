@@ -4,16 +4,19 @@ import { Box, SwipeableDrawer } from "@mui/material";
 import NoteSwipeTabs from "./NoteSwipeTabs";
 import NoteSwipeOpenButton from "./NoteSwipeOpenButton";
 import NoteSwipeCloseButton from "./NoteSwipeCloseButton";
-import { TopicNote } from "../../types";
-import toastExpectedError from "../../utils/toastExpectedError";
-import { saveNote, updateNote } from "../../services/manualsService";
 import useNotesApi from "../../hooks/useNotesApi";
+import useNetworkInfo from "../../hooks/useNetworkInfo";
+import { saveNote, updateNote } from "../../services/manualsService";
+import toastExpectedError from "../../utils/toastExpectedError";
+import toastOfflineInfo from "../../utils/toastOfflineInfo";
+import { TopicNote } from "../../types";
 
 type NoteSwipeProps = {
   topicId: number;
 };
 
 const NoteSwipe = ({ topicId }: NoteSwipeProps) => {
+  const isOnline = useNetworkInfo();
   const [open, setIsOpen] = React.useState(false);
   const [tabValue, setTabValue] = React.useState(0);
   const [editNote, setEditNote] = React.useState<TopicNote | null>(null);
@@ -38,11 +41,13 @@ const NoteSwipe = ({ topicId }: NoteSwipeProps) => {
 
   const handleTabChange = (newValue: number) => {
     setTabValue(newValue);
-    if (newValue === 1) request();
+    if (newValue === 1 && isOnline) request();
   };
 
   const handleSave = async (note: string) => {
-     try {
+    if (!isOnline) return toastOfflineInfo();
+
+    try {
       const request = { note, sunday_school_topic_id: topicId };
       if (!editNote) await saveNote(request);
       else {

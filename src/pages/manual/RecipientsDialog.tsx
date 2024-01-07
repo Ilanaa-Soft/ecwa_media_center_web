@@ -10,22 +10,24 @@ import {
 import { LoadingButton } from "@mui/lab";
 
 import DialogTransition from "../../components/DialogTransition";
-import { Manual, Sponsors } from "../../types";
+import { Manual, Recipients } from "../../types";
 
 type ViewSponsorDialogProps = {
-  sponsors: Sponsors[];
+  recipients: Recipients[];
   manual: Manual;
   open: boolean;
   revoking: boolean;
+  revokingIndex: number;
   onClose: () => void;
-  onRevoke: (email: string) => Promise<void>;
+  onRevoke: (email: string, index: number) => Promise<void>;
 };
 
 const ViewSponsorDialog = ({
   manual,
   open,
-  sponsors,
+  recipients,
   revoking,
+  revokingIndex,
   onClose,
   onRevoke,
 }: ViewSponsorDialogProps) => {
@@ -41,7 +43,7 @@ const ViewSponsorDialog = ({
         {`${manual?.year} ${manual?.language} ${manual?.name}`}
       </DialogTitle>
       <DialogContent>
-        {sponsors.length === 0 ? (
+        {recipients.length === 0 ? (
           <Typography id="alert-dialog-view-sponsor-manual">
             You are yet to sponsor anyone
           </Typography>
@@ -54,19 +56,19 @@ const ViewSponsorDialog = ({
             >
               Emails you have sponsored:
             </Typography>
-            {sponsors.map((sponsor) => (
+            {recipients.map((sponsor, index) => (
               <Box
                 key={sponsor.id}
                 display="flex"
+                alignItems="baseline"
                 justifyContent="space-between"
-                alignItems="center"
               >
-                {sponsor.assigned_to}
+                <Box mr={1}>{sponsor.assigned_to}</Box>
                 {sponsor.claimed === 0 && (
                   <Button
-                    loading={revoking}
                     component={LoadingButton}
-                    onClick={() => onRevoke(sponsor.assigned_to)}
+                    loading={revoking && revokingIndex === index}
+                    onClick={() => onRevoke(sponsor.assigned_to, index)}
                   >
                     Revoke
                   </Button>

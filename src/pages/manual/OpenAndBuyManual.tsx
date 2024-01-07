@@ -3,6 +3,7 @@ import { Box, Typography, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 import PayDialog from "./PayDialog";
+import useNetworkInfo from "../../hooks/useNetworkInfo";
 import currencyFormtter from "../../utils/currencyFormatter";
 import { User, Manual, ManualPayInfo } from "../../types";
 import { Account } from "../../types/payment";
@@ -16,6 +17,7 @@ type OpenAndBuyManualProps = {
 const OpenAndBuyManual = (props: OpenAndBuyManualProps) => {
   const { user, manual, onUpdatePayInfo } = props;
 
+  const isOnline = useNetworkInfo();
   const [isPayDialogOpen, setIsPayDialogOpen] = React.useState(false);
   const [numberOfCopies, setCopies] = React.useState("");
   const [payMethod, setPayMethod] = React.useState("");
@@ -94,7 +96,9 @@ const OpenAndBuyManual = (props: OpenAndBuyManualProps) => {
               <Typography mb={2} fontWeight="500">
                 {currencyFormtter(price)}
               </Typography>
-              <Button onClick={handleOpenPayDialog}>Buy Manual</Button>
+              <Button disabled={!isOnline} onClick={handleOpenPayDialog}>
+                Buy Manual
+              </Button>
             </Box>
           )}
         </>
