@@ -26,7 +26,7 @@ const OpenAndBuyManual = (props: OpenAndBuyManualProps) => {
   const [balanceLoading, setBalanceLoading] = React.useState(false);
   const [lowBalance, setLowBalance] = React.useState(false);
 
-  const price = 400;
+  const price = 800;
   const navigate = useNavigate();
 
   const handleOpenManual = (id: number) => {
