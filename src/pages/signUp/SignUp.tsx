@@ -29,7 +29,7 @@ const SignUp = () => {
         "Hi👋, your registration has been completed. Enter your email address to request a login code."
       );
 
-      return <Navigate to="/login-code" />;
+      await navigate("/login-code");
     } catch (ex) {
       toastExpectedError(ex);
     }
